@@ -11,7 +11,7 @@
 				filter="STRING"
 				type="cktext"
 				required="true"
-				class="validate[required]"/>
+				class="validate[required] input-xxlarge"/>
 
 		<field name="alias"
 				alias="alias"
@@ -32,13 +32,14 @@
 				alias="image"
 				label="BDS_FIELD_IMAGE"
 				filter="STRING"
-				type="cktext"/>
+				type="media"/>
 
 		<field name="description"
 				alias="description"
 				label="BDS_FIELD_DESCRIPTION"
-				filter="RAW"
-				type="ckeditor"/>
+				filter="JComponentHelper::filterText"
+                buttons="true" 
+				type="editor"/>
 
 		<field name="published"
 				alias="published"

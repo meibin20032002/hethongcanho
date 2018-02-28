@@ -11,7 +11,7 @@
 				filter="STRING"
 				type="cktext"
 				required="true"
-				class="validate[required]"/>
+				class="validate[required] input-xxlarge"/>
 
 		<field name="alias"
 				alias="alias"
@@ -102,8 +102,9 @@
 		<field name="description"
 				alias="description"
 				label="BDS_FIELD_DESCRIPTION"
-				filter="RAW"
-				type="ckeditor"/>
+				filter="JComponentHelper::filterText"
+                buttons="true" 
+				type="editor"/>
 
 		<field name="total_area"
 				alias="total_area"
