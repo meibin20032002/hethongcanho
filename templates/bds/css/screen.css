@@ -405,22 +405,29 @@ b, strong, .bold{
 }
 /*----form-search----*/
 .toolSearch{
-    padding-bottom: 20px;
     display: inline-block;
     width: 100%;
+    border: 1px solid #cacaca26;
+    background-color: beige;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    -moz-border-radius-bottomright: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+	
 }
 .form-search input {
-    width: 100%;
-    border: 1px solid rgba(204, 204, 204, 1);
+    max-width: 280px;
+    border: 1px solid rgba(204, 204, 204, 0.47);
     padding: 15px;
     box-shadow: none;
     box-sizing: border-box;
-    font-size: 14px;
+    border-radius: 5px;
+    font-size: 13px;
     height: 49px;
     color: #FC7D07;
-    font-weight: 400;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+
 .form-search input:focus,
 .form-search input:hover,
 .form-search input:visited{
