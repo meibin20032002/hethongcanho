@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<config>
+
+	<menu name="cpanel">
+
+		<item		label="BDS_LAYOUT_CATEGORIES"
+				description="BDS_LAYOUT_SHOW_CATEGORIES_LAYOUT"
+				type="layout"
+				view="categories"
+				layout="default"
+				icon="bds_categories"/>
+
+		<item		label="BDS_LAYOUT_PRODUCTS"
+				description="BDS_LAYOUT_SHOW_PRODUCTS_LAYOUT"
+				type="layout"
+				view="products"
+				layout="default"
+				icon="bds_products"/>
+
+		<item		label="BDS_LAYOUT_PROJECTS"
+				description="BDS_LAYOUT_SHOW_PROJECTS_LAYOUT"
+				type="layout"
+				view="projects"
+				layout="default"
+				icon="bds_projects"/>
+
+		<item		label="BDS_LAYOUT_TYPES"
+				description="BDS_LAYOUT_SHOW_TYPES_LAYOUT"
+				type="layout"
+				view="types"
+				layout="default"
+				icon="bds_types"/>
+
+		<item		label="BDS_LAYOUT_LOCATIONS"
+				description="BDS_LAYOUT_SHOW_LOCATIONS_LAYOUT"
+				type="layout"
+				view="locations"
+				layout="default"
+				icon="bds_locations"/>
+
+		<item		label="BDS_LAYOUT_UTILITIES"
+				description="BDS_LAYOUT_SHOW_UTILITIES_LAYOUT"
+				type="layout"
+				view="utilities"
+				layout="default"
+				icon="bds_utilities"/>
+
+		<item		label="BDS_LAYOUT_EMAIL_TEMPLATES"
+				description="BDS_LAYOUT_SHOW_EMAIL_TEMPLATES_LAYOUT"
+				type="layout"
+				view="emailtemplates"
+				layout="default"
+				icon="bds_emailtemplates"/>
+	</menu>
+
+	<menu name="menu">
+
+		<item		label="BDS_LAYOUT_CONTROL_PANEL"
+				description="BDS_LAYOUT_SHOW_CONTROL_PANEL_LAYOUT"
+				type="layout"
+				view="cpanel"
+				layout="default"
+				icon="bds_cpanel"/>
+
+		<item		label="BDS_LAYOUT_CATEGORIES"
+				description="BDS_LAYOUT_SHOW_CATEGORIES_LAYOUT"
+				type="layout"
+				view="categories"
+				layout="default"
+				icon="bds_categories"/>
+
+		<item		label="BDS_LAYOUT_PRODUCTS"
+				description="BDS_LAYOUT_SHOW_PRODUCTS_LAYOUT"
+				type="layout"
+				view="products"
+				layout="default"
+				icon="bds_products"/>
+
+		<item		label="BDS_LAYOUT_PROJECTS"
+				description="BDS_LAYOUT_SHOW_PROJECTS_LAYOUT"
+				type="layout"
+				view="projects"
+				layout="default"
+				icon="bds_projects"/>
+
+		<item		label="BDS_LAYOUT_TYPES"
+				description="BDS_LAYOUT_SHOW_TYPES_LAYOUT"
+				type="layout"
+				view="types"
+				layout="default"
+				icon="bds_types"/>
+
+		<item		label="BDS_LAYOUT_LOCATIONS"
+				description="BDS_LAYOUT_SHOW_LOCATIONS_LAYOUT"
+				type="layout"
+				view="locations"
+				layout="default"
+				icon="bds_locations"/>
+
+		<item		label="BDS_LAYOUT_UTILITIES"
+				description="BDS_LAYOUT_SHOW_UTILITIES_LAYOUT"
+				type="layout"
+				view="utilities"
+				layout="default"
+				icon="bds_utilities"/>
+
+		<item		label="BDS_LAYOUT_EMAIL_TEMPLATES"
+				description="BDS_LAYOUT_SHOW_EMAIL_TEMPLATES_LAYOUT"
+				type="layout"
+				view="emailtemplates"
+				layout="default"
+				icon="bds_emailtemplates"/>
+	</menu>
+</config>

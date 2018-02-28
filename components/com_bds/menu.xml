@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<config>
+
+	<menu name="cpanel">
+
+		<item		label="BDS_LAYOUT_PRODUCTS"
+				description="BDS_LAYOUT_SHOW_PRODUCTS_LAYOUT"
+				type="layout"
+				view="products"
+				layout="default"
+				icon="bds_products"/>
+
+		<item		label="BDS_LAYOUT_PROJECTS"
+				description="BDS_LAYOUT_SHOW_PROJECTS_LAYOUT"
+				type="layout"
+				view="projects"
+				layout="default"
+				icon="bds_projects"/>
+	</menu>
+
+	<menu name="menu">
+
+		<item		label="BDS_LAYOUT_CONTROL_PANEL"
+				description="BDS_LAYOUT_SHOW_CONTROL_PANEL_LAYOUT"
+				type="layout"
+				view="cpanel"
+				layout="default"
+				icon="bds_cpanel"/>
+
+		<item		label="BDS_LAYOUT_PRODUCTS"
+				description="BDS_LAYOUT_SHOW_PRODUCTS_LAYOUT"
+				type="layout"
+				view="products"
+				layout="default"
+				icon="bds_products"/>
+
+		<item		label="BDS_LAYOUT_PROJECTS"
+				description="BDS_LAYOUT_SHOW_PROJECTS_LAYOUT"
+				type="layout"
+				view="projects"
+				layout="default"
+				icon="bds_projects"/>
+	</menu>
+</config>

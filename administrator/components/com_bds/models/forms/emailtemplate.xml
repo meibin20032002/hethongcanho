@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<form>
+
+	<fieldset name="emailtemplate.form" addfieldpath="/administrator/components/com_bds/models/fields">
+
+		<field name="slug_name"
+				alias="slug_name"
+				label="BDS_FIELD_SLUG_NAME"
+				filter="STRING"
+				type="cktext"/>
+
+		<field name="subject"
+				alias="subject"
+				label="BDS_FIELD_SUBJECT"
+				filter="STRING"
+				type="cktext"/>
+
+		<field name="avail_attribute"
+				alias="avail_attribute"
+				label="BDS_FIELD_AVAIL_ATTRIBUTE"
+				filter="STRING"
+				type="cktext"/>
+
+		<field name="content"
+				alias="content"
+				label="BDS_FIELD_CONTENT"
+				filter="RAW"
+				type="ckeditor"/>
+	</fieldset>
+
+	<fieldset name="default.filters" addfieldpath="/administrator/components/com_bds/models/fields">
+
+		<field name="search_search"
+				type="cksearch"
+				placeholder="BDS_FILTER_NULL_SLUG_NAME_SUBJECT_AVAIL_ATTRIBUTE"
+				label="BDS_JSEARCH_SLUG_NAME_SUBJECT_AVAIL_ATTRIBUTE"
+				class="element-filter element-search search-query"
+				ui="chosen"/>
+
+		<field name="sortTable"
+				type="cksort"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JGLOBAL_SORT_BY"
+				class="span-2 element-filter"
+				label="Sort by"
+				ui="chosen"/>
+
+		<field name="directionTable"
+				type="ckdirection"
+				responsive="hidden-phone"
+				submit="true"
+				nullLabel="JFIELD_ORDERING_DESC"
+				class="span-2 element-filter"
+				label="Direction"
+				ui="chosen"/>
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+
+	<fieldset name="modal.filters" addfieldpath="/administrator/components/com_bds/models/fields">
+
+		<field name="limit"
+				type="cklimit"
+				submit="true"
+				class="element-filter"
+				label="Limit"
+				ui="chosen"/>
+	</fieldset>
+</form>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<metadata>
+	<layout title="BDS_LAYOUT_PROJECT">
+	<message>
+		<![CDATA[BDS_LAYOUT_SHOW_PROJECT_LAYOUT]]>
+	</message></layout>
+
+	<fields name="request">
+
+		<fieldset name="request" addfieldpath="/administrator/components/com_bds/models/fields">
+
+			<field name="cid"
+					type="modalpicker"
+					label="BDS_JSEARCH_SELECT_PROJECT"
+					required="false"
+					default=""
+					description="BDS_JSEARCH_SELECT_PROJECT"
+					model="projects"
+					labelKey="title"/>
+		</fieldset>
+	</fields>
+</metadata>

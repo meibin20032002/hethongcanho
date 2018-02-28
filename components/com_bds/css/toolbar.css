@@ -1,0 +1,128 @@
+/**                               ______________________________________________
+*                          o O   |                                              |
+*                 (((((  o      <    Generated with Cook Self Service  V3.1.9   |
+*                ( o o )         |______________________________________________|
+* --------oOOO-----(_)-----OOOo---------------------------------- www.j-cook.pro --- +
+* @version		
+* @package		BDS
+* @subpackage	BDS
+* @copyright	
+* @author		 -  - 
+* @license		
+*
+*             .oooO  Oooo.
+*             (   )  (   )
+* -------------\ (----) /----------------------------------------------------------- +
+*               \_)  (_/
+*/
+
+/**
+* Component icons 48px (Cpanel)
+**/
+.ico-48-bds, .icon-48-bds {
+	background-image:url('../images/icon-48-bds.png');
+}
+.ico-48-bds_categories, .icon-48-bds_categories {
+	background-image:url('../images/icon-48-bds_categories.png');
+}
+.ico-48-bds_products, .icon-48-bds_products {
+	background-image:url('../images/icon-48-bds_products.png');
+}
+.ico-48-bds_projects, .icon-48-bds_projects {
+	background-image:url('../images/icon-48-bds_projects.png');
+}
+.ico-48-bds_types, .icon-48-bds_types {
+	background-image:url('../images/icon-48-bds_types.png');
+}
+.ico-48-bds_locations, .icon-48-bds_locations {
+	background-image:url('../images/icon-48-bds_locations.png');
+}
+.ico-48-bds_utilities, .icon-48-bds_utilities {
+	background-image:url('../images/icon-48-bds_utilities.png');
+}
+.ico-48-bds_emailtemplates, .icon-48-bds_emailtemplates {
+	background-image:url('../images/icon-48-bds_emailtemplates.png');
+}
+.ico-48-bds_cpanel, .icon-48-bds_cpanel {
+	background-image:url('../images/icon-48-bds_cpanel.png');
+}
+
+/**
+* Component icons 16px (Sub Menu)
+**/
+.ico-16-bds, .icon-16-bds {
+	background-image:url('../images/icon-16-bds.png');
+}
+.ico-16-bds_categories, .icon-16-bds_categories {
+	background-image:url('../images/icon-16-bds_categories.png');
+}
+.ico-16-bds_products, .icon-16-bds_products {
+	background-image:url('../images/icon-16-bds_products.png');
+}
+.ico-16-bds_projects, .icon-16-bds_projects {
+	background-image:url('../images/icon-16-bds_projects.png');
+}
+.ico-16-bds_types, .icon-16-bds_types {
+	background-image:url('../images/icon-16-bds_types.png');
+}
+.ico-16-bds_locations, .icon-16-bds_locations {
+	background-image:url('../images/icon-16-bds_locations.png');
+}
+.ico-16-bds_utilities, .icon-16-bds_utilities {
+	background-image:url('../images/icon-16-bds_utilities.png');
+}
+.ico-16-bds_emailtemplates, .icon-16-bds_emailtemplates {
+	background-image:url('../images/icon-16-bds_emailtemplates.png');
+}
+.ico-16-bds_cpanel, .icon-16-bds_cpanel {
+	background-image:url('../images/icon-16-bds_cpanel.png');
+}
+
+/**
+* Icons colors
+**/
+.icon-edit:before {
+	color:#2f96b4;
+}
+.icon-featured:before, .icon-star:before, .icon-star-empty:before, .icon-default:before {
+	color:#f89406;
+}
+.icon-pending:before {
+	color:#f89406;
+}
+.icon-publish:before, .icon-save:before, .icon-ok:before {
+	color:#51a351;
+}
+.icon-unpublish:before, .btn-toolbar .icon-cancel:before {
+	color:#bd362f;
+}
+.icon-not-ok:before, .icon-eye-close:before {
+	color:#bd362f;
+}
+.icon-save-new:before {
+	color:#51a351;
+}
+.icon-ban-circle:before, .icon-minus-sign:before {
+	color:#bd362f;
+}
+.icon-save-copy:before, .btn-toolbar .icon-copy:before {
+	color:#51a351;
+}
+
+/**
+* System
+**/
+span.spinner {
+	background-image:url('../images/icon-16-spinner.gif');
+}
+[class^="icon-32"], [class*=" icon-32"] {
+	background-position:0px 0px; !important;
+}
+
+/**
+* Fixes
+**/
+.jgrid span {
+	padding:0px;
+}
+

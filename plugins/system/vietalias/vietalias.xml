@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="system" method="upgrade">
+	<name>Joomla! SEF for alias title</name>
+	<author>Kelvin Nguyen</author>
+	<creationDate>Feb 2018</creationDate>
+	<copyright>Copyright (C) 2005 - 2018 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>nguyenducloi1503@gmail.com</authorEmail>
+	<authorUrl>www.quaxare.com</authorUrl>
+	<version>3.8.3</version>
+	<description>Vietnamse SEO/SEF - Tạo tiếng việt không dấu khi tạo link thân thiện!</description>
+	<files>
+		<filename plugin="vietalias">vietalias.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="vi_trans" type="list"
+					default="1"
+					description="If yes, the plugin transliterates the utf-8 Vietnamese accent titles into Latin alias"
+					label="Vietnamese transformed text"
+				>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+
+				<field name="transformtext" type="textarea"
+					default=""
+					description="For example: Â=>A,â=>a,ô=>o,б=>b,ж=>zh,Я=>YA..."
+					label="Other transformed characters"
+				/>
+			</fieldset>
+		</fields>
+	</config>	
+</extension>
