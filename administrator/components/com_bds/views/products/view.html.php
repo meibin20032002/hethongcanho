@@ -74,6 +74,13 @@ class BdsViewProducts extends BdsClassView
 		$filters['filter_category_id']->jdomOptions = array(
 			'list' => $modelCategory_id->getItems()
 		);
+        
+        // Project
+		$modelProject_id = CkJModel::getInstance('projects', 'BdsModel');
+		$modelProject_id->set('context', $model->get('context'));
+		$filters['filter_project_id']->jdomOptions = array(
+			'list' => $modelProject_id->getItems()
+		);
 
 		// Location
 		$modelLocation_id = CkJModel::getInstance('locations', 'BdsModel');

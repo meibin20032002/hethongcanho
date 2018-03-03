@@ -189,6 +189,7 @@ class BdsModelProduct extends BdsClassModelItem
 				$data->contact_address = null;
 				$data->ordering = null;
 				$data->published = null;
+                $data->hits = null;
 				$data->created_by = $jinput->get('filter_created_by', $this->getState('filter.created_by'), 'INT');
 				$data->modified_by = $jinput->get('filter_modified_by', $this->getState('filter.modified_by'), 'INT');
 				$data->creation_date = null;
@@ -274,6 +275,7 @@ class BdsModelProduct extends BdsClassModelItem
 					'description',
 					'direction',
 					'gallery',
+                    'hits',
 					'legal_documents',
 					'location_id',
 					'location_id.title',
@@ -282,6 +284,8 @@ class BdsModelProduct extends BdsClassModelItem
 					'modified_by.name',
 					'ordering',
 					'price',
+                    'project_id',
+					'project_id.title',
 					'shipping_payment',
 					'title',
 					'types',

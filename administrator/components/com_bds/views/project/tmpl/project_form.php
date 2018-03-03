@@ -348,18 +348,18 @@ $fieldSets = $this->form->getFieldsets();
     		'list' => $this->lists['fk']['created_by']
     			);
     	?>
-    		<?php if (!method_exists($field, 'canView') || $field->canView()): ?>
-    		<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-    			<div class="control-label">
-    				<?php echo $field->label; ?>
-    			</div>
-    
-    		    <div class="controls">
-    				<?php echo $field->input; ?>
-    			</div>
-    		</div>
-    		<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    		<?php endif; ?>
+		<?php if (!method_exists($field, 'canView') || $field->canView()): ?>
+		<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+			<div class="control-label">
+				<?php echo $field->label; ?>
+			</div>
+
+		    <div class="controls">
+				<?php echo $field->input; ?>
+			</div>
+		</div>
+		<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+		<?php endif; ?>
     
     
     
@@ -380,6 +380,22 @@ $fieldSets = $this->form->getFieldsets();
     		</div>
     	</div>
     	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+        
+        <?php
+    	// Hits
+    	$field = $fieldSet['jform_hits'];
+    	?>
+    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+    		<div class="control-label">
+    			<?php echo $field->label; ?>
+    		</div>
+    
+    	    <div class="controls">
+    			<?php echo $field->input; ?>
+    		</div>
+    	</div>
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+
 
     <?php echo JHtml::_('bootstrap.endTab'); ?>    
     <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'image', 'Images and Gallery'); ?>

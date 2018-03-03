@@ -29,7 +29,16 @@
 				nullLabel="BDS_JSEARCH_SELECT_CATEGORY"
 				required="true"
 				class="validate[required]"/>
-
+        
+        <field name="project_id"
+				alias="_project_id_title"
+				label="BDS_FIELD_PROJECT"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="BDS_JSEARCH_SELECT_PROJECT"/>
+                
 		<field name="types"
 				alias="types"
 				label="BDS_FIELD_TYPES"
@@ -162,8 +171,8 @@
 				label="BDS_FIELD_SHIPPING_PAYMENT"
 				filter="STRING"
 				type="cktextarea"/>
-
-		<field name="contact_number"
+        
+        <field name="contact_number"
 				alias="contact_number"
 				label="BDS_FIELD_CONTACT_NUMBER"
 				filter="STRING"
@@ -191,7 +200,7 @@
 				label="BDS_FIELD_CONTACT_ADDRESS"
 				filter="STRING"
 				type="cktext"/>
-
+                
 		<field name="published"
 				alias="published"
 				label="BDS_FIELD_PUBLISHED"
@@ -250,6 +259,17 @@
 				labelKey="name"
 				type="ckcombo"
 				nullLabel="BDS_JSEARCH_SELECT_MODIFIED_BY"/>
+                
+        <field name="hits"
+				alias="hits"
+				label="BDS_FIELD_HITS"
+				filter="INT"
+				type="text"
+				validate="numeric"
+				ruleInstance="numeric_2460"
+                readonly="true"
+				class="validate[custom[numeric_2460]]"/>
+                
 	</fieldset>
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_bds/models/fields">
@@ -262,6 +282,16 @@
 				nullLabel="BDS_FILTER_NULL_CATEGORY"
 				class="span-2 element-filter"
 				label="BDS_JSEARCH_CATEGORY"
+				ui="chosen"/>
+                
+        <field name="filter_project_id"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				submit="true"
+				nullLabel="BDS_FILTER_NULL_PROJECT"
+				class="span-2 element-filter"
+				label="BDS_JSEARCH_PROJECT"
 				ui="chosen"/>
 
 		<field name="filter_types"

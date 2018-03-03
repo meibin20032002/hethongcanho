@@ -103,73 +103,28 @@ $fieldSets = $this->form->getFieldsets();
         		</div>
         		<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
         		<?php endif; ?>
-                
-                
-                <?php
-            	// Contact Number
-            	$field = $fieldSet['jform_contact_number'];
-            	?>
-            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-            		<div class="control-label">
-            			<?php echo $field->label; ?>
-            		</div>
-            
-            	    <div class="controls">
-            			<?php echo $field->input; ?>
-            		</div>
-            	</div>
-            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-            
-            
-            
-            	<?php
-            	// Contact Name
-            	$field = $fieldSet['jform_contact_name'];
-            	?>
-            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-            		<div class="control-label">
-            			<?php echo $field->label; ?>
-            		</div>
-            
-            	    <div class="controls">
-            			<?php echo $field->input; ?>
-            		</div>
-            	</div>
-            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-            
-            
-            
-            	<?php
-            	// Contact Email
-            	$field = $fieldSet['jform_contact_email'];
-            	?>
-            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-            		<div class="control-label">
-            			<?php echo $field->label; ?>
-            		</div>
-            
-            	    <div class="controls">
-            			<?php echo $field->input; ?>
-            		</div>
-            	</div>
-            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-                
-                
-                <?php
-            	// Contact Address
-            	$field = $fieldSet['jform_contact_address'];
-            	?>
-            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-            		<div class="control-label">
-            			<?php echo $field->label; ?>
-            		</div>
-            
-            	    <div class="controls">
-            			<?php echo $field->input; ?>
-            		</div>
-            	</div>
-            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
     
+    
+            	<?php
+            	// Created By
+            	$field = $fieldSet['jform_created_by'];
+            	$field->jdomOptions = array(
+            		'list' => $this->lists['fk']['created_by']
+            			);
+            	?>
+        		<?php if (!method_exists($field, 'canView') || $field->canView()): ?>
+        		<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+        			<div class="control-label">
+        				<?php echo $field->label; ?>
+        			</div>
+        
+        		    <div class="controls">
+        				<?php echo $field->input; ?>
+        			</div>
+        		</div>
+        		<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+        		<?php endif; ?>
+                
     
             	<?php
             	// Category
@@ -189,7 +144,25 @@ $fieldSets = $this->form->getFieldsets();
             	</div>
             	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
             
+                
+                <?php
+            	// Project
+            	$field = $fieldSet['jform_project_id'];
+            	$field->jdomOptions = array(
+            		'list' => $this->lists['fk']['project_id']
+            			);
+            	?>
+            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+            		<div class="control-label">
+            			<?php echo $field->label; ?>
+            		</div>
             
+            	    <div class="controls">
+            			<?php echo $field->input; ?>
+            		</div>
+            	</div>
+            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
             
             	<?php
             	// Types
@@ -418,10 +391,6 @@ $fieldSets = $this->form->getFieldsets();
     		</div>
     	</div>
     	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-        
-        
-        
-
 
 
     	<?php
@@ -454,30 +423,7 @@ $fieldSets = $this->form->getFieldsets();
     			<?php echo $field->input; ?>
     		</div>
     	</div>
-    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    
-    
-    
-    	<?php
-    	// Created By
-    	$field = $fieldSet['jform_created_by'];
-    	$field->jdomOptions = array(
-    		'list' => $this->lists['fk']['created_by']
-    			);
-    	?>
-    		<?php if (!method_exists($field, 'canView') || $field->canView()): ?>
-    		<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-    			<div class="control-label">
-    				<?php echo $field->label; ?>
-    			</div>
-    
-    		    <div class="controls">
-    				<?php echo $field->input; ?>
-    			</div>
-    		</div>
-    		<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    		<?php endif; ?>
-    
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>  
     
     
     	<?php
@@ -498,12 +444,93 @@ $fieldSets = $this->form->getFieldsets();
     	</div>
     	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
         
+        <?php
+    	// Hits
+    	$field = $fieldSet['jform_hits'];
+    	?>
+    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+    		<div class="control-label">
+    			<?php echo $field->label; ?>
+    		</div>
+    
+    	    <div class="controls">
+    			<?php echo $field->input; ?>
+    		</div>
+    	</div>
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
     <?php echo JHtml::_('bootstrap.endTab'); ?>    
     <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'image', 'Images and Gallery'); ?>
     	<?php
     	// Gallery
     	$field = $fieldSet['jform_gallery'];
+    	?>
+    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+    		<div class="control-label">
+    			<?php echo $field->label; ?>
+    		</div>
+    
+    	    <div class="controls">
+    			<?php echo $field->input; ?>
+    		</div>
+    	</div>
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
+    <?php echo JHtml::_('bootstrap.endTab'); ?> 
+    <?php echo JHtml::_('bootstrap.addTab', 'myTab', 'contact', 'Contact'); ?>
+    	<?php
+    	// Contact Number
+    	$field = $fieldSet['jform_contact_number'];
+    	?>
+    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+    		<div class="control-label">
+    			<?php echo $field->label; ?>
+    		</div>
+    
+    	    <div class="controls">
+    			<?php echo $field->input; ?>
+    		</div>
+    	</div>
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
+    
+    
+    	<?php
+    	// Contact Name
+    	$field = $fieldSet['jform_contact_name'];
+    	?>
+    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+    		<div class="control-label">
+    			<?php echo $field->label; ?>
+    		</div>
+    
+    	    <div class="controls">
+    			<?php echo $field->input; ?>
+    		</div>
+    	</div>
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
+    
+    
+    	<?php
+    	// Contact Email
+    	$field = $fieldSet['jform_contact_email'];
+    	?>
+    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+    		<div class="control-label">
+    			<?php echo $field->label; ?>
+    		</div>
+    
+    	    <div class="controls">
+    			<?php echo $field->input; ?>
+    		</div>
+    	</div>
+    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+        
+        
+        <?php
+    	// Contact Address
+    	$field = $fieldSet['jform_contact_address'];
     	?>
     	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
     		<div class="control-label">

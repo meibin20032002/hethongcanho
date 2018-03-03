@@ -38,6 +38,8 @@ JDom::_('html.toolbar');
 			<div class = "nav-filters">
 				<!-- BRICK : filters -->
 				<?php echo $this->filters['filter_category_id']->input;?>
+                <hr class="hr-condensed">
+				<?php echo $this->filters['filter_project_id']->input;?>
 				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_types']->input;?>
 				<hr class="hr-condensed">

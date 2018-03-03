@@ -186,6 +186,7 @@ class BdsModelProjects extends BdsClassModelList
 					'creation_date',
 					'gallery',
 					'handing_over',
+                    'hits',
 					'location_id',
 					'location_id.title',
 					'ordering',

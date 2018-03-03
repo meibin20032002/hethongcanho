@@ -105,10 +105,7 @@ class PlgUserCMAvatar extends JPlugin
 					}
 					else
 					{
-						$html = '<div class="cmavatar">';
-						$html .= '<img src="' . $avatarPath . '">';
-						$html .= '</div>';
-						$data->cmavatar['cmavatar'] = $html;
+						$data->cmavatar['cmavatar'] = $avatarPath;
 					}
 				}
 				else

@@ -147,6 +147,16 @@
 			<option value="0" icon="icomoon-cancel" color="danger">BDS_FIELDS_BOOL_NO</option>
 			<option value="1" icon="icomoon-ok" color="success">BDS_FIELDS_BOOL_YES</option>
 		</field>
+        
+        <field name="hits"
+				alias="hits"
+				label="BDS_FIELD_HITS"
+				filter="INT"
+				type="text"
+                readonly="true"
+				validate="numeric"
+				ruleInstance="numeric_6555"
+				class="validate[custom[numeric_6555]]"/>
 
 		<field name="creation_date"
 				alias="creation_date"

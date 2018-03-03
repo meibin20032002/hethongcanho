@@ -8,7 +8,8 @@
 			<field
 				name="address1"
 				type="text"
-				label="PLG_USER_PROFILE_FIELD_ADDRESS1_LABEL"
+                label="PLG_USER_PROFILE_FIELD_ADDRESS1_LABEL"
+				hint="PLG_USER_PROFILE_FIELD_ADDRESS1_LABEL"
 				description="PLG_USER_PROFILE_FIELD_ADDRESS1_DESC"
 				id="address1"
 				filter="string"
@@ -68,7 +69,7 @@
 			<field
 				name="phone"
 				type="tel"
-				label="PLG_USER_PROFILE_FIELD_PHONE_LABEL"
+                label="PLG_USER_PROFILE_FIELD_PHONE_LABEL"
 				description="PLG_USER_PROFILE_FIELD_PHONE_DESC"
 				id="phone"
 				filter="string"

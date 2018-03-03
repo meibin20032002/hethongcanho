@@ -101,6 +101,10 @@ JDom::_('framework.sortablelist', array(
 				<th style="text-align:center">
 					<?php echo JText::_("BDS_FIELD_WHO"); ?>
 				</th>
+                
+                <th style="text-align:center">
+					<?php echo JText::_("BDS_FIELD_HITS"); ?>
+				</th>
 
 				<th style="text-align:center">
 					<?php echo JText::_("BDS_FIELD_CREATED_BY"); ?>
@@ -171,6 +175,7 @@ JDom::_('framework.sortablelist', array(
 						'dataKey' => '_category_id_title',
 						'dataObject' => $row
 					));?>
+                    <?php echo $row->_project_id_title?>
 				</td>
 
 				<td style="text-align:center">
@@ -227,6 +232,13 @@ JDom::_('framework.sortablelist', array(
 						'labelKey' => 'text',
 						'list' => BdsHelperEnum::_('products_who'),
 						'listKey' => 'value'
+					));?>
+				</td>
+                
+                <td style="text-align:center">
+					<?php echo JDom::_('html.fly', array(
+						'dataKey' => 'hits',
+						'dataObject' => $row
 					));?>
 				</td>
 

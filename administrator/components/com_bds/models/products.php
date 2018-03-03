@@ -155,6 +155,7 @@ class BdsModelProducts extends BdsClassModelList
 		$id	.= ':'.$this->getState('limit');
 		$id	.= ':'.$this->getState('search.search');
 		$id	.= ':'.$this->getState('filter.category_id');
+        $id	.= ':'.$this->getState('filter.project_id');
 		$id	.= ':'.$this->getState('filter.types');
 		$id	.= ':'.$this->getState('filter.location_id');
 		$id	.= ':'.$this->getState('filter.who');
@@ -199,11 +200,14 @@ class BdsModelProducts extends BdsClassModelList
 					'creation_date',
 					'direction',
 					'gallery',
+                    'hits',
 					'legal_documents',
 					'location_id',
 					'location_id.title',
 					'ordering',
 					'price',
+                    'project_id',
+					'project_id.title',
 					'title',
 					'types',
 					'who'
@@ -257,6 +261,14 @@ class BdsModelProducts extends BdsClassModelList
 		{
 			if ($filter_category_id > 0){
 				$this->addWhere("a.category_id = " . (int)$filter_category_id);
+			}
+		}
+        
+        // FILTER : Project
+		if($filter_project_id = $this->getState('filter.project_id'))
+		{
+			if ($filter_project_id > 0){
+				$this->addWhere("a.project_id = " . (int)$filter_project_id);
 			}
 		}
 

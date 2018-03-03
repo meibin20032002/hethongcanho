@@ -81,6 +81,10 @@ JDom::_('framework.sortablelist', array(
 				<th style="text-align:center">
 					<?php echo JText::_("BDS_FIELD_HANDING_OVER"); ?>
 				</th>
+                
+                <th style="text-align:center">
+					<?php echo JText::_("BDS_FIELD_HITS"); ?>
+				</th>
 
 				<th style="text-align:center">
 					<?php echo JText::_("BDS_FIELD_CREATED_BY"); ?>
@@ -158,6 +162,13 @@ JDom::_('framework.sortablelist', array(
 						'dataKey' => 'handing_over',
 						'dataObject' => $row,
 						'dateFormat' => 'Y-m-d'
+					));?>
+				</td>
+                
+                <td style="text-align:center">
+					<?php echo JDom::_('html.fly', array(
+						'dataKey' => 'hits',
+						'dataObject' => $row
 					));?>
 				</td>
 

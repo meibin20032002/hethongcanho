@@ -165,6 +165,7 @@ class BdsModelProject extends BdsClassModelItem
 				$data->construction_progress = null;
 				$data->ordering = null;
 				$data->published = null;
+                $data->hits = null;
 				$data->modified_by = $jinput->get('filter_modified_by', $this->getState('filter.modified_by'), 'INT');
 				$data->created_by = $jinput->get('filter_created_by', $this->getState('filter.created_by'), 'INT');
 				$data->creation_date = null;
@@ -241,6 +242,7 @@ class BdsModelProject extends BdsClassModelItem
 					'description',
 					'gallery',
 					'handing_over',
+                    'hits',
 					'investor',
 					'location_id',
 					'location_id.title',
