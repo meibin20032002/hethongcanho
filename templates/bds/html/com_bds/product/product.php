@@ -81,13 +81,14 @@ $gallery =  json_decode($this->item->gallery);
                 </div>
                 
                 <div class="col-md-6">
-                    <div class="acreage"><i class="fa fa-home"></i><span class="lab">Diện tích: </span><?php echo $this->item->acreage?></div>
+                    <div class="acreage"><i class="fa fa-home"></i><span class="lab"> Diện tích: </span><?php echo $this->item->acreage?> m2</div>
                 </div>
                 <div class="col-md-6">
-                    <div class="direction"><i class="fa fa-map-marker"></i><span class="lab">Hướng cửa chính: </span><?php echo $this->item->direction?></div>
+                    <div class="direction"><i class="fa fa-map-marker"></i><span class="lab"> Hướng cửa chính: </span><?php echo $this->item->direction?></div>
                 </div>
-                
+               
                 <br />
+				<div> </div>
                 <div class="note">
                     <i>Chúng tôi kiểm duyệt toàn bộ tin trước khi đăng để việc mua bán an toàn & hiệu quả hơn. Tuy nhiên, quá trình duyệt tin chỉ có thể hạn chế tối đa các trường hợp không trung thực. Hãy báo cho chúng tôi những tin xấu để chúng tôi có thể xác minh & xây dựng trang web mua bán an toàn nhất cho người Việt.</i>
                 </div>

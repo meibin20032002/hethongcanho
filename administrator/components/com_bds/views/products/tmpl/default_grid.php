@@ -174,7 +174,7 @@ JDom::_('framework.sortablelist', array(
 					<?php echo JDom::_('html.fly', array(
 						'dataKey' => '_category_id_title',
 						'dataObject' => $row
-					));?>
+					));?><br />
                     <?php echo $row->_project_id_title?>
 				</td>
 

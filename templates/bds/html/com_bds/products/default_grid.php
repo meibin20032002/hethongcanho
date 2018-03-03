@@ -56,8 +56,9 @@ JDom::_('framework.sortablelist', array(
             
             <div class="col-md-10 col-sm-9 col-xs-7 info-des">
                 <h4 class="title"><?php echo $item->title?></h4>
+ </a>
                 <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
-                <div class="acreage"><i class="fa fa-home"></i><span class="lab">Diện tích: </span><?php echo $item->acreage?></div>
+                <div class="acreage"> Diện tích: </span><?php echo $item->acreage?></div>
                    
                 <div class="row info">
                     <div class="col-xs-9 creation_date">
@@ -69,6 +70,6 @@ JDom::_('framework.sortablelist', array(
                 </div>
             </div> 
         </div>  
-    </a>
+ 
 </div>
 <?php endforeach;?>

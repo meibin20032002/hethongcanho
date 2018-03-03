@@ -30,17 +30,17 @@ JDom::_('html.toolbar');
     <form action="<?php echo(JRoute::_("index.php")); ?>" method="post" name="adminForm" id="adminForm">
     	<div class="toolSearch">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
         			<!-- BRICK : search -->
         			<?php echo $this->filters['search_search']->input;?>
                 </div>
     
     			<!-- BRICK : filters -->
-    			<div class="col-md-4">
+    			<div class="col-md-3">
     				<?php echo $this->filters['filter_location_id']->input;?>
     			</div>
     
-    			<div class="col-md-4">
+    			<div class="col-md-3">
     				<?php echo $this->filters['filter_type_id']->input;?>
     			</div>
     

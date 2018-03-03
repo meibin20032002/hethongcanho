@@ -325,7 +325,6 @@
 				type="cksort"
 				responsive="hidden-phone"
 				submit="true"
-				nullLabel="JGLOBAL_SORT_BY"
 				class="span-2 element-filter"
 				label="Sort by"
 				ui="chosen"/>

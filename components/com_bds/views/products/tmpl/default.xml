@@ -5,39 +5,4 @@
 	<message>
 		<![CDATA[BDS_LAYOUT_SHOW_PRODUCTS_LAYOUT]]>
 	</message></layout>
-
-	<fields name="request">
-
-		<fieldset name="request" addfieldpath="/administrator/components/com_bds/models/fields">
-
-			<field name="filter_location_id"
-					label="BDS_JSEARCH_FILTER_LOCATION_ID"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_LOCATION"
-					nullLabel="BDS_JSEARCH_SELECT_TITLE"
-					type="modalpicker"
-					model="locations"
-					labelKey="title"/>
-
-			<field name="filter_category_id"
-					label="BDS_JSEARCH_FILTER_CATEGORY_ID"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_CATEGORY"
-					nullLabel="BDS_JSEARCH_SELECT_TITLE"
-					type="modalpicker"
-					model="categories"
-					labelKey="title"/>
-
-			<field name="filter_types"
-					label="BDS_JSEARCH_FILTER_TYPES"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_TYPES"
-					nullLabel="BDS_JSEARCH_SELECT_TYPES"
-					type="enum"
-					enum="products_types"/>
-		</fieldset>
-	</fields>
 </metadata>

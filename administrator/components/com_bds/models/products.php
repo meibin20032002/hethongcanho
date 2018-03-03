@@ -70,6 +70,7 @@ class BdsModelProducts extends BdsClassModelList
 			'directionTable' => 'cmd',
 			'limit' => 'cmd',
 			'category_id' => 'cmd',
+            'project_id' => 'cmd',
 			'types' => 'varchar',
 			'location_id' => 'cmd',
 			'who' => 'varchar',

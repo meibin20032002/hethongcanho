@@ -155,7 +155,10 @@ class BdsViewProducts extends BdsClassView
 	*/
 	protected function getSortFields($layout = null)
 	{
-		return array();
+		return array(
+			'price' => JText::_('BDS_FIELD_PRICE'),
+			'' => JText::_('BDS_FIELD_ID')
+		);
 	}
 
 

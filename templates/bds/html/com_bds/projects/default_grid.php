@@ -47,18 +47,20 @@ JDom::_('framework.sortablelist', array(
 ?>
 <div class="box">    
     <a href="<?php echo JRoute::_('index.php?option=com_bds&view=project&layout=project&id='.$item->id)?>"> 
-        <div class="row">            
-            <div class="col-md-2">
+        <div class="row grid-products-project">            
+            <div class="col-md-5">
+
                 <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
             </div>
             
-            <div class="col-md-10">
+            <div class="col-md-7">
                 <h4 class="title"><?php echo $item->title?></h4>
+ </a> 
                 <div class="handing_over"><?php echo $item->handing_over?></div>   
-                <div class="price"><?php echo $item->price_min?> - <?php echo $item->price_max?></div>
-                <div class="address"><?php echo $item->address?></div>   
+                <div class="price-projects"><i class="fa fa-tag"><span class="lab"> Giá:</span> </i><?php echo $item-> price_min?> - <?php echo $item-> price_max?></div>
+                <div class="address-list"><i class="fa fa-home"></i> <span class="lab"><?php echo $item-> address?></div>   
             </div> 
         </div>
-    </a>  
+    
 </div>
 <?php endforeach;?>

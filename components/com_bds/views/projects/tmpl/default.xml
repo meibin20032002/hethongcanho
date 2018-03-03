@@ -5,39 +5,4 @@
 	<message>
 		<![CDATA[BDS_LAYOUT_SHOW_PROJECTS_LAYOUT]]>
 	</message></layout>
-
-	<fields name="request">
-
-		<fieldset name="request" addfieldpath="/administrator/components/com_bds/models/fields">
-
-			<field name="filter_location_id"
-					label="BDS_JSEARCH_FILTER_LOCATION_ID_1"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_LOCATION"
-					nullLabel="BDS_JSEARCH_SELECT_TITLE"
-					type="modalpicker"
-					model="locations"
-					labelKey="title"/>
-
-			<field name="filter_type_id"
-					label="BDS_JSEARCH_FILTER_TYPE_ID"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_TYPE"
-					nullLabel="BDS_JSEARCH_SELECT_TITLE"
-					type="modalpicker"
-					model="types"
-					labelKey="title"/>
-
-			<field name="filter_handing_over"
-					label="BDS_JSEARCH_FILTER_HANDING_OVER"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_HANDING_OVER"
-					nullLabel="BDS_JSEARCH_SELECT_HANDING_OVER"
-					format="Y-m-d"
-					type="ckcalendar"/>
-		</fieldset>
-	</fields>
 </metadata>

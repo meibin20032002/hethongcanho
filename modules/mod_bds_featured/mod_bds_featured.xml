@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension version="3.1" type="module">
+	<name>Module BDS Featured</name>
+	<author>Kelvin</author>
+	<creationDate>12/12/2018</creationDate>
+	<copyright>Copyright(C) quaxare.com</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>loi.nguyen@quaxare.com</authorEmail>
+	<authorUrl>www.quaxare.com</authorUrl>
+	<version>1.0</version>
+	<description>This module display BDS Featured in  Services - Incorporation</description>
+	<files>
+		<filename module="mod_bds_featured">mod_bds_featured.php</filename>
+		<folder>tmpl</folder>
+		<filename>mod_bds_featured.xml</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field 
+					name="products" 
+					type="sql"
+					multiple="multiple"
+					label="Select Products"
+				    key_field="id"
+                    value_field="title"
+					query="SELECT id, title FROM #__bds_products WHERE published = 1"					
+					header="- Select your option -"
+				/>
+
+			</fieldset>
+            
+            <fieldset name="advanced">
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

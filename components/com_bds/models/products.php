@@ -58,6 +58,8 @@ class BdsModelProducts extends BdsClassModelList
 		if (empty($config['filter_fields'])) {
 			$config['filter_fields'] = array(
 				'a.ordering', 'ordering',
+                'a.id', '',
+				'a.price', 'price',
 				'ordering', 'a.ordering',
 
 			);
@@ -69,9 +71,14 @@ class BdsModelProducts extends BdsClassModelList
 			'sortTable' => 'cmd',
 			'directionTable' => 'cmd',
 			'limit' => 'cmd',
-			'location_id' => 'cmd',
 			'category_id' => 'cmd',
-			'types' => 'varchar'
+			'types' => 'varchar',
+			'location_id' => 'cmd',
+			'who' => 'varchar',
+			'bedrooms' => 'varchar',
+			'direction' => 'varchar',
+			'legal_documents' => 'varchar',
+			'characteristics' => 'varchar'
 				));
 
 		//Define the searchable fields
@@ -149,9 +156,15 @@ class BdsModelProducts extends BdsClassModelList
 		$id	.= ':'.$this->getState('directionTable');
 		$id	.= ':'.$this->getState('limit');
 		$id	.= ':'.$this->getState('search.search');
-		$id	.= ':'.$this->getState('filter.location_id');
 		$id	.= ':'.$this->getState('filter.category_id');
+        $id	.= ':'.$this->getState('filter.project_id');
 		$id	.= ':'.$this->getState('filter.types');
+		$id	.= ':'.$this->getState('filter.location_id');
+		$id	.= ':'.$this->getState('filter.who');
+		$id	.= ':'.$this->getState('filter.bedrooms');
+		$id	.= ':'.$this->getState('filter.direction');
+		$id	.= ':'.$this->getState('filter.legal_documents');
+		$id	.= ':'.$this->getState('filter.characteristics');
 		return parent::getStoreId($id);
 	}
 
@@ -266,14 +279,61 @@ class BdsModelProducts extends BdsClassModelList
 			}
 		}
 
+        // FILTER : Location
+		if($filter_location_id = $this->getState('filter.location_id'))
+		{
+			if ($filter_location_id > 0){
+				$this->addWhere("a.location_id = " . (int)$filter_location_id);
+			}
+		}
+
+		// FILTER : Who
+		if($filter_who = $this->getState('filter.who'))
+		{
+			if ($filter_who !== null){
+				$this->addWhere("a.who = " . $this->_db->Quote($filter_who));
+			}
+		}
+
+		// FILTER : Bedrooms
+		if($filter_bedrooms = $this->getState('filter.bedrooms'))
+		{
+			if ($filter_bedrooms !== null){
+				$this->addWhere("a.bedrooms = " . $this->_db->Quote($filter_bedrooms));
+			}
+		}
+
+		// FILTER : Direction
+		if($filter_direction = $this->getState('filter.direction'))
+		{
+			if ($filter_direction !== null){
+				$this->addWhere("a.direction = " . $this->_db->Quote($filter_direction));
+			}
+		}
+
+		// FILTER : Legal documents
+		if($filter_legal_documents = $this->getState('filter.legal_documents'))
+		{
+			if ($filter_legal_documents !== null){
+				$this->addWhere("a.legal_documents = " . $this->_db->Quote($filter_legal_documents));
+			}
+		}
+
+		// FILTER : Characteristics
+		if($filter_characteristics = $this->getState('filter.characteristics'))
+		{
+			if ($filter_characteristics !== null){
+				$this->addWhere("a.characteristics = " . $this->_db->Quote($filter_characteristics));
+			}
+		}
+        
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'title');
-		$orderDir = $this->getState('list.direction', 'ASC');
+		$orderCol = $this->getState('list.ordering', 'id');
+		$orderDir = $this->getState('list.direction', 'DESC');
 
 		if ($orderCol)
 			$this->orm->order(array($orderCol => $orderDir));
-
-
+        
 		// Apply all SQL directives to the query
 		$this->applySqlStates($query);
 	}
