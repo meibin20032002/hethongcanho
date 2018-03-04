@@ -69,7 +69,7 @@ class BdsModelProjects extends BdsClassModelList
 			'sortTable' => 'cmd',
 			'directionTable' => 'cmd',
 			'limit' => 'cmd',
-			'location_id' => 'cmd',
+			'main_location' => 'cmd',
 			'type_id' => 'cmd',
 			'handing_over' => 'date:Y-m-d'
 				));
@@ -88,9 +88,9 @@ class BdsModelProjects extends BdsClassModelList
 			'id' // foreignKey
 		);
 
-		$this->hasOne('location_id', // name
+		$this->hasOne('main_location', // name
 			'locations', // foreignModelClass
-			'location_id', // localKey
+			'main_location', // localKey
 			'id' // foreignKey
 		);
 
@@ -149,7 +149,7 @@ class BdsModelProjects extends BdsClassModelList
 		$id	.= ':'.$this->getState('directionTable');
 		$id	.= ':'.$this->getState('limit');
 		$id	.= ':'.$this->getState('search.search');
-		$id	.= ':'.$this->getState('filter.location_id');
+		$id	.= ':'.$this->getState('filter.main_location');
 		$id	.= ':'.$this->getState('filter.type_id');
 		$id	.= ':'.$this->getState('filter.handing_over');
 		return parent::getStoreId($id);
@@ -184,8 +184,8 @@ class BdsModelProjects extends BdsClassModelList
 					'creation_date',
 					'gallery',
 					'handing_over',
-					'location_id',
-					'location_id.title',
+					'main_location',
+					'main_location.title',
 					'ordering',
 					'price_max',
 					'price_min',
@@ -233,10 +233,10 @@ class BdsModelProjects extends BdsClassModelList
 		));
 
 		// FILTER : Location
-		if($filter_location_id = $this->getState('filter.location_id'))
+		if($filter_main_location = $this->getState('filter.main_location'))
 		{
-			if ($filter_location_id > 0){
-				$this->addWhere("a.location_id = " . (int)$filter_location_id);
+			if ($filter_main_location > 0){
+				$this->addWhere("a.main_location = " . (int)$filter_main_location);
 			}
 		}
 

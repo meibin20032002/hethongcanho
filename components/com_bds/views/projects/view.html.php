@@ -69,10 +69,10 @@ class BdsViewProjects extends BdsClassView
 
 		//Filters
 		// Location
-		$modelLocation_id = CkJModel::getInstance('locations', 'BdsModel');
-		$modelLocation_id->set('context', $model->get('context'));
-		$filters['filter_location_id']->jdomOptions = array(
-			'list' => $modelLocation_id->getItems()
+		$modelmain_location = CkJModel::getInstance('locations', 'BdsModel');
+		$modelmain_location->set('context', $model->get('context'));
+		$filters['filter_main_location']->jdomOptions = array(
+			'list' => $modelmain_location->getItems()
 		);
 
 		// Type

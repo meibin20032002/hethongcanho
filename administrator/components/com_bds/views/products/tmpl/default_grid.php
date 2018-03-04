@@ -83,7 +83,7 @@ JDom::_('framework.sortablelist', array(
 				</th>
 
 				<th style="text-align:center">
-					<?php echo JText::_("BDS_FIELD_LOCATION"); ?>
+					<?php echo JText::_("BDS_FIELD_MAIN_LOCATION"); ?>
 				</th>
 
 				<th style="text-align:center">
@@ -190,7 +190,7 @@ JDom::_('framework.sortablelist', array(
 
 				<td style="text-align:center">
 					<?php echo JDom::_('html.fly', array(
-						'dataKey' => '_location_id_title',
+						'dataKey' => '_main_location_title',
 						'dataObject' => $row
 					));?>
 				</td>

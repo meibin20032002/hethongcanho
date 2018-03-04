@@ -80,14 +80,14 @@ defined('_JEXEC') or die('Restricted access');
 			));?>
 		</div>
     </div>
-	<div class="control-group field-_location_id_title">
+	<div class="control-group field-_main_location_title">
     	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_LOCATION" ); ?></label>
+			<label><?php echo JText::_( "BDS_FIELD_MAIN_LOCATION" ); ?></label>
 		</div>
 		
         <div class="controls">
 			<?php echo JDom::_('html.fly', array(
-				'dataKey' => '_location_id_title',
+				'dataKey' => '_main_location_title',
 				'dataObject' => $this->item
 			));?>
 		</div>

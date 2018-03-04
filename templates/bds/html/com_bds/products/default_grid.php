@@ -62,7 +62,7 @@ JDom::_('framework.sortablelist', array(
                    
                 <div class="row info">
                     <div class="col-xs-9 creation_date">
-                        <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> | <?php echo $item->_location_id_title ?>
+                        <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> | <?php echo $item->_main_location_title ?>
                     </div>
                     <div class="col-xs-3 who">
                         <?php echo BdsHelper::iconAvatar($item)?>

@@ -43,7 +43,7 @@ JDom::_('html.toolbar');
 				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_types']->input;?>
 				<hr class="hr-condensed">
-				<?php echo $this->filters['filter_location_id']->input;?>
+				<?php echo $this->filters['filter_main_location']->input;?>
 				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_who']->input;?>
 				<hr class="hr-condensed">

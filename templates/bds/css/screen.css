@@ -438,16 +438,29 @@ b, strong, .bold{
     -webkit-border-bottom-right-radius: 15px;
 	
 }
+.form-search{
+    width: 100%;
+}
 .form-search input {
-    width: 480px;
+    width: 100%;
     border: 1px solid rgba(204, 204, 204, 0.47);
-    padding: 15px;
+    padding: 15px 15px 15px 30px;
     box-shadow: none;
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 15px;
     height: 49px;
     color: #FC7D07;
+}
+.form-search .input-append{
+    position: relative;
+}
+.form-search .input-append:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    position: absolute;
+    top: 14px;
+    left: 15px;
 }
 
 .form-search input:focus,

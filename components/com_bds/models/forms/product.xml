@@ -52,14 +52,14 @@
 				required="true"
 				class="validate[required]"/>
 
-		<field name="location_id"
-				alias="_location_id_title"
-				label="BDS_FIELD_LOCATION"
+		<field name="main_location"
+				alias="_main_location_title"
+				label="BDS_FIELD_MAIN_LOCATION"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_LOCATION"
+				nullLabel="BDS_JSEARCH_SELECT_MAIN_LOCATION"
 				required="true"
 				class="validate[required]"/>
 
@@ -228,7 +228,7 @@
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_bds/models/fields">
 
-		<field name="filter_location_id"
+		<field name="filter_main_location"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
@@ -316,7 +316,7 @@
                 
 		<field name="search_search"
 				type="cksearch"
-				placeholder="Nhập tên dự án hoặc quận"
+				placeholder="Tìm kiếm..."
 				label="BDS_JSEARCH_TITLE_ALIAS_ADDRESS_CONTACT_NUMBER_CONTACT_NAME_CONTACT_ADDRESS"
 				class="element-filter element-search search-query"
 				ui="chosen"/>

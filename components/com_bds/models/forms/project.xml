@@ -5,7 +5,7 @@
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_bds/models/fields">
 
-		<field name="filter_location_id"
+		<field name="filter_main_location"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"

@@ -206,9 +206,9 @@ $fieldSets = $this->form->getFieldsets();
             
             	<?php
             	// Location
-            	$field = $fieldSet['jform_location_id'];
+            	$field = $fieldSet['jform_main_location'];
             	$field->jdomOptions = array(
-            		'list' => $this->lists['fk']['location_id']
+            		'list' => $this->lists['fk']['main_location']
             			);
             	?>
             	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">

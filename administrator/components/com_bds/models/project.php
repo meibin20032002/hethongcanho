@@ -152,7 +152,7 @@ class BdsModelProject extends BdsClassModelItem
 				$data->alias = null;
 				$data->gallery = null;
 				$data->type_id = $jinput->get('filter_type_id', $this->getState('filter.type_id'), 'INT');
-				$data->location_id = $jinput->get('filter_location_id', $this->getState('filter.location_id'), 'INT');
+				$data->main_location = $jinput->get('filter_main_location', $this->getState('filter.main_location'), 'INT');
 				$data->address = null;
 				$data->price_min = null;
 				$data->price_max = null;
@@ -244,8 +244,8 @@ class BdsModelProject extends BdsClassModelItem
 					'handing_over',
                     'hits',
 					'investor',
-					'location_id',
-					'location_id.title',
+					'main_location',
+					'main_location.title',
 					'model_house',
 					'modification_date',
 					'modified_by',

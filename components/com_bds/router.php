@@ -352,7 +352,7 @@ function BdsRouteConfig()
 			),
 			array(
 				'type' => 'filter',
-				'name' => 'location_id'
+				'name' => 'main_location'
 			),
 			array(
 				'type' => 'filter',
@@ -376,7 +376,7 @@ function BdsRouteConfig()
 			),
 			array(
 				'type' => 'filter',
-				'name' => 'location_id'
+				'name' => 'main_location'
 			),
 			array(
 				'type' => 'filter',

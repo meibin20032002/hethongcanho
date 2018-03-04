@@ -811,7 +811,7 @@ class BdsClassModelList extends JModelList
 			case 'modified_by': return $tbl. 'users';
 			case 'category_id': return $tbl.$com. 'categories';
 			case 'project_id': return $tbl.$com. 'projects';
-			case 'location_id': return $tbl.$com. 'locations';
+			case 'main_location': return $tbl.$com. 'locations';
 			case 'type_id': return $tbl.$com. 'types';
 			case 'utility_id': return $tbl.$com. 'utilities';
 			case 'sub_location': return $tbl.$com. 'locations';	

@@ -37,7 +37,7 @@ JDom::_('html.toolbar');
 			)); ?>
 			<div class = "nav-filters">
 				<!-- BRICK : filters -->
-				<?php echo $this->filters['filter_location_id']->input;?>
+				<?php echo $this->filters['filter_main_location']->input;?>
 				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_type_id']->input;?>
 				<hr class="hr-condensed">

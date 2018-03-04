@@ -38,14 +38,14 @@
 				type="ckcombo"
 				nullLabel="BDS_JSEARCH_SELECT_TYPE"/>
 
-		<field name="location_id"
-				alias="_location_id_title"
-				label="BDS_FIELD_LOCATION"
+		<field name="main_location"
+				alias="_main_location_title"
+				label="BDS_FIELD_MAIN_LOCATION"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_LOCATION"/>
+				nullLabel="BDS_JSEARCH_SELECT_MAIN_LOCATION"/>
 
 		<field name="address"
 				alias="address"
@@ -208,14 +208,14 @@
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_bds/models/fields">
 
-		<field name="filter_location_id"
+		<field name="filter_main_location"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
 				submit="true"
-				nullLabel="BDS_FILTER_NULL_LOCATION"
+				nullLabel="BDS_FILTER_NULL_MAIN_LOCATION"
 				class="span-2 element-filter"
-				label="BDS_JSEARCH_LOCATION"
+				label="BDS_JSEARCH_MAIN_LOCATION"
 				ui="chosen"/>
 
 		<field name="filter_type_id"
