@@ -192,6 +192,10 @@ JDom::_('framework.sortablelist', array(
 					<?php echo JDom::_('html.fly', array(
 						'dataKey' => '_main_location_title',
 						'dataObject' => $row
+					));?>, 
+                    <?php echo JDom::_('html.fly', array(
+						'dataKey' => '_sub_location_title',
+						'dataObject' => $row
 					));?>
 				</td>
 

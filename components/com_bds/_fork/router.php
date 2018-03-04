@@ -338,6 +338,10 @@ function BdsCkRouteConfig()
 				'type' => 'filter',
 				'name' => 'main_location'
 			),
+            array(
+				'type' => 'filter',
+				'name' => 'sub_location'
+			),
 			array(
 				'type' => 'filter',
 				'name' => 'category_id',
@@ -361,6 +365,10 @@ function BdsCkRouteConfig()
 			array(
 				'type' => 'filter',
 				'name' => 'main_location'
+			),
+            array(
+				'type' => 'filter',
+				'name' => 'sub_location'
 			),
 			array(
 				'type' => 'filter',

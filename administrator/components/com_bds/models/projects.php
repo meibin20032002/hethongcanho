@@ -70,6 +70,7 @@ class BdsModelProjects extends BdsClassModelList
 			'directionTable' => 'cmd',
 			'limit' => 'cmd',
 			'main_location' => 'cmd',
+            'sub_location' => 'cmd',
 			'type_id' => 'cmd',
 			'utility_id' => 'cmd',
 			'handing_over' => 'date:Y-m-d'
@@ -92,6 +93,12 @@ class BdsModelProjects extends BdsClassModelList
 		$this->hasOne('main_location', // name
 			'locations', // foreignModelClass
 			'main_location', // localKey
+			'id' // foreignKey
+		);
+        
+        $this->hasOne('sub_location', // name
+			'locations', // foreignModelClass
+			'sub_location', // localKey
 			'id' // foreignKey
 		);
 
@@ -151,6 +158,7 @@ class BdsModelProjects extends BdsClassModelList
 		$id	.= ':'.$this->getState('limit');
 		$id	.= ':'.$this->getState('search.search');
 		$id	.= ':'.$this->getState('filter.main_location');
+        $id	.= ':'.$this->getState('filter.sub_location');
 		$id	.= ':'.$this->getState('filter.type_id');
 		$id	.= ':'.$this->getState('filter.utility_id');
 		$id	.= ':'.$this->getState('filter.handing_over');
@@ -189,6 +197,8 @@ class BdsModelProjects extends BdsClassModelList
                     'hits',
 					'main_location',
 					'main_location.title',
+                    'sub_location',
+					'sub_location.title',
 					'ordering',
 					'price_max',
 					'price_min',
@@ -240,6 +250,14 @@ class BdsModelProjects extends BdsClassModelList
 		{
 			if ($filter_main_location > 0){
 				$this->addWhere("a.main_location = " . (int)$filter_main_location);
+			}
+		}
+        
+        // FILTER : Location
+		if($filter_sub_location = $this->getState('filter.sub_location'))
+		{
+			if ($filter_sub_location > 0){
+				$this->addWhere("a.sub_location = " . (int)$filter_sub_location);
 			}
 		}
 

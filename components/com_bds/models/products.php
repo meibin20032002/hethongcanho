@@ -74,6 +74,7 @@ class BdsModelProducts extends BdsClassModelList
 			'category_id' => 'cmd',
 			'types' => 'varchar',
 			'main_location' => 'cmd',
+            'sub_location' => 'cmd',
 			'who' => 'varchar',
 			'bedrooms' => 'varchar',
 			'direction' => 'varchar',
@@ -104,6 +105,12 @@ class BdsModelProducts extends BdsClassModelList
 		$this->hasOne('main_location', // name
 			'locations', // foreignModelClass
 			'main_location', // localKey
+			'id' // foreignKey
+		);
+        
+        $this->hasOne('sub_location', // name
+			'locations', // foreignModelClass
+			'sub_location', // localKey
 			'id' // foreignKey
 		);
 
@@ -160,6 +167,7 @@ class BdsModelProducts extends BdsClassModelList
         $id	.= ':'.$this->getState('filter.project_id');
 		$id	.= ':'.$this->getState('filter.types');
 		$id	.= ':'.$this->getState('filter.main_location');
+        $id	.= ':'.$this->getState('filter.sub_location');
 		$id	.= ':'.$this->getState('filter.who');
 		$id	.= ':'.$this->getState('filter.bedrooms');
 		$id	.= ':'.$this->getState('filter.direction');
@@ -205,6 +213,8 @@ class BdsModelProducts extends BdsClassModelList
 					'legal_documents',
 					'main_location',
 					'main_location.title',
+                    'sub_location',
+					'sub_location.title',
 					'ordering',
 					'price',
 					'title',
@@ -262,6 +272,14 @@ class BdsModelProducts extends BdsClassModelList
 				$this->addWhere("a.main_location = " . (int)$filter_main_location);
 			}
 		}
+        
+        // FILTER : Location
+		if($filter_sub_location = $this->getState('filter.sub_location'))
+		{
+			if ($filter_sub_location > 0){
+				$this->addWhere("a.sub_location = " . (int)$filter_sub_location);
+			}
+		}
 
 		// FILTER : Category
 		if($filter_category_id = $this->getState('filter.category_id'))
@@ -276,14 +294,6 @@ class BdsModelProducts extends BdsClassModelList
 		{
 			if ($filter_types !== null){
 				$this->addWhere("a.types = " . $this->_db->Quote($filter_types));
-			}
-		}
-
-        // FILTER : Location
-		if($filter_main_location = $this->getState('filter.main_location'))
-		{
-			if ($filter_main_location > 0){
-				$this->addWhere("a.main_location = " . (int)$filter_main_location);
 			}
 		}
 

@@ -88,6 +88,13 @@ class BdsViewProducts extends BdsClassView
 		$filters['filter_main_location']->jdomOptions = array(
 			'list' => $modelmain_location->getItems()
 		);
+        
+        // Location
+		$modelsub_location = CkJModel::getInstance('locations', 'BdsModel');
+		$modelsub_location->set('context', $model->get('context'));
+		$filters['filter_sub_location']->jdomOptions = array(
+			'list' => $modelsub_location->getItems()
+		);
 
 		// Sort by
 		$filters['sortTable']->jdomOptions = array(

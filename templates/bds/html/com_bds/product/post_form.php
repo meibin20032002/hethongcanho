@@ -125,7 +125,25 @@ $fieldSets = $this->form->getFieldsets();
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
 
+    <?php
+	// Location
+	$field = $fieldSet['jform_sub_location'];
+	$field->jdomOptions = array(
+		'list' => $this->lists['fk']['sub_location']
+			);
+	?>
+	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
 
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
+    
 	<?php
 	// Gallery
 	$field = $fieldSet['jform_gallery'];

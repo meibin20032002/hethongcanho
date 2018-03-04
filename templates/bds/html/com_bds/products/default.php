@@ -42,6 +42,10 @@ $filter_who = $this->state->get('filter.who');
     			<div class="col-md-3 bitem">
     				<?php echo $this->filters['filter_main_location']->input;?>
     			</div>
+                
+                <div class="col-md-3 bitem">
+    				<?php echo $this->filters['filter_sub_location']->input;?>
+    			</div>
     
     			<div class="col-md-4 bitem">
     				<?php echo $this->filters['filter_category_id']->input;?>

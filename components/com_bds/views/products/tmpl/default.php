@@ -63,7 +63,10 @@ echo JLayoutHelper::render('title', array(
 				<?php echo $this->filters['filter_main_location']->input;?>
 			</div>
 
-
+            <div class="pull-left">
+				<?php echo $this->filters['filter_sub_location']->input;?>
+			</div>
+            
 			<div class="pull-left">
 				<?php echo $this->filters['filter_category_id']->input;?>
 			</div>

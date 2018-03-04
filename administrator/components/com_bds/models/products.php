@@ -73,6 +73,7 @@ class BdsModelProducts extends BdsClassModelList
             'project_id' => 'cmd',
 			'types' => 'varchar',
 			'main_location' => 'cmd',
+            'sub_location' => 'cmd',
 			'who' => 'varchar',
 			'bedrooms' => 'varchar',
 			'direction' => 'varchar',
@@ -103,6 +104,12 @@ class BdsModelProducts extends BdsClassModelList
 		$this->hasOne('main_location', // name
 			'locations', // foreignModelClass
 			'main_location', // localKey
+			'id' // foreignKey
+		);
+        
+        $this->hasOne('sub_location', // name
+			'locations', // foreignModelClass
+			'sub_location', // localKey
 			'id' // foreignKey
 		);
 
@@ -159,6 +166,7 @@ class BdsModelProducts extends BdsClassModelList
         $id	.= ':'.$this->getState('filter.project_id');
 		$id	.= ':'.$this->getState('filter.types');
 		$id	.= ':'.$this->getState('filter.main_location');
+        $id	.= ':'.$this->getState('filter.sub_location');
 		$id	.= ':'.$this->getState('filter.who');
 		$id	.= ':'.$this->getState('filter.bedrooms');
 		$id	.= ':'.$this->getState('filter.direction');
@@ -205,6 +213,8 @@ class BdsModelProducts extends BdsClassModelList
 					'legal_documents',
 					'main_location',
 					'main_location.title',
+                    'sub_location',
+					'sub_location.title',
 					'ordering',
 					'price',
                     'project_id',
@@ -286,6 +296,14 @@ class BdsModelProducts extends BdsClassModelList
 		{
 			if ($filter_main_location > 0){
 				$this->addWhere("a.main_location = " . (int)$filter_main_location);
+			}
+		}
+        
+        // FILTER : Location
+		if($filter_sub_location = $this->getState('filter.sub_location'))
+		{
+			if ($filter_sub_location > 0){
+				$this->addWhere("a.sub_location = " . (int)$filter_sub_location);
 			}
 		}
 

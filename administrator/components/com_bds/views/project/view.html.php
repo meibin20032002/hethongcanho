@@ -113,6 +113,10 @@ class BdsViewProject extends BdsClassView
 		$model_main_location = CkJModel::getInstance('Locations', 'BdsModel');
 		$model_main_location->addGroupOrder("a.title");
 		$lists['fk']['main_location'] = $model_main_location->getItems();
+        
+        $model_sub_location = CkJModel::getInstance('Locations', 'BdsModel');
+		$model_sub_location->addGroupOrder("a.title");
+		$lists['fk']['sub_location'] = $model_sub_location->getItems();
 
 		$model_utility_id = CkJModel::getInstance('Utilities', 'BdsModel');
 		$model_utility_id->addGroupOrder("a.title");

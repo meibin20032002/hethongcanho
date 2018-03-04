@@ -117,6 +117,10 @@ class BdsViewProduct extends BdsClassView
 		$model_main_location = CkJModel::getInstance('Locations', 'BdsModel');
 		$model_main_location->addGroupOrder("a.title");
 		$lists['fk']['main_location'] = $model_main_location->getItems();
+        
+        $model_sub_location = CkJModel::getInstance('Locations', 'BdsModel');
+		$model_sub_location->addGroupOrder("a.title");
+		$lists['fk']['sub_location'] = $model_sub_location->getItems();
 
 		$model_created_by = CkJModel::getInstance('ThirdUsers', 'BdsModel');
 		$model_created_by->addGroupOrder("a.name");

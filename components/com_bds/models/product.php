@@ -172,6 +172,7 @@ class BdsModelProduct extends BdsClassModelItem
 				$data->types = $jinput->get('filter_types', $this->getState('filter.types'), 'STRING');
 				$data->who = $jinput->get('filter_who', $this->getState('filter.who'), 'STRING');
 				$data->main_location = $jinput->get('filter_main_location', $this->getState('filter.main_location'), 'INT');
+                $data->sub_location = $jinput->get('filter_sub_location', $this->getState('filter.sub_location'), 'INT');
 				$data->gallery = null;
 				$data->price = null;
 				$data->bedrooms = $jinput->get('filter_bedrooms', $this->getState('filter.bedrooms'), 'STRING');
@@ -274,6 +275,8 @@ class BdsModelProduct extends BdsClassModelItem
 					'legal_documents',
 					'main_location',
 					'main_location.title',
+                    'sub_location',
+					'sub_location.title',
 					'modification_date',
 					'modified_by',
 					'modified_by.name',
@@ -313,6 +316,8 @@ class BdsModelProduct extends BdsClassModelItem
 					'legal_documents',
 					'main_location',
 					'main_location.title',
+                    'sub_location',
+					'sub_location.title',
 					'price',
 					'shipping_payment',
 					'title',

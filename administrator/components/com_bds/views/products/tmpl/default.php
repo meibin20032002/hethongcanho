@@ -45,6 +45,8 @@ JDom::_('html.toolbar');
 				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_main_location']->input;?>
 				<hr class="hr-condensed">
+                <?php echo $this->filters['filter_sub_location']->input;?>
+				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_who']->input;?>
 				<hr class="hr-condensed">
 				<?php echo $this->filters['filter_bedrooms']->input;?>

@@ -39,6 +39,10 @@ JDom::_('html.toolbar');
     			<div class="col-md-3">
     				<?php echo $this->filters['filter_main_location']->input;?>
     			</div>
+                
+                <div class="col-md-3">
+    				<?php echo $this->filters['filter_sub_location']->input;?>
+    			</div>
     
     			<div class="col-md-3">
     				<?php echo $this->filters['filter_type_id']->input;?>

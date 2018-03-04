@@ -62,6 +62,17 @@
 				nullLabel="BDS_JSEARCH_SELECT_MAIN_LOCATION"
 				required="true"
 				class="validate[required]"/>
+                
+        <field name="sub_location"
+				alias="_sub_location_title"
+				label="BDS_FIELD_SUB_LOCATION"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="BDS_JSEARCH_SELECT_SUB_LOCATION"
+				required="true"
+				class="validate[required]"/>
 
 		<field name="gallery"
 				alias="gallery"
@@ -234,6 +245,16 @@
 				type="ckcombo"
 				submit="true"
 				nullLabel="Toàn quốc"
+				class="span-2 element-filter"
+				label="BDS_JSEARCH_LOCATION"
+				ui="chosen"/>
+                
+        <field name="filter_sub_location"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				submit="true"
+				nullLabel="Sub Location"
 				class="span-2 element-filter"
 				label="BDS_JSEARCH_LOCATION"
 				ui="chosen"/>

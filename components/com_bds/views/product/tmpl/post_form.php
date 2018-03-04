@@ -142,7 +142,23 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
+    <?php
+	// Location
+	$field = $fieldSet['jform_sub_location'];
+	$field->jdomOptions = array(
+		'list' => $this->lists['fk']['sub_location']
+			);
+	?>
+	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
 
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
 	<?php
 	// Gallery
