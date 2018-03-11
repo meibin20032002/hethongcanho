@@ -284,6 +284,50 @@ class BdsHelperEnum
 			)
 		);
 	}
+    
+    protected function ___products_acreage($options = array())
+	{
+		return array(
+			'40' => array(
+				'value' => '40',
+				'text' => '0 - 40m²'
+			),
+			'100' => array(
+				'value' => '100',
+				'text' => '40m² - 100m²'
+			),
+			'300' => array(
+				'value' => '300',
+				'text' => '100m² - 300m²'
+			),
+            '1000' => array(
+				'value' => '1000',
+				'text' => '> 300m²'
+			)
+		);
+	}
+    
+    protected function ___products_price($options = array())
+	{
+		return array(
+			'3' => array(
+				'value' => '3',
+				'text' => '0 - 3tỷ'
+			),
+			'7' => array(
+				'value' => '7',
+				'text' => '3tỷ - 7tỷ'
+			),
+			'12' => array(
+				'value' => '12',
+				'text' => '7tỷ - 12tỷ'
+			),
+            '30' => array(
+				'value' => '30',
+				'text' => '> 12tỷ'
+			)
+		);
+	}
 
 	/**
 	* Enumeration constructor.

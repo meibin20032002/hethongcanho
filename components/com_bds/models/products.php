@@ -77,6 +77,8 @@ class BdsModelProducts extends BdsClassModelList
             'sub_location' => 'cmd',
 			'who' => 'varchar',
 			'bedrooms' => 'varchar',
+            'price' => 'varchar',
+            'acreage' => 'varchar',
 			'direction' => 'varchar',
 			'legal_documents' => 'varchar',
 			'characteristics' => 'varchar'
@@ -170,6 +172,8 @@ class BdsModelProducts extends BdsClassModelList
         $id	.= ':'.$this->getState('filter.sub_location');
 		$id	.= ':'.$this->getState('filter.who');
 		$id	.= ':'.$this->getState('filter.bedrooms');
+        $id	.= ':'.$this->getState('filter.price');
+        $id	.= ':'.$this->getState('filter.acreage');
 		$id	.= ':'.$this->getState('filter.direction');
 		$id	.= ':'.$this->getState('filter.legal_documents');
 		$id	.= ':'.$this->getState('filter.characteristics');
@@ -219,6 +223,7 @@ class BdsModelProducts extends BdsClassModelList
 					'price',
 					'title',
 					'types',
+                    'hot',
 					'who'
 				));
 				break;
@@ -312,6 +317,22 @@ class BdsModelProducts extends BdsClassModelList
 				$this->addWhere("a.bedrooms = " . $this->_db->Quote($filter_bedrooms));
 			}
 		}
+        
+        // FILTER : price
+		if($filter_price = $this->getState('filter.price'))
+		{
+			if ($filter_price !== null){
+				$this->addWhere("a.price <= " . $this->_db->Quote($filter_price*1000000000));
+			}
+		}
+        
+        // FILTER : acreage
+		if($filter_acreage = $this->getState('filter.acreage'))
+		{
+			if ($filter_acreage !== null){
+				$this->addWhere("a.acreage <= " . $this->_db->Quote($filter_acreage));
+			}
+		}
 
 		// FILTER : Direction
 		if($filter_direction = $this->getState('filter.direction'))
@@ -345,7 +366,7 @@ class BdsModelProducts extends BdsClassModelList
 			$this->orm->order(array($orderCol => $orderDir));
         
 		// Apply all SQL directives to the query
-		$this->applySqlStates($query);
+		$this->applySqlStates($query);              
 	}
 
 

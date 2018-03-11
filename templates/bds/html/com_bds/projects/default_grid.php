@@ -57,7 +57,7 @@ JDom::_('framework.sortablelist', array(
                 <h4 class="title"><?php echo $item->title?></h4>
  </a> 
                 <div class="handing_over"><?php echo $item->handing_over?></div>   
-                <div class="price-projects"><i class="fa fa-tag"><span class="lab"> Giá:</span> </i><?php echo $item-> price_min?> - <?php echo $item-> price_max?></div>
+                <div class="price-projects"><i class="fa fa-tag"><span class="lab"> Giá:</span> </i><?php echo BdsHelper::currencyFormat($item->price_min) ?> - <?php echo BdsHelper::currencyFormat($item->price_max)?></div>
                 <div class="address-list"><i class="fa fa-home"></i> <span class="lab"><?php echo $item-> address?></div>   
             </div> 
         </div>

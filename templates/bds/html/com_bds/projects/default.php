@@ -24,6 +24,13 @@ defined('_JEXEC') or die('Restricted access');
 BdsHelper::headerDeclarations();
 //Load the formvalidator scripts requirements.
 JDom::_('html.toolbar');
+$main_location = $this->state->get('filter.main_location');
+$main_location_name = '';
+if($main_location){
+    $model_location = CkJModel::getInstance('location', 'BdsModel');
+    $item = $model_location->getItem($main_location);
+    $main_location_name = $item->title;
+}
 ?>
 <br />
 <div class="grid-products">
@@ -36,11 +43,11 @@ JDom::_('html.toolbar');
                 </div>
     
     			<!-- BRICK : filters -->
-    			<div class="col-md-3">
+    			<div id="main_location" class="col-md-3 bitem" <?php if($main_location) echo 'style="display: none;"'?>>
     				<?php echo $this->filters['filter_main_location']->input;?>
     			</div>
                 
-                <div class="col-md-3">
+                <div id="sub_location" class="col-md-3 bitem" <?php if(!$main_location) echo 'style="display: none;"'?>>
     				<?php echo $this->filters['filter_sub_location']->input;?>
     			</div>
     
@@ -76,3 +83,30 @@ JDom::_('html.toolbar');
     	?>
     </form>
 </div>
+<script type="text/javascript">
+jQuery( document ).ready(function($) { 
+    var location_name = '<?php echo $main_location_name?>';
+    $("#sortTable").change(function() {
+		var order = $('#sortTable option:selected').val();    
+        if(order == 'price') $('#order_Dir').val('asc');
+        else $('#order_Dir').val('desc');                
+	})	
+    
+    if(location_name){   
+        $("#filter_sub_location_chzn .chzn-single").html('<span>'+location_name+'<span><div><b></b></div>');
+        $("#filter_sub_location_chzn .chzn-results").before('<div class="backAll"><i class="fa fa-arrow-left"></i> '+location_name+'</div>');
+    }
+    
+    $('.backAll').on('click', function(){
+        $('#sub_location').hide();
+        $('#main_location').show();
+    });
+    $("#filter_main_location_chzn .result-selected").live('click', function(){
+        var selectName = $(this).text();
+        if(selectName == location_name){
+            $('#sub_location').show();
+            $('#main_location').hide();
+        }
+    });
+})
+</script>	

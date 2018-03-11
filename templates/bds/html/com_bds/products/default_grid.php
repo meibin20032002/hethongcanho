@@ -46,30 +46,36 @@ JDom::_('framework.sortablelist', array(
     $gallery =  json_decode($item->gallery, true);
 ?>
 <div class="box"> 
-    <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
-        <div class="row">
-            <div class="ctRibbonAd">HOT</div>                
+    <div class="row">
+        <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
+            <?php if($item->hot):?>
+            <div class="ctRibbonAd">HOT</div>   
+            <?php endif?>             
             <div class="col-md-2 col-sm-3 col-xs-5">
-                <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
-                <div class="bghover"></div>
+                <div class="imageBox">
+                    <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
+                    <div class="count-image"><?php echo count($gallery)?></div>
+                </div>
             </div>
-            
-            <div class="col-md-10 col-sm-9 col-xs-7 info-des">
+        </a>
+        
+        <div class="col-md-10 col-sm-9 col-xs-7 info-des">
+            <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
                 <h4 class="title"><?php echo $item->title?></h4>
- </a>
+    
                 <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
                 <div class="acreage"> Diện tích: </span><?php echo $item->acreage?></div>
-                   
-                <div class="row info">
-                    <div class="col-xs-9 creation_date">
-                        <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> | <?php echo $item->_main_location_title ?><?php if($item->_sub_location_title) echo ', '.$item->_sub_location_title ?>
-                    </div>
-                    <div class="col-xs-3 who">
-                        <?php echo BdsHelper::iconAvatar($item)?>
-                    </div>
+            </a>   
+            <div class="row info">
+                <div class="col-xs-9 creation_date">
+                    <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> | <?php echo $item->_main_location_title ?><?php if($item->_sub_location_title) echo ', '.$item->_sub_location_title ?>
                 </div>
-            </div> 
-        </div>  
+                <div class="col-xs-3 who">
+                    <?php echo BdsHelper::iconAvatar($item)?>
+                </div>
+            </div>
+        </div> 
+    </div>  
  
 </div>
 <?php endforeach;?>
