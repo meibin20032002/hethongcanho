@@ -34,7 +34,28 @@
 				class="span-2 element-filter"
 				label="BDS_JSEARCH_TYPE"
 				ui="chosen"/>
-
+        <field name="filter_acreage"
+				listKey="value"
+				labelKey="text"
+				type="enum"
+				submit="true"
+				nullLabel="Diện tích tổng"
+				enum="products_acreage"
+				label="BDS_JSEARCH_BEDROOMS"
+				class="element-filter"
+				ui="chosen"/>
+                
+        <field name="filter_price"
+				listKey="value"
+				labelKey="text"
+				type="enum"
+				submit="true"
+				nullLabel="Chọn khoảng giá"
+				enum="products_price"
+				label="BDS_JSEARCH_BEDROOMS"
+				class="element-filter"
+				ui="chosen"/>
+                
 		<field name="filter_handing_over"
 				type="calendar"
 				placeholder="BDS_FILTER_NULL_HANDING_OVER"

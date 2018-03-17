@@ -36,7 +36,7 @@ if($main_location){
 <div class="grid-products">
     <form action="<?php echo(JRoute::_("index.php")); ?>" method="post" name="adminForm" id="adminForm">
     	<div class="toolSearch">
-            <div class="row">
+            <div class="xsfilter">
                 <div class="col-md-6">
         			<!-- BRICK : search -->
         			<?php echo $this->filters['search_search']->input;?>
@@ -45,16 +45,20 @@ if($main_location){
     			<!-- BRICK : filters -->
     			<div id="main_location" class="col-md-3 bitem" <?php if($main_location) echo 'style="display: none;"'?>>
     				<?php echo $this->filters['filter_main_location']->input;?>
-    			</div>
-                
+    			</div>             
                 <div id="sub_location" class="col-md-3 bitem" <?php if(!$main_location) echo 'style="display: none;"'?>>
     				<?php echo $this->filters['filter_sub_location']->input;?>
     			</div>
-    
-    			<div class="col-md-3">
+    			<div class="col-md-3 bitem">
     				<?php echo $this->filters['filter_type_id']->input;?>
     			</div>
-    
+                
+                <div class="col-md-3 bitem">
+    				<?php echo $this->filters['filter_price']->input;?>
+    			</div>
+                <div class="col-md-3 bitem">
+    				<?php echo $this->filters['filter_acreage']->input;?>
+    			</div>
     			<!--div class="col-md-3">
     				<?php //echo $this->filters['filter_handing_over']->input;?>
     			</div-->
@@ -67,7 +71,7 @@ if($main_location){
 
         <!-- BRICK : pagination -->
 		<?php echo $this->pagination->getListFooter(); ?>
-    	
+    	<div class="clearfix"></div>
     
     
     	<?php 

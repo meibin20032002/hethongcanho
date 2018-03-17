@@ -279,6 +279,18 @@
                 readonly="true"
 				class="validate[custom[numeric_2460]]"/>
                 
+        <field name="hot"
+				alias="hot"
+				label="BDS_FIELD_HOT"
+				filter="BOOL"
+				listKey="value"
+				type="ckradio"
+                default="0"
+				viewType="both">
+			<option value="0" icon="icomoon-cancel" color="danger">BDS_FIELDS_BOOL_NO</option>
+			<option value="1" icon="icomoon-ok" color="success">BDS_FIELDS_BOOL_YES</option>
+		</field>
+                
 	</fieldset>
 
 	<fieldset name="default.filters" addfieldpath="/administrator/components/com_bds/models/fields">

@@ -576,26 +576,85 @@ class BdsHelper
 
 		return $return;
 	}
-
-    public static function iconAvatar($item){
-       $list = BdsHelperEnum::_('products_who');
-       $html = '<div class="iconAvatar">'; 
-       switch ($item->who) {
-            case "e":
-                
-                $html .= '<span class="nameAvatar">'.$list['e']['text'].'</span><img class="imgAvatar" src="images/icon/moi-gioi.png" alt="private">';
-                break;
-                
-            case "c":
-                $html .= '<span class="nameAvatar">'.$list['c']['text'].'</span><img class="imgAvatar" src="images/icon/moi-gioi.png" alt="private">';
-                break;
-                
-            default:
-                $html .= '<span class="nameAvatar">'.$item->_created_by_name.'</span><img class="imgAvatar" src="images/icon/no-avatar.png" alt="private">';
-                break;
+    
+    public static function countSale($project_id){
+		$db = JFactory::getDbo();
+	
+		$query = $db->getQuery(true);
+		$query->select('COUNT(*)');
+		$query->from('#__bds_products');
+		$query->where('project_id = '. (int)$project_id);		
+		
+		$db->setQuery((string)$query);
+		return $db->loadResult();
+	}
+    
+    public static function iconAvatar($userId = null){
+        if($userId == null){
+            $user = JFactory::getUser($userId);
+            $userId = $user->id;
         }
-        $html .= '</div>';
+        $src = self::getAvatar($userId);
+        if($src) return $src;
+        return 'images/icon/no-avatar.png';
+    }
+    
+    public static function getAvatar($userId)
+	{
+		$profileKey = 'cmavatar';
+
+		$db = JFactory::getDbo();
+		$query = $db->getQuery(true)
+			->select($db->qn('profile_value'))
+			->from($db->qn('#__user_profiles'))
+			->where($db->qn('user_id') . ' = ' . $db->q((int) $userId))
+			->where($db->qn('profile_key') . ' = ' . $db->quote($profileKey));
+		$avatar = $db->setQuery($query)->loadResult();
+
+		// Check for a database error.
+		if ($error = $db->getErrorMsg()){
+			throw new RuntimeException($error);
+
+			return false;
+		}
+
+		if (!empty($avatar)){
+			$extension = 'jpg';
+            $folder = 'images/avatar';
+			$avatar = JPath::clean($folder . '/' . $avatar . '.' . $extension);
+            
+            $currentAvatarPath = JPath::clean(JPATH_ROOT . '/' . $avatar);
+
+			if (JFile::exists($currentAvatarPath)){
+				return $avatar;
+			}
+		}
+
+		return false;
+	}
+
+    public static function iconAvatarWho($item){
+        if($item->who == 'p'){
+            $html = '<span class="nameAvatar">'.$item->_created_by_name.'</span><img class="imgAvatar" src="'.self::iconAvatar($item->created_by).'" alt="private">';
+        }else{
+            $who = BdsHelperEnum::_('products_who');
+            $html = '<span class="nameAvatar">'.$who[$item->who]['text'].'</span><img class="imgAvatar" src="images/icon/moi-gioi.png" alt="private">';
+        }
         return $html;
+    }
+    
+    public static function acreageFormat($value){
+        return $value .'m<sup>2</sup>';
+    }
+    
+    public static function getPhone($contact_number, $userId = null){
+        if($contact_number){
+            return $contact_number;
+        }else{
+            $user = JFactory::getUser($userId);
+            return $user->username;
+        }
+        
     }
 }
 

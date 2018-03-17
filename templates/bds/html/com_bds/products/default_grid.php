@@ -42,40 +42,43 @@ JDom::_('framework.sortablelist', array(
 ?>
 
 <div class="clearfix"></div>
-<?php foreach($this->items as $item):
-    $gallery =  json_decode($item->gallery, true);
-?>
-<div class="box"> 
-    <div class="row">
+<ul class="boxList">
+    <?php foreach($this->items as $item):
+        $gallery =  json_decode($item->gallery, true);
+    ?>
+    <li class="listView">
         <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
             <?php if($item->hot):?>
             <div class="ctRibbonAd">HOT</div>   
             <?php endif?>             
-            <div class="col-md-2 col-sm-3 col-xs-5">
-                <div class="imageBox">
-                    <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
-                    <div class="count-image"><?php echo count($gallery)?></div>
-                </div>
+            
+            <div class="imageBox">
+                <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
+                <div class="count-image"><?php echo count($gallery)?></div>
+            </div>
+            
+            <div class="infoBox">
+                <h4 class="title"><?php echo $item->title?></h4>        
+                <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
+                <div class="acreage"> Diện tích: </span><?php echo BdsHelper::acreageFormat($item->acreage)?></div>
             </div>
         </a>
         
-        <div class="col-md-10 col-sm-9 col-xs-7 info-des">
-            <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
-                <h4 class="title"><?php echo $item->title?></h4>
-    
-                <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
-                <div class="acreage"> Diện tích: </span><?php echo $item->acreage?></div>
-            </a>   
-            <div class="row info">
-                <div class="col-xs-9 creation_date">
-                    <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> | <?php echo $item->_main_location_title ?><?php if($item->_sub_location_title) echo ', '.$item->_sub_location_title ?>
-                </div>
-                <div class="col-xs-3 who">
-                    <?php echo BdsHelper::iconAvatar($item)?>
-                </div>
+        <div class="infoFoot">
+            <div class="creation_date">
+                <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> 
+                <?php if($item->_main_location_title):?>
+                <span class="areaName"> | 
+                    <?php if($item->_sub_location_title) echo $item->_sub_location_title.', ' ?>
+                    <?php echo $item->_main_location_title ?>
+                </span>
+                <?php endif;?>
+            </div>
+            
+            <div class="iconAvatar">
+                <?php echo BdsHelper::iconAvatarWho($item)?>
             </div>
         </div> 
-    </div>  
- 
-</div>
-<?php endforeach;?>
+    </li>  
+    <?php endforeach;?>
+</ul>

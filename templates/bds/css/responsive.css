@@ -35,14 +35,6 @@
         font-size: 24px;
     }
 }
-@media (min-width: 1200px){
-
-}
-@media (min-width: 992px){ 
-}
-@media screen and (min-width: 680px) and (max-width: 992px){
-}
-
 @media screen and (max-width: 768px) {
 	.navbar-nav{
         display: none;
@@ -59,11 +51,17 @@
 }
 
 @media screen and (max-width: 680px){
-    
+    .main-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 @media screen and (max-width:510px){
-
+    /*---boxList-----------*/
+    .iconAvatar .nameAvatar {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 420px) {
@@ -75,5 +73,28 @@
     }
     .login{
         padding: 20px 15px;
+    }
+    /*---boxList-----------*/
+    .menuTab a .nav-title{
+        padding: 10px 0;
+    }
+    .listView .imageBox{
+        width: 90px;
+        height: 75px;
+    }
+    .infoBox .title{
+        font-size: 13px;
+    }
+    .infoBox .price{
+        font-size: 11px;
+    }
+    .infoFoot{
+        font-size: 11px;
+        width: calc(100% - 95px);
+    }
+    .infoFoot .areaName, 
+    .infoBox .acreage,
+    .infoBox .price .lab{
+        display: none;
     }
 }

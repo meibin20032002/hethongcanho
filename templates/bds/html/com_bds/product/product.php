@@ -25,11 +25,12 @@ BdsHelper::headerDeclarations();
 //Load the formvalidator scripts requirements.
 JDom::_('html.toolbar');
 $gallery =  json_decode($this->item->gallery);
+$user = JFactory::getUser($this->item->created_by);
 ?>
 <div class="product">
     <form action="<?php echo(JRoute::_("index.php")); ?>" method="post" name="adminForm" id="adminForm" enctype='multipart/form-data'>
     	<div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 productDesc">
     			<?php if($gallery):?>
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
@@ -46,7 +47,7 @@ $gallery =  json_decode($this->item->gallery);
                         <?php $active = 'active';?>
                         <?php foreach ($gallery as $item) :?>
                             <div class="item <?php echo $active?>">    
-                                <img src="<?php echo $item->image; ?>" alt="image" style="width:100%;"/>
+                                <img src="<?php echo $item->image; ?>" alt="image" style="width:100%; max-height: 400px;"/>
                             </div>
                             <?php $active = '';?>
                         <?php endforeach; ?>
@@ -62,30 +63,47 @@ $gallery =  json_decode($this->item->gallery);
                       <span class="sr-only">Next</span>
                     </a>
                     
-                    <div class="hidden-xs">
-                        <span class="">Tin  Cá nhân  đăng hôm nay 11:30,
-                            <a target="_blank" href="#" class="">được duyệt bởi Hải Dương</a>
+                    <div class="hidden-xs footer-slider">
+                        <span class="create-date">Tin 
+                            <?php 
+                            $who = BdsHelperEnum::_('products_who');
+                            echo $who[$this->item->who]['text']?> đăng <?php echo JHtml::date($this->item->creation_date, 'd-m-Y H:i')?>,
+                            <a target="_blank" href="#" class="">được duyệt bởi <?php echo $this->item->_modified_by_name ?></a>
                         </span>
                         <div class="img-thumbnail img-circle no-border">
-                            <img alt="" src="images/icon/no-avatar.png" class="img-circle no-margin no-border"/>
+                            <img alt="" src="<?php echo BdsHelper::iconAvatar($this->item->modified_by) ?>" class="img-circle no-margin no-border"/>
                         </div>
                     </div>
                 </div>
                 <?php endif; ?>
                 
                 <h4><?php echo $this->item->title ?></h4>
-                <span class="price"><?php echo BdsHelper::currencyFormat($this->item->price) ?></span> - <?php echo $this->item->acreage?> m<sup>2</sup>
+                <span class="price"><?php echo BdsHelper::currencyFormat($this->item->price) ?></span> - <?php echo BdsHelper::acreageFormat($this->item->acreage)?>
                 
                 <div class="desc">
                     <?php echo $this->item->description?>
                 </div>
                 
-                <div class="col-md-6">
-                    <div class="acreage"><i class="fa fa-home"></i><span class="lab"> Diện tích: </span><?php echo $this->item->acreage?> m2</div>
+                <div class="acrDirection">
+                    <div class="col-md-6">
+                        <div class="xitem"><i class="fa fa-home"></i><span class="lab">Diện tích: </span><?php echo BdsHelper::acreageFormat($this->item->acreage)?></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="xitem"><i class="fa fa-compass"></i><span class="lab">Hướng cửa chính: </span><?php echo $this->item->direction?></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="xitem">
+                            <i class="fa fa-file"></i>
+                            <span class="lab">Giấy tờ pháp lý: </span>
+                            <?php 
+                            $documents = BdsHelperEnum::_('products_legal_documents');
+                            echo $documents[$this->item->legal_documents]['text'];
+                            ?>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="direction"><i class="fa fa-map-marker"></i><span class="lab"> Hướng cửa chính: </span><?php echo $this->item->direction?></div>
-                </div>
+                <h5><strong>Địa chỉ BĐS </strong></h5>
+                <div class="address"><i class="fa fa-map-marker"></i> <?php echo $this->item->address?></div>
                
                 <br />
 				<div> </div>
@@ -96,17 +114,17 @@ $gallery =  json_decode($this->item->gallery);
     		</div>
             
             
-            <div class="col-md-4">
+            <div class="col-md-4 seller">
                 <div class="media">
-                    <div class="media-left media-middle">
-                        <a href="#">
-                            <div class="img-thumbnail img-circle">
-                            <img src="images/icon/no-smaill-avatar.png" class="img-circle"/></div>
+                    <div class="media-left media-middle GniN">
+                        <a href="#" class="Capee">
+                            <div class="img-thumbnail img-circle thumbnails">
+                            <img src="<?php echo BdsHelper::iconAvatar($this->item->created_by) ?>" class="img-circle"/></div>
                         </a>           
                     </div>
                     <div class="media-body media-middle">
                         <div class="pf-fullname">
-                            <a href="##ad_view">
+                            <a href="#ad_view">
                                 <strong itemprop="name"><?php echo $this->item->contact_name?></strong>
                             </a>
                         </div>
@@ -114,7 +132,7 @@ $gallery =  json_decode($this->item->gallery);
                             <i class="fa fa-map-marker"></i> <?php echo $this->item->contact_address?>
                         </div>
                         <div class="pf-date">
-                            Ngày tham gia: 06-09-2017
+                            Ngày tham gia: <?php echo Jhtml::date($user->get('registerDate'), 'd-m-Y')?>
                         </div>
                     </div>
                 </div>
@@ -123,7 +141,8 @@ $gallery =  json_decode($this->item->gallery);
                     <i class="fa fa-phone"></i><span> Nhấn để hiện số</span>
                 </a>
                 <h4 class="show-phone" style="display: none;text-align: center;">
-                    <a href="tel:0902333146"><strong><?php echo $this->item->contact_number?></strong></a>
+                    <?php $phone = BdsHelper::getPhone($this->item->contact_number, $this->item->created_by)?>
+                    <a href="tel:<?php echo $phone ?>"><strong><?php echo $phone?></strong></a>
                 </h4>
                 
                 <h6 class="text-left"><strong>MUA HÀNG AN TOÀN</strong></h6>

@@ -26,7 +26,8 @@ BdsHelper::headerDeclarations();
 JDom::_('html.toolbar');
 $gallery =  json_decode($this->item->gallery);
 ?>
-    <h1><?php echo $this->item->title ?></h1>
+<div class="project">
+    <h1>Thông tin dự án <?php echo $this->item->title ?></h1>
     <div class="address"><i class="fa fa-map-marker"></i> <?php echo $this->item->address ?></div>
         <?php if($gallery):?>
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -63,68 +64,64 @@ $gallery =  json_decode($this->item->gallery);
         </div>
         <?php endif; ?>
         
-        <br />
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Tin đăng (12)</a></li>
+            <li class="active"><a data-toggle="tab" href="#home">Tin đăng (<?php echo BdsHelper::countSale($this->item->id)?>)</a></li>
             <li><a data-toggle="tab" href="#menu1">Thông tin</a></li>
         </ul>
         
         <div class="tab-content">
           <div id="home" class="tab-pane fade in active">
             <div class="grid-products">
-                <div class="box"> 
-                    <a href="/hethongcanho/index.php?option=com_bds&amp;view=product&amp;layout=product&amp;id=1&amp;Itemid=101">
-                        <div class="row">
-                            <div class="ctRibbonAd">HOT</div>                
-                            <div class="col-md-2">
-                                <img src="/hethongcanho/images/product/001.jpg" alt="Bán 6 lô đất vàng sân bay Tân Sơn Nhất, P.4"> 
-                                <div class="bghover"></div>
+                <?php 
+                $model = CkJModel::getInstance('products', 'BdsModel');
+                $model->addWhere('a.project_id ='. $this->item->id);
+        		$model->setState('context', 'layout.default');
+       			$items = $model->getItems();
+                ?>
+                <ul class="boxList">
+                    <?php foreach($items as $row):
+                        $gallery =  json_decode($row->gallery, true);
+                    ?>
+                    <li class="listView">
+                        <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$row->id)?>">
+                            <?php if($row->hot):?>
+                            <div class="ctRibbonAd">HOT</div>   
+                            <?php endif?>             
+                            
+                            <div class="imageBox">
+                                <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $row->title?>"/> 
+                                <div class="count-image"><?php echo count($gallery)?></div>
                             </div>
                             
-                            <div class="col-md-10 info-des">
-                                <h4 class="title">Bán 6 lô đất vàng sân bay Tân Sơn Nhất, P.4</h4>
-                                <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> 10.000.000 đ</div>
-                                <div class="acreage"><i class="fa fa-home"></i><span class="lab">Diện tích: </span>41</div>
-                                   
-                                <div class="row info">
-                                    <div class="col-xs-9 creation_date">
-                                        12/02/2018 04:58 | Quận 1                    </div>
-                                    <div class="col-xs-3 who">
-                                        <div class="iconAvatar"><span class="nameAvatar">Kelvin</span><img class="imgAvatar" src="/hethongcanho/images/icon/no-avatar.png" alt="private"></div>                    </div>
-                                </div>
-                            </div> 
-                        </div>  
-                    </a>
-                </div>
-                <div class="box"> 
-                    <a href="/hethongcanho/index.php?option=com_bds&amp;view=product&amp;layout=product&amp;id=1&amp;Itemid=101">
-                        <div class="row">
-                            <div class="ctRibbonAd">HOT</div>                
-                            <div class="col-md-2">
-                                <img src="/hethongcanho/images/product/001.jpg" alt="Bán 6 lô đất vàng sân bay Tân Sơn Nhất, P.4"> 
-                                <div class="bghover"></div>
+                            <div class="infoBox">
+                                <h4 class="title"><?php echo $row->title?></h4>        
+                                <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($row->price) ?></div>
+                                <div class="acreage"> Diện tích: </span><?php echo BdsHelper::acreageFormat($row->acreage)?></div>
                             </div>
-                            
-                            <div class="col-md-10 info-des">
-                                <h4 class="title">Bán 6 lô đất vàng sân bay Tân Sơn Nhất, P.4</h4>
-                                <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> 10.000.000 đ</div>
-                                <div class="acreage"><i class="fa fa-home"></i><span class="lab">Diện tích: </span>41</div>
-                                   
-                                <div class="row info">
-                                    <div class="col-xs-9 creation_date">
-                                        12/02/2018 04:58 | Quận 1                    </div>
-                                    <div class="col-xs-3 who">
-                                        <div class="iconAvatar"><span class="nameAvatar">Kelvin</span><img class="imgAvatar" src="/hethongcanho/images/icon/no-avatar.png" alt="private"></div>                    </div>
-                                </div>
-                            </div> 
-                        </div>  
-                    </a>
-                </div>
+                        </a>
+                        
+                        <div class="infoFoot">
+                            <div class="creation_date">
+                                <?php echo JHtml::date($row->creation_date, 'd/m/Y H:i')?> 
+                                <?php if($row->_main_location_title):?>
+                                <span class="areaName"> | 
+                                    <?php if($row->_sub_location_title) echo $row->_sub_location_title.', ' ?>
+                                    <?php echo $row->_main_location_title ?>
+                                </span>
+                                <?php endif;?>
+                            </div>
+                            <div class="iconAvatar">
+                                <?php echo BdsHelper::iconAvatarWho($row)?>
+                            </div>
+                        </div> 
+                    </li>  
+                    <?php endforeach;?>
+                </ul>
             </div>
           </div>
           <div id="menu1" class="tab-pane fade">
             <div class="address"><i class="fa fa-map-marker"></i> <?php echo $this->item->address ?></div>
-            <div class="row">
+            <div class="iconInfor">
                 <div class="col-md-4">
                     <div class="price"><i class="fa fa-tag"></i> <span class="lab">Giá: </span> <?php echo $this->item->price_min?> - <?php echo $this->item->price_max?></div>
                 </div>
@@ -136,12 +133,11 @@ $gallery =  json_decode($this->item->gallery);
                 </div>
             </div>
             
-            <h3>Mô tả dự án</h3>
+            <h3 class="pi-title">Mô tả dự án</h3>
             <?php echo $this->item->description ?>
             
             <div>Loại dự án: <?php echo $this->item->total_area?></div>
             <div>Tổng diện tích: <?php echo $this->item->total_area?></div>
           </div>
-          
-          
+    </div>   
 </div>

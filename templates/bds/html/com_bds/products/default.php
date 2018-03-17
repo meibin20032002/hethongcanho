@@ -48,7 +48,7 @@ $filter_types = $this->state->get('filter.types');
                 <?php endforeach;?>
             </div>
             
-            <div class="row">
+            <div class="xsfilter">
     
     			<!-- BRICK : search -->
                 <div class="col-md-5 bitem">
@@ -115,7 +115,7 @@ $filter_types = $this->state->get('filter.types');
         
         <!-- BRICK : grid -->
 		<?php echo $this->loadTemplate('grid'); ?>
-
+            
 		<!-- BRICK : pagination -->
 		<?php echo $this->pagination->getListFooter(); ?>
     
@@ -132,6 +132,7 @@ $filter_types = $this->state->get('filter.types');
     	?>
         <input type="hidden" name="filter_who" value="<?php echo $filter_who?>" />
         <input type="hidden" id="order_Dir" name="filter_order_Dir" value="<?php echo $this->state->get('list.direction')?>" />
+        <div class="clearfix"></div>
     </form>
 </div>
 <script type="text/javascript">

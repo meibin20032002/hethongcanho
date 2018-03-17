@@ -123,19 +123,19 @@ if (is_object($menu))
                         <div id="slide">
                             <jdoc:include type="modules" name="banner" style="none" />   
                         </div>
-    
-                        <div class="main-content">  
-                            <?php if($option!='com_users'):?>
-                            <div class="container main-container"> 
+                        
+                        <?php if($option!='com_users'):?>
+                        <div class="container main-container"> 
+                            <div class="main-content">  
                             <?php endif;?>
                                 <jdoc:include type="modules" name="content-top" style="none" />                                       
                                 <jdoc:include type="message" />                                                              
                                 <jdoc:include type="component" />
                                 <jdoc:include type="modules" name="content-bottom" style="none" />   
                             <?php if($option!='com_users'):?>
-                            </div>               
-                            <?php endif;?>                                                               
-                        </div>
+                            </div>       
+                        </div>               
+                        <?php endif;?>                                                                                   
     
                         <?php if($this->countModules('bottom')):?>
                         <div class="container main-container"> 

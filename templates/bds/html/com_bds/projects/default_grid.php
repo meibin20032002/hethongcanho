@@ -45,22 +45,41 @@ JDom::_('framework.sortablelist', array(
 <?php foreach($this->items as $item):
     $gallery =  json_decode($item->gallery, true);
 ?>
-<div class="box">    
-    <a href="<?php echo JRoute::_('index.php?option=com_bds&view=project&layout=project&id='.$item->id)?>"> 
-        <div class="row grid-products-project">            
-            <div class="col-md-5">
-
+<div class="pbox">    
+    <a class="plistView" href="<?php echo JRoute::_('index.php?option=com_bds&view=project&layout=project&id='.$item->id)?>"> 
+        <div class="pimageBox col-xs-6">
+            <div class="colBox0">
+                <?php if(isset($gallery['gallery0']['image'])):?>
                 <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
+                <?php endif;?>
             </div>
+            <div class="colBox1">
+                <div class="subBox0">
+                    <?php if(isset($gallery['gallery1']['image'])):?>
+                    <img src="<?php echo $gallery['gallery1']['image']?>" alt="<?php echo $item->title?>"/>
+                    <?php endif;?> 
+                </div>
+                <div class="subBox1">
+                    <?php if(isset($gallery['gallery2']['image'])):?>
+                    <img src="<?php echo $gallery['gallery2']['image']?>" alt="<?php echo $item->title?>"/> 
+                    <?php endif;?>
+                </div>
+            </div>
+        </div>           
+        
+        <div class="col-xs-6">
+            <h4 class="title"><?php echo $item->title?></h4>
+            <div class="handing_over">Năm bàn giao: <?php echo JHtml::date($item->handing_over, 'Y') ?></div> 
+            <?php if($item->_main_location_title):?>
+            <div class="areaName"> 
+                <?php if($item->_sub_location_title) echo $item->_sub_location_title.', ' ?>
+                <?php echo $item->_main_location_title ?>
+            </div>
+            <?php endif;?> 
+            <div class="pprice"><?php echo BdsHelper::currencyFormat($item->price_min) ?> - <?php echo BdsHelper::currencyFormat($item->price_max)?></div>
             
-            <div class="col-md-7">
-                <h4 class="title"><?php echo $item->title?></h4>
- </a> 
-                <div class="handing_over"><?php echo $item->handing_over?></div>   
-                <div class="price-projects"><i class="fa fa-tag"><span class="lab"> Giá:</span> </i><?php echo BdsHelper::currencyFormat($item->price_min) ?> - <?php echo BdsHelper::currencyFormat($item->price_max)?></div>
-                <div class="address-list"><i class="fa fa-home"></i> <span class="lab"><?php echo $item-> address?></div>   
-            </div> 
-        </div>
-    
+            <div class="countSale"><span><?php echo BdsHelper::countSale($item->id)?> người bán</span></div>  
+        </div> 
+    </a> 
 </div>
 <?php endforeach;?>
