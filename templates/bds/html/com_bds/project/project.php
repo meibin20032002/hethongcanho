@@ -123,7 +123,7 @@ $gallery =  json_decode($this->item->gallery);
             <div class="address"><i class="fa fa-map-marker"></i> <?php echo $this->item->address ?></div>
             <div class="iconInfor">
                 <div class="col-md-4">
-                    <div class="price"><i class="fa fa-tag"></i> <span class="lab">Giá: </span> <?php echo $this->item->price_min?> - <?php echo $this->item->price_max?></div>
+                    <div class="price"><i class="fa fa-tag"></i> <span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($this->item->price_min)?> - <?php echo BdsHelper::currencyFormat($this->item->price_max)?></div>
                 </div>
                 <div class="col-md-4">
                     <div class="handing_over"><i class="fa fa-calendar"></i> <span class="lab">Bàn giao: </span> <?php echo $this->item->handing_over?></div>

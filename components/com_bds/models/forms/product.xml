@@ -133,6 +133,15 @@
 				validate="numeric"
 				ruleInstance="numeric_1765"
 				class="validate[custom[numeric_1765]]"/>
+                
+        <field name="alley"
+				alias="alley"
+				label="BDS_FIELD_ALLEY"
+				filter="INT"
+				type="cktext"
+				validate="numeric"
+				ruleInstance="numeric_1765"
+				class="validate[custom[numeric_1765]]"/>
 
 		<field name="direction"
 				alias="direction"
@@ -330,6 +339,17 @@
 				nullLabel="Hướng"
 				enum="products_direction"
 				label="BDS_JSEARCH_DIRECTION"
+				class="element-filter"
+				ui="chosen"/>
+                
+        <field name="filter_alley"
+				listKey="value"
+				labelKey="text"
+				type="enum"
+				submit="true"
+				nullLabel="Hẻm"
+				enum="products_alley"
+				label="BDS_JSEARCH_ALLEY"
 				class="element-filter"
 				ui="chosen"/>
 

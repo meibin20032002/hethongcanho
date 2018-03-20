@@ -144,6 +144,15 @@
 				validate="numeric"
 				ruleInstance="numeric_1765"
 				class="validate[custom[numeric_1765]]"/>
+                
+        <field name="alley"
+				alias="alley"
+				label="BDS_FIELD_ALLEY"
+				filter="INT"
+				type="cktext"
+				validate="numeric"
+				ruleInstance="numeric_1765"
+				class="validate[custom[numeric_1765]]"/>
 
 		<field name="direction"
 				alias="direction"

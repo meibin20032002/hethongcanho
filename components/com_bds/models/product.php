@@ -180,6 +180,7 @@ class BdsModelProduct extends BdsClassModelItem
 				$data->address = null;
 				$data->acreage = null;
 				$data->behind = null;
+                $data->alley = null;
 				$data->direction = $jinput->get('filter_direction', $this->getState('filter.direction'), 'STRING');
 				$data->legal_documents = $jinput->get('filter_legal_documents', $this->getState('filter.legal_documents'), 'STRING');
 				$data->characteristics = $jinput->get('filter_characteristics', $this->getState('filter.characteristics'), 'STRING');
@@ -259,6 +260,7 @@ class BdsModelProduct extends BdsClassModelItem
 					'alias',
 					'bedrooms',
 					'behind',
+                    'alley',
 					'category_id',
 					'category_id.title',
 					'characteristics',
@@ -300,6 +302,7 @@ class BdsModelProduct extends BdsClassModelItem
 					'alias',
 					'bedrooms',
 					'behind',
+                    'alley',
 					'category_id',
 					'category_id.title',
 					'characteristics',

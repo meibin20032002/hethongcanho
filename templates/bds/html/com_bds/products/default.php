@@ -75,10 +75,10 @@ $filter_types = $this->state->get('filter.types');
                 <div class="col-md-3 bitem">
     				<?php echo $this->filters['filter_direction']->input;?>
     			</div>
-                <!--div class="col-md-3 bitem">
-    				<?php echo $this->filters['filter_bedrooms']->input;?>
-    			</div>
                 <div class="col-md-3 bitem">
+    				<?php echo $this->filters['filter_alley']->input;?>
+    			</div>
+                <!--div class="col-md-3 bitem">
     				<?php echo $this->filters['filter_legal_documents']->input;?>
     			</div-->
     			<div class="clearfix"></div>

@@ -240,20 +240,16 @@ class BdsHelperEnum
 	protected function ___products_types($options = array())
 	{
 		return array(
-			'Cần bán' => array(
-				'value' => 'Cần bán',
-				'text' => 'BDS_ENUM_PRODUCTS_TYPES_CN_BAN'
+			'mua-ban' => array(
+				'value' => 'mua-ban',
+				'text' => 'Mua Bán'
 			),
-			'Cho thuê' => array(
-				'value' => 'Cho thuê',
+			'cho-thue' => array(
+				'value' => 'cho-thue',
 				'text' => 'BDS_ENUM_PRODUCTS_TYPES_CHO_THUE'
 			),
-			'Cần mua' => array(
-				'value' => 'Cần mua',
-				'text' => 'BDS_ENUM_PRODUCTS_TYPES_CN_MUA'
-			),
-			'Cần thuê' => array(
-				'value' => 'Cần thuê',
+			'can-thue' => array(
+				'value' => 'can-thue',
 				'text' => 'BDS_ENUM_PRODUCTS_TYPES_CN_THUE'
 			)
 		);
@@ -307,26 +303,73 @@ class BdsHelperEnum
 		);
 	}
     
-    protected function ___products_price($options = array())
+    protected function ___products_alley($options = array())
 	{
 		return array(
 			'3' => array(
 				'value' => '3',
-				'text' => '0 - 3tỷ'
+				'text' => '< 3m²'
 			),
-			'7' => array(
-				'value' => '7',
-				'text' => '3tỷ - 7tỷ'
+			'5' => array(
+				'value' => '5',
+				'text' => '3m² - 5m²'
 			),
-			'12' => array(
-				'value' => '12',
-				'text' => '7tỷ - 12tỷ'
-			),
-            '30' => array(
-				'value' => '30',
-				'text' => '> 12tỷ'
+            '1000' => array(
+				'value' => '1000',
+				'text' => '> 5m²'
 			)
 		);
+	}
+    
+    protected function ___products_price($options = array())
+	{
+		$model = CkJModel::getInstance('products', 'BdsModel');
+        if($types = $model->getState('filter.types')){
+            if ($types == 'cho-thue'){
+                return array(
+                    '5' => array(
+        				'value' => '5',
+        				'text' => '0 - 5triệu'
+        			),
+        			'10' => array(
+        				'value' => '10',
+        				'text' => '5triệu - 10triệu'
+        			),
+        			'20' => array(
+        				'value' => '20',
+        				'text' => '10triệu - 20triệu'
+        			),
+                    '50' => array(
+        				'value' => '50',
+        				'text' => '20triệu - 50triệu'
+        			),
+        			'30000' => array(
+        				'value' => '30000',
+        				'text' => '> 50triệu'
+        			)
+        		);
+            }
+        }else{
+            return array(
+    			'3000' => array(
+    				'value' => '3000',
+    				'text' => '0 - 3tỷ'
+    			),
+    			'7000' => array(
+    				'value' => '7000',
+    				'text' => '3tỷ - 7tỷ'
+    			),
+    			'12000' => array(
+    				'value' => '12000',
+    				'text' => '7tỷ - 12tỷ'
+    			),
+                '30000' => array(
+    				'value' => '30000',
+    				'text' => '> 12tỷ'
+    			)
+    		);
+        }
+        
 	}
 
 	/**

@@ -80,6 +80,7 @@ class BdsModelProducts extends BdsClassModelList
             'price' => 'varchar',
             'acreage' => 'varchar',
 			'direction' => 'varchar',
+            'alley' => 'varchar',
 			'legal_documents' => 'varchar',
 			'characteristics' => 'varchar'
 				));
@@ -175,6 +176,7 @@ class BdsModelProducts extends BdsClassModelList
         $id	.= ':'.$this->getState('filter.price');
         $id	.= ':'.$this->getState('filter.acreage');
 		$id	.= ':'.$this->getState('filter.direction');
+        $id	.= ':'.$this->getState('filter.alley');
 		$id	.= ':'.$this->getState('filter.legal_documents');
 		$id	.= ':'.$this->getState('filter.characteristics');
 		return parent::getStoreId($id);
@@ -213,6 +215,7 @@ class BdsModelProducts extends BdsClassModelList
 					'created_by.name',
 					'creation_date',
 					'direction',
+                    'alley',
 					'gallery',
 					'legal_documents',
 					'main_location',
@@ -322,7 +325,7 @@ class BdsModelProducts extends BdsClassModelList
 		if($filter_price = $this->getState('filter.price'))
 		{
 			if ($filter_price !== null){
-				$this->addWhere("a.price <= " . $this->_db->Quote($filter_price*1000000000));
+				$this->addWhere("a.price <= " . $this->_db->Quote($filter_price*1000000));
 			}
 		}
         
@@ -347,6 +350,14 @@ class BdsModelProducts extends BdsClassModelList
 		{
 			if ($filter_legal_documents !== null){
 				$this->addWhere("a.legal_documents = " . $this->_db->Quote($filter_legal_documents));
+			}
+		}
+        
+        // FILTER : Alley
+		if($filter_alley = $this->getState('filter.alley'))
+		{
+			if ($filter_alley !== null){
+				$this->addWhere("a.alley = " . $this->_db->Quote($filter_alley));
 			}
 		}
 
