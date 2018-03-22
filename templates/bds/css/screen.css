@@ -788,6 +788,11 @@ textarea:visited,select:visited, input:visited{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+.thumbsGallery .item .price{
+    color: #c90927;
+    font-size: 14px;
+    font-weight: 600;
+}
 /*------menuTab----------*/
 .menuTab{
     margin-top: 10px;
@@ -1061,7 +1066,9 @@ sup{
     width: 100%;
 }
 .productDesc .acrDirection .fa{
-    width: 15px;
+    width: 20px;
+    float: left;
+    line-height: 22px;
 }
 .productDesc .acrDirection .xitem{
     COLOR: SEAGREEN;

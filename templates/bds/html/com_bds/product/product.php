@@ -85,12 +85,25 @@ $user = JFactory::getUser($this->item->created_by);
                 </div>
                 
                 <div class="acrDirection">
+                    <?php if($this->item->_project_id_title):?>
+                    <div class="col-md-6">
+                        <div class="xitem"><i class="fa fa-university"></i><span class="lab">Dự án: </span><?php echo $this->item->_project_id_title?></div>
+                    </div>
+                    <?php endif;?>
+                    
+                    <?php if($this->item->acreage):?>
                     <div class="col-md-6">
                         <div class="xitem"><i class="fa fa-home"></i><span class="lab">Diện tích: </span><?php echo BdsHelper::acreageFormat($this->item->acreage)?></div>
                     </div>
+                    <?php endif;?>
+                    
+                    <?php if($this->item->direction):?>
                     <div class="col-md-6">
                         <div class="xitem"><i class="fa fa-compass"></i><span class="lab">Hướng cửa chính: </span><?php echo $this->item->direction?></div>
                     </div>
+                    <?php endif;?>
+                    
+                    <?php if($this->item->legal_documents):?>
                     <div class="col-md-6">
                         <div class="xitem">
                             <i class="fa fa-file"></i>
@@ -101,6 +114,7 @@ $user = JFactory::getUser($this->item->created_by);
                             ?>
                         </div>
                     </div>
+                    <?php endif;?>
                 </div>
                 <h5><strong>Địa chỉ BĐS </strong></h5>
                 <div class="address"><i class="fa fa-map-marker"></i> <?php echo $this->item->address?></div>

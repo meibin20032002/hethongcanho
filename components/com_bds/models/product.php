@@ -287,6 +287,8 @@ class BdsModelProduct extends BdsClassModelItem
 					'shipping_payment',
 					'title',
 					'types',
+                    'project_id',
+					'project_id.title',
 					'who'
 				));
 
@@ -325,6 +327,8 @@ class BdsModelProduct extends BdsClassModelItem
 					'shipping_payment',
 					'title',
 					'types',
+                    'project_id',
+					'project_id.title',
 					'who'
 				));
 
