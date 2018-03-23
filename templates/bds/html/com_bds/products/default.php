@@ -33,6 +33,20 @@ if($main_location){
     $main_location_name = $item->title;
 }
 $filter_types = $this->state->get('filter.types');
+// Get input cookie object
+$inputCookie  = JFactory::getApplication()->input->cookie;
+
+// Get cookie data
+$value        = $inputCookie->get($name = 'myCookie', $defaultValue = null);
+
+// Check that cookie exists
+$cookieExists = ($value !== null);
+
+// Set cookie data
+$inputCookie->set($name = 'myCookie', $value = '123', $expire = 0);
+
+// Remove cookie
+$inputCookie->set('myCookie', null, time() - 1);
 ?>
 <br />
 <div class="grid-products">
@@ -105,8 +119,8 @@ $filter_types = $this->state->get('filter.types');
                             <?php echo $this->filters['sortTable']->input;?>
                         </div>
                         <div class="view-layout col-xs-4">
-                            <button class="list active glyphicon glyphicon-th-list" title="Dạng danh sách"></button>
-                            <button class="gird glyphicon glyphicon-th-large" title="Dạng lưới"></button>
+                            <a onclick="display('list');" class="list active glyphicon glyphicon-th-list" title="Dạng danh sách"></a>
+                            <a onclick="display('grid');" href="#" class="grid glyphicon glyphicon-th-large" title="Dạng lưới"></a>
                         </div>
                     </div>
                 </div>
@@ -114,7 +128,8 @@ $filter_types = $this->state->get('filter.types');
         </div>
         
         <!-- BRICK : grid -->
-		<?php echo $this->loadTemplate('grid'); ?>
+		<?php echo $this->loadTemplate('list'); ?>
+        <?php echo $this->loadTemplate('grid'); ?>
             
 		<!-- BRICK : pagination -->
 		<?php echo $this->pagination->getListFooter(); ?>
@@ -136,7 +151,29 @@ $filter_types = $this->state->get('filter.types');
     </form>
 </div>
 <script type="text/javascript">
+function display(view) {
+	if (view == 'list') {
+	   jQuery('.boxList').show();
+       jQuery('.boxGrid').hide();
+       
+       jQuery('.view-layout .list').addClass('active');
+       jQuery('.view-layout .grid').removeClass('active');
+    }else{
+       jQuery('.boxGrid').show();
+       jQuery('.boxList').hide();
+       jQuery('.view-layout .list').removeClass('active');
+       jQuery('.view-layout .grid').addClass('active');
+	   jQuery.cookie('display', 'grid');
+	}
+}
 jQuery( document ).ready(function($) { 
+    view = $.cookie('display');
+    if (view) {
+    	display(view);
+    } else {
+    	display('list');
+    }    
+
     var location_name = '<?php echo $main_location_name?>';
     $("#sortTable").change(function() {
 		var order = $('#sortTable option:selected').val();    

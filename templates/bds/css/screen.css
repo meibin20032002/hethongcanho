@@ -842,7 +842,7 @@ textarea:visited,select:visited, input:visited{
     line-height: 42px;
     height: 42px;
 }
-.view-layout button{
+.view-layout a{
     background-color: transparent;
     border: none;
     outline: none;
@@ -851,7 +851,7 @@ textarea:visited,select:visited, input:visited{
     font-size: 20px;
     top: 5px;
 }
-.view-layout .active{
+.view-layout a.active{
     color: #000;
 }
 /*------slide----------*/

@@ -42,11 +42,11 @@ JDom::_('framework.sortablelist', array(
 ?>
 
 <div class="clearfix"></div>
-<div class="boxGrid row">
+<ul class="boxList">
     <?php foreach($this->items as $item):
         $gallery =  json_decode($item->gallery, true);
     ?>
-    <div class="girdView col-md-3 col-xs-6 item">
+    <li class="listView">
         <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
             <?php if($item->hot):?>
             <div class="ctRibbonAd">HOT</div>   
@@ -67,12 +67,18 @@ JDom::_('framework.sortablelist', array(
         <div class="infoFoot">
             <div class="creation_date">
                 <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> 
+                <?php if($item->_main_location_title):?>
+                <span class="areaName"> | 
+                    <?php if($item->_sub_location_title) echo $item->_sub_location_title.', ' ?>
+                    <?php echo $item->_main_location_title ?>
+                </span>
+                <?php endif;?>
             </div>
             
             <div class="iconAvatar">
                 <?php echo BdsHelper::iconAvatarWho($item)?>
             </div>
         </div> 
-    </div>  
+    </li>  
     <?php endforeach;?>
-</div>
+</ul>

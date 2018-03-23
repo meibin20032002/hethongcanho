@@ -58,6 +58,7 @@ if (is_object($menu))
     <link href="templates/<?php echo $this->template ?>/css/responsive.css" rel="stylesheet" />
     
     <script src="templates/<?php echo $this->template ?>/js/jquery-ui.js" type="text/javascript"></script>
+    <script src="templates/<?php echo $this->template ?>/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="templates/<?php echo $this->template ?>/js/jquery.number.min.js" type="text/javascript"></script>  
     <script src="templates/<?php echo $this->template ?>/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="templates/<?php echo $this->template ?>/assets/mlpushmenu/js/modernizr.custom.js" type="text/javascript"></script>
