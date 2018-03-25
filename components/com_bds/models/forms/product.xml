@@ -7,7 +7,7 @@
 
 		<field name="title"
 				alias="title"
-				label="BDS_FIELD_TITLE"
+				label="Tiêu đề"
 				filter="STRING"
 				type="cktext"
 				required="true"
@@ -21,18 +21,27 @@
 
 		<field name="category_id"
 				alias="_category_id_title"
-				label="BDS_FIELD_CATEGORY"
+				label="Loại bất động sản"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_CATEGORY"
+				nullLabel="Chọn Loại bất động sản"
 				required="true"
 				class="validate[required]"/>
+                
+        <field name="project_id"
+				alias="_project_id_title"
+				label="Thuộc dự án"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				nullLabel="Chọn dự án"/>
 
 		<field name="types"
 				alias="types"
-				label="BDS_FIELD_TYPES"
+				label="Bạn đăng tin"
 				filter="STRING"
 				listKey="value"
 				labelKey="text"
@@ -53,29 +62,29 @@
 
 		<field name="main_location"
 				alias="_main_location_title"
-				label="BDS_FIELD_MAIN_LOCATION"
+				label="Tỉnh/Thành"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_MAIN_LOCATION"
+				nullLabel="Chọn Tỉnh/Thành"
 				required="true"
 				class="validate[required]"/>
                 
         <field name="sub_location"
 				alias="_sub_location_title"
-				label="BDS_FIELD_SUB_LOCATION"
+				label="Quận/Huyện"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_SUB_LOCATION"
+				nullLabel="Chọn Quận/Huyện"
 				required="true"
 				class="validate[required]"/>
 
 		<field name="gallery"
 				alias="gallery"
-				label="BDS_FIELD_GALLERY"
+				label="Đăng hình ảnh"
 				filter="STRING"
 				type="cktextarea"
 				required="true"
@@ -83,7 +92,7 @@
 
 		<field name="price"
 				alias="price"
-				label="BDS_FIELD_PRICE"
+				label="Giá"
 				filter="INT"
 				type="cktext"
 				validate="numeric"
@@ -93,31 +102,31 @@
 
 		<field name="bedrooms"
 				alias="bedrooms"
-				label="BDS_FIELD_BEDROOMS"
+				label="Số phòng"
 				filter="STRING"
 				listKey="value"
 				labelKey="text"
 				type="enum"
-				nullLabel="BDS_JSEARCH_SELECT_BEDROOMS"
+				nullLabel="Chọn Số phòng"
 				enum="products_bedrooms"
 				required="true"
 				class="validate[required]"/>
 
 		<field name="description"
 				alias="description"
-				label="BDS_FIELD_DESCRIPTION"
+				label="Mô tả chi tiết"
 				filter="RAW"
 				type="ckeditor"/>
 
 		<field name="address"
 				alias="address"
-				label="BDS_FIELD_ADDRESS"
+				label="Địa chỉ"
 				filter="STRING"
 				type="cktext"/>
 
 		<field name="acreage"
 				alias="acreage"
-				label="BDS_FIELD_ACREAGE"
+				label="Diện tích"
 				filter="INT"
 				type="cktext"
 				validate="numeric"
@@ -127,7 +136,7 @@
 
 		<field name="behind"
 				alias="behind"
-				label="BDS_FIELD_BEHIND"
+				label="Nở hậu"
 				filter="INT"
 				type="cktext"
 				validate="numeric"
@@ -136,7 +145,7 @@
                 
         <field name="alley"
 				alias="alley"
-				label="BDS_FIELD_ALLEY"
+				label="Hẻm"
 				filter="INT"
 				type="cktext"
 				validate="numeric"
@@ -145,49 +154,49 @@
 
 		<field name="direction"
 				alias="direction"
-				label="BDS_FIELD_DIRECTION"
+				label="Hướng cửa chính"
 				filter="STRING"
 				listKey="value"
 				labelKey="text"
 				type="enum"
-				nullLabel="BDS_JSEARCH_SELECT_DIRECTION"
+				nullLabel="Chọn Hướng"
 				enum="products_direction"/>
 
 		<field name="legal_documents"
 				alias="legal_documents"
-				label="BDS_FIELD_LEGAL_DOCUMENTS"
+				label="Giấy tờ pháp lý"
 				filter="STRING"
 				listKey="value"
 				labelKey="text"
 				type="enum"
-				nullLabel="BDS_JSEARCH_SELECT_LEGAL_DOCUMENTS"
+				nullLabel="Chọn Giấy tờ pháp lý"
 				enum="products_legal_documents"/>
 
 		<field name="characteristics"
 				alias="characteristics"
-				label="BDS_FIELD_CHARACTERISTICS"
+				label="Đặc điểm nhà/đất"
 				filter="STRING"
 				listKey="value"
 				labelKey="text"
 				type="enum"
-				nullLabel="BDS_JSEARCH_SELECT_CHARACTERISTICS"
+				nullLabel="Chọn Đặc điểm nhà/đất"
 				enum="products_characteristics"/>
 
 		<field name="shipping_payment"
 				alias="shipping_payment"
-				label="BDS_FIELD_SHIPPING_PAYMENT"
+				label="Vận chuyển, giao nhận"
 				filter="STRING"
 				type="cktextarea"/>
 
 		<field name="contact_number"
 				alias="contact_number"
-				label="BDS_FIELD_CONTACT_NUMBER"
+				label="Số điện thoại"
 				filter="STRING"
 				type="cktext"/>
 
 		<field name="contact_name"
 				alias="contact_name"
-				label="BDS_FIELD_CONTACT_NAME"
+				label="Họ tên liên hệ"
 				filter="STRING"
 				type="cktext"
 				required="true"
@@ -195,7 +204,7 @@
 
 		<field name="contact_email"
 				alias="contact_email"
-				label="BDS_FIELD_CONTACT_EMAIL"
+				label="Email liên hệ"
 				filter="STRING"
 				type="cktext"
 				validate="ckemail"
@@ -204,7 +213,7 @@
 
 		<field name="contact_address"
 				alias="contact_address"
-				label="BDS_FIELD_CONTACT_ADDRESS"
+				label="Địa chỉ liên hệ"
 				filter="STRING"
 				type="cktext"/>
 

@@ -357,7 +357,7 @@ class BdsModelProducts extends BdsClassModelList
 		if($filter_alley = $this->getState('filter.alley'))
 		{
 			if ($filter_alley !== null){
-				$this->addWhere("a.alley = " . $this->_db->Quote($filter_alley));
+				$this->addWhere("a.alley <= " . $this->_db->Quote($filter_alley));
 			}
 		}
 

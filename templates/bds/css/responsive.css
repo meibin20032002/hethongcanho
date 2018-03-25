@@ -85,6 +85,9 @@
     .infoBox .title{
         font-size: 13px;
     }
+    .infoBox .fa{
+        display: none;
+    }
     .infoBox .price{
         font-size: 11px;
     }

@@ -240,7 +240,131 @@ class BdsControllerProduct extends BdsClassControllerItem
 		}
 	}
 
+    public function ajaxSave(){
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        $model = $this->getModel();
+        $user = JFactory::getUser();
+        
+        $files = JRequest::getVar('file', null, 'files', 'array');
+        
+        $result = false;
+        $dir_name = '';
+        //upload file
+        if (isset($files)) {
+            $folder = "images" . DS . "product";
+            jimport( 'joomla.filesystem.folder' );
+            jimport( 'joomla.filesystem.file' );
+            
+	    	if (!JFolder::exists( $folder )) {
+	           JFolder::create( $folder, 0777 );
+	    	}
+            
+            if($files['name'] !=''){
+                $files['name'] = preg_replace('/\s+/','',$files['name']);                
+                $filename = time().$user->id.$files['name'];
+    	   	 	$src = $files['tmp_name'];
+    	    	$dir_name = JPATH_SITE . DS . $folder . DS . $filename;
+                
+                $allowed =  array('bmp','jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG', 'gif', 'doc', 'docx', 'pdf', 'xls', 'xlsx');
+                $ext = strtolower(JFile::getExt($filename)); 
+                if(in_array($ext, $allowed) ) {
+    	        	if(JFile::upload($src, $dir_name)){
+                    
+                        $profile = new stdClass();
+                        $profile->key = $filename;
+                        $profile->user_id = $user->id;
+                        $profile->upload = $folder . DS . $filename;
+                        $profile->create_date = JFactory::getDate()->toSql();
+                        
+                        // Insert
+                        $model = $this->getModel();
+                        $result = $model->insertTemp($profile);
+                    }
+                }else{
+                    $message = JText::_('You’ve exceeded the allocated space for each policy. 
+                    Simply reduce the content or try saving to a different format. 
+                    Do reach us if you require further assistance.');
+                }
+            }
 
+        }
+        
+        // Return
+        $json['result'] = $result;
+        $json['href'] = JUri::base().$folder . DS . $filename;
+        $json['name'] = $filename;
+        echo json_encode($json);
+        JFactory::getApplication()->close(); // or jexit();      
+    }
+    
+    public function ajaxDelete(){
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $result  = false;
+        if($key = JRequest::getVar('name')){
+            $model = $this->getModel();
+            if($item = $model->itemTemp($key)){
+                $result = $model->deleImage($item);
+            }
+        }
+        $json['result'] = $result;
+        echo json_encode($json);
+        JFactory::getApplication()->close(); // or jexit();
+    }
+    
+    public function snapSave(){
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        $model = $this->getModel();
+        $user = JFactory::getUser();
+        
+        //Image format
+        $imageData = JRequest::getVar('imagebase');
+        list($type, $imageData) = explode(';', $imageData);
+        list(,$extension) = explode('/',$type);
+        list(,$imageData)      = explode(',', $imageData);
+        $files = base64_decode($imageData);           
+        
+        $result = false;
+        $dir_name = '';
+        //upload file
+        if (isset($files)) {
+            $folder = "images" . DS . "product";
+            jimport( 'joomla.filesystem.folder' );
+            jimport( 'joomla.filesystem.file' );
+            
+	    	if (!JFolder::exists( $folder )) {
+	           JFolder::create( $folder, 0777 );
+	    	}
+            
+    
+            $filename = uniqid(mktime()).'snap.'.$extension;;
+	    	$dir_name = JPATH_SITE . DS . $folder . DS . $filename;
+            
+            $success = file_put_contents($dir_name, $files);
+            if($success){
+                $profile = new stdClass();
+                $profile->key = $filename;
+                $profile->user_id = $user->id;
+                $profile->upload = $folder . DS . $filename;
+                $profile->create_date = JFactory::getDate()->toSql();
+                
+                // Insert
+                $model = $this->getModel();
+                $result = $model->insertTemp($profile);
+            }else{
+                $json['messeage'] = 'Unable to save the file.';
+            }
+        }else{
+            $json['messeage'] = 'Error upload file.'.$files;
+        }
+        
+        // Return
+        $json['result'] = $result;
+        $json['href'] = JUri::base().$folder . DS . $filename;
+        $json['name'] = $filename;
+        echo json_encode($json);
+        JFactory::getApplication()->close(); // or jexit();      
+    }
 }
 
 

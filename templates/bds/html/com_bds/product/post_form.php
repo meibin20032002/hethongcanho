@@ -64,7 +64,25 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
+    
+    <?php
+	// Project
+	$field = $fieldSet['jform_project_id'];
+	$field->jdomOptions = array(
+		'list' => $this->lists['fk']['project_id']
+			);
+	?>
+	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
 
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
 
 	<?php
 	// Types
@@ -85,27 +103,6 @@ $fieldSets = $this->form->getFieldsets();
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
 
-
-	<?php
-	// Who
-	$field = $fieldSet['jform_who'];
-	$field->jdomOptions = array(
-		'list' => BdsHelperEnum::_('products_who')
-			);
-	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
 	<?php
 	// Location
 	$field = $fieldSet['jform_main_location'];
@@ -113,7 +110,7 @@ $fieldSets = $this->form->getFieldsets();
 		'list' => $this->lists['fk']['main_location']
 			);
 	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>
@@ -132,7 +129,7 @@ $fieldSets = $this->form->getFieldsets();
 		'list' => $this->lists['fk']['sub_location']
 			);
 	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>
@@ -154,7 +151,36 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 
 	    <div class="controls">
-			<?php echo $field->input; ?>
+			<div class="uploadButton">
+				<a href="#" class="uploadPhotoButton">Upload Images</a>
+				<input type="file" id="files" name="file[]" multiple="" accept=".doc, .docx, .xls, .xlsx, image/*, application/msword, application/msexcel, application/pdf"/>
+			</div>
+		</div>
+        
+        <div class="clearfix"></div>
+		<div class="control-group imgListPolicy">
+			<ul id="listImg">
+                <?php 
+                $gallery = $this->model->listTemp();
+                if($gallery):
+                $patfile = '';
+                foreach($gallery as $row):
+                if (file_exists(JPATH_ROOT.DS.$row->upload)) {
+                    $patfile = JUri::root().$row->upload;
+                    ?>
+    				<li>
+                        <span class="deleteImg" data-value="1" data-name="<?php echo $row->key?>"></span>
+    					<a class="imgUploadView" href="<?php echo JUri::root().$row->upload?>">
+                            <img src="<?php echo $patfile?>" width="100%" height="100%" alt="<?php echo $row->upload?>"/>                    
+                        </a>
+                        <input type="hidden" name="jform[edit][]" value="<?php echo $row->upload?>"/>
+    				</li>
+			         <?php
+                    }
+                endforeach;
+                endif; 
+                ?>
+            </ul>
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>

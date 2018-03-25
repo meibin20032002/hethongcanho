@@ -311,6 +311,10 @@ b, strong, .bold{
     float: left;
     margin: 0;
 }
+.page-header h1, .page-header h2{
+    font-size: 22px;
+    margin: 0;
+}
 /*------LOGIN------------------*/
 .login-bg{
 	background-repeat: no-repeat;
@@ -441,7 +445,7 @@ b, strong, .bold{
 }
 .form-search input {
     width: 100%;
-    border: 1px solid rgba(204, 204, 204, 0.47);
+    border: 1px solid #ddd;
     padding: 15px 15px 15px 35px;
     box-shadow: none;
     box-sizing: border-box;
@@ -469,24 +473,22 @@ b, strong, .bold{
 .chzn-container-single .chzn-single {
     height: 49px;
     padding: 0;
-    border-radius: 10px;
+    border-radius: 5px;
     background: white;
     width: 100%;
     color: #FC7D07;
     box-shadow: none;
-    border: 1px solid rgba(204, 204, 204, 1);
+    border: 1px solid #ddd
 }
 .chzn-container-active.chzn-with-drop .chzn-single{
-
-	border-radius: 10px;
-
+	border-radius: 5px;
 }
 .chzn-container-single .chzn-single span {
     width: 100%;
     margin: 12px 15px;
 	font-weight: normal;
     font-size: 15px;
-    color:#211f1ec4;
+    color:#211f1e;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .chzn-container-single .chzn-single div{
@@ -610,11 +612,10 @@ b, strong, .bold{
 .form-subscribe{
     margin-bottom: 60px;
     display: inline-block;
-
     width: 100%;
 }
 .form-subscribe .controls{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     position: relative;
 }
 .form-subscribe .control-label label{
@@ -625,20 +626,23 @@ b, strong, .bold{
 }
 .form-subscribe textarea, .form-subscribe select, .form-subscribe input {
     width: 100%;
-    border: 1px solid rgba(204, 204, 204, 1);
+    border: 1px solid #ddd;
     padding: 15px;
     box-shadow: none;
     box-sizing: border-box;
+    border-radius: 5px;
     font-size: 14px;
     height: 49px;
     color: #FC7D07;
     font-weight: 400;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 textarea:focus,select:focus, input:focus,
 textarea:hover,select:hover, input:hover,
 textarea:visited,select:visited, input:visited{
     outline: none;
+}
+.form-subscribe .wf-editor-container{
+    padding: 0;
 }
 .form-subscribe textarea{
     height: 100px;
@@ -669,9 +673,6 @@ textarea:visited,select:visited, input:visited{
     left: 20px;
     font-size: 26px;
     color: #FC7D07;
-}
-.field-jform_title #jform_title{
-    padding-left: 60px;
 }
 .inputDate .fa{
     position: absolute;
@@ -953,13 +954,14 @@ textarea:visited,select:visited, input:visited{
 .infoBox .title{
     font-weight: bold;
     margin-top: 0;    
-    font-size: 15px;
+    font-size: 14px;
     color: #045F96;
     transition: 0.4s;
     text-decoration: none;
-    max-height: 28px;
+    height: 28px;
     overflow: hidden;
     padding-right: 30px;
+    line-height: 18px;
 }
 .infoBox .price{
     color: #c90927;
@@ -991,10 +993,63 @@ textarea:visited,select:visited, input:visited{
     height: 20px;
     border-radius: 50%;
 }
-
 /*------boxGird----------*/
 .item {
     margin-bottom: 20px;
+}
+.boxGrid .girdView{
+    margin-top: 20px;
+}
+.boxGrid .girdView a{
+    display: block;
+    border: 1px solid #e9ebee;
+    position: relative;
+    overflow: hidden;
+}
+.girdView .imageBox{
+    height: 150px;
+}
+.girdView .infoBox{
+    padding-top: 10px;
+    padding-bottom: 40px;
+}
+.girdView .infoBox .title{
+    height: 40px;
+}
+.girdView .infoBox .title, .girdView .infoBox .price{
+    font-size: 14px;
+    font-weight: normal;
+}
+.girdView a:hover{
+    color: #000;
+}
+.girdView .infoFoot{
+    width: 100%;
+    padding: 0 10px;
+}
+.girdView .ctRibbonAd{
+    background-color: rgb(245, 154, 0);
+    border-color: rgb(245, 154, 0);
+    color: rgb(255, 255, 255);
+    position: absolute;
+    display: block;
+    padding: 0 30px;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    z-index: 9;
+    height: 40px;
+    line-height: 55px;
+    top: -10px;
+    font-size: 12px;
+    right: auto;
+    left: -35px;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.girdView .iconAvatar .nameAvatar{
+    display: none;
 }
 /*------Product----------*/
 .product{
@@ -1107,6 +1162,110 @@ sup{
     list-style-type: disc;
     list-style-position: outside; 
     padding-left: 16px;
+}
+/*---post ----*/
+.uploadPhotoButton,
+.takePhotoButton{
+  display: block;
+  background: url(../images/icon-upload.png) no-repeat 15px 10px #2a77f4;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  float: left;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 0 19px 0 43px;
+}
+.takePhotoButton{
+  background: url(../images/icon-camera.png) no-repeat 15px 10px #2a77f4;
+  margin-right: 15px;
+}
+.uploadPhotoButton:hover,
+.takePhotoButton:hover{
+  color: #fff;
+}
+
+#popupCamera{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.5);
+  display: none;
+  z-index: 1000;
+}
+#popupCamera .innerCamera{
+  transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  -moz-transform: translate(-50%,-50%);
+  background-color: #fff;
+  border-radius: 5px;
+  width: 625px;
+  height: 435px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  padding-bottom: 80px;
+  text-align: center;
+}
+#popupCamera canvas{
+  opacity: 0;
+}
+
+#snap{
+  margin: 0 auto;
+  display: block;
+  background-color: transparent;
+  margin: 10px auto 0;
+  border: 1px solid #000;
+  color: #333;
+  text-transform: uppercase;
+  padding: 10px 15px 8px;
+}
+
+#close{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #000;
+  opacity: 1;
+  z-index: 1001;
+}
+.uploadButton input{
+  display: none;
+}
+.downLoad{
+    display: inline-block;
+    color: #fff;
+}
+.imgListPolicy li{
+  width: 108px;
+  height: 75px;
+  border: 1px solid #acacac;
+  background-size: cover;
+  position: relative;
+  display: inline-block;
+  background-color: #fff;
+  margin-right: 17px;
+  margin-top: 30px;
+}
+.imgListPolicy li a.imgUploadView{
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.imgListPolicy li span{
+  display: block;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: url(../images/icon-remove.png) no-repeat 0 0;
+  right: -8px;
+  top: -8px;
+  cursor: pointer;
 }
 /*---projects ----*/
 .show-phone{

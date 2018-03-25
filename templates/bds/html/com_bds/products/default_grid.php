@@ -46,7 +46,7 @@ JDom::_('framework.sortablelist', array(
     <?php foreach($this->items as $item):
         $gallery =  json_decode($item->gallery, true);
     ?>
-    <div class="girdView col-md-3 col-xs-6 item">
+    <div class="girdView col-md-3 col-sm-4 col-xs-6">
         <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
             <?php if($item->hot):?>
             <div class="ctRibbonAd">HOT</div>   
@@ -60,19 +60,18 @@ JDom::_('framework.sortablelist', array(
             <div class="infoBox">
                 <h4 class="title"><?php echo $item->title?></h4>        
                 <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
-                <div class="acreage"> Diện tích: </span><?php echo BdsHelper::acreageFormat($item->acreage)?></div>
-            </div>
-        </a>
-        
-        <div class="infoFoot">
-            <div class="creation_date">
-                <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> 
             </div>
             
-            <div class="iconAvatar">
-                <?php echo BdsHelper::iconAvatarWho($item)?>
-            </div>
-        </div> 
+            <div class="infoFoot">
+                <div class="creation_date">
+                    <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> 
+                </div>
+                
+                <div class="iconAvatar">
+                    <?php echo BdsHelper::iconAvatarWho($item)?>
+                </div>
+            </div> 
+        </a>
     </div>  
     <?php endforeach;?>
 </div>

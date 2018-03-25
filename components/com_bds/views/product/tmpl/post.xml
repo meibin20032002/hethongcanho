@@ -5,19 +5,4 @@
 	<message>
 		<![CDATA[BDS_LAYOUT_SHOW_POST_LAYOUT]]>
 	</message></layout>
-
-	<fields name="request">
-
-		<fieldset name="request" addfieldpath="/administrator/components/com_bds/models/fields">
-
-			<field name="cid"
-					type="modalpicker"
-					label="BDS_JSEARCH_SELECT_PRODUCT"
-					required="false"
-					default=""
-					description="BDS_JSEARCH_SELECT_PRODUCT"
-					model="products"
-					labelKey="title"/>
-		</fieldset>
-	</fields>
 </metadata>

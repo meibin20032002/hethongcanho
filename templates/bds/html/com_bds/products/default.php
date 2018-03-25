@@ -158,6 +158,7 @@ function display(view) {
        
        jQuery('.view-layout .list').addClass('active');
        jQuery('.view-layout .grid').removeClass('active');
+       jQuery.cookie('display', 'list');
     }else{
        jQuery('.boxGrid').show();
        jQuery('.boxList').hide();

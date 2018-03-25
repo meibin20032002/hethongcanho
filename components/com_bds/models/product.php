@@ -450,7 +450,66 @@ class BdsModelProduct extends BdsClassModelItem
 
 	}
 
-
+    public function insertTemp($object){
+        return JFactory::getDbo()->insertObject('#__bds_image_temp', $object);
+    }
+    
+    public function listTemp()
+	{
+        $user = JFactory::getUser();
+        try{
+            $db = JFactory::getDBO();
+            $db->setQuery('SELECT * FROM #__bds_image_temp WHERE `user_id` = '.(int)$user->id);                                                     
+            $data = $db->loadObjectlist();
+        
+            return $data;
+        }catch(Exeption $e){
+            return false;
+        }
+	}
+    
+    public function itemTemp($key)
+	{
+        $user = JFactory::getUser();
+        try{
+            $db = JFactory::getDBO();
+            $db->setQuery("SELECT * FROM #__bds_image_temp WHERE  `key` ='".$key."' AND `user_id` = ".(int)$user->id);                                                     
+            $data = $db->loadObject();
+        
+            return $data;
+        }catch(Exeption $e){
+            return false;
+        }
+	}
+    
+    public function deleTemp($key)
+	{
+        $user = JFactory::getUser();
+        $db = JFactory::getDBO();
+        $db->setQuery("DELETE FROM #__bds_image_temp WHERE `key` ='".$key."' AND `user_id` = ". (int)$user->id);
+        if($db->execute()) return true;
+        return false;        
+	}
+    
+    public function deleImage($item)
+	{
+        if($item){
+            jimport( 'joomla.filesystem.file' );            
+            if(JFile::delete(JPATH_SITE . DS .$item->upload)){
+                return self::deleTemp($item->key);
+            }
+        }
+        return false;
+	}
+    
+    public function deleAllTemp()
+	{
+        if($list = self::listTemp()){
+            foreach($list as $row){
+                self::deleImage($row);                
+            }
+        }
+	}
 }
 
 
