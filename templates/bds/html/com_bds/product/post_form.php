@@ -29,61 +29,6 @@ $fieldSets = $this->form->getFieldsets();
 
 <?php $fieldSet = $this->form->getFieldset('post.form');?>
 <fieldset class="fieldsform form-horizontal">
-
-	<?php
-	// Title
-	$field = $fieldSet['jform_title'];
-	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-	<?php
-	// Category
-	$field = $fieldSet['jform_category_id'];
-	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['category_id']
-			);
-	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-    
-    <?php
-	// Project
-	$field = $fieldSet['jform_project_id'];
-	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['project_id']
-			);
-	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    
-
 	<?php
 	// Types
 	$field = $fieldSet['jform_types'];
@@ -91,7 +36,7 @@ $fieldSets = $this->form->getFieldsets();
 		'list' => BdsHelperEnum::_('products_types')
 			);
 	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>
@@ -102,7 +47,24 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
+    <?php
+	// Category
+	$field = $fieldSet['jform_category_id'];
+	$field->jdomOptions = array(
+		'list' => $this->lists['fk']['category_id']
+			);
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
 
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
 	<?php
 	// Location
 	$field = $fieldSet['jform_main_location'];
@@ -140,7 +102,40 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
     
+    <?php
+	// Project
+	$field = $fieldSet['jform_project_id'];
+	$field->jdomOptions = array(
+		'list' => $this->lists['fk']['project_id']
+			);
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
     
+    <?php
+	// Address
+	$field = $fieldSet['jform_address'];
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+
+
 	<?php
 	// Gallery
 	$field = $fieldSet['jform_gallery'];
@@ -185,9 +180,37 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
+    <?php
+	// Title
+	$field = $fieldSet['jform_title'];
+	?>
+	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
 
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
 	<?php
+	// Description
+	$field = $fieldSet['jform_description'];
+	?>
+	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+
+<?php
 	// Price
 	$field = $fieldSet['jform_price'];
 	?>
@@ -203,8 +226,52 @@ $fieldSets = $this->form->getFieldsets();
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
 
+	<?php
+	// Acreage
+	$field = $fieldSet['jform_acreage'];
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
 	<?php
+	// Behind
+	$field = $fieldSet['jform_behind'];
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
+   	<?php
+	// alley
+	$field = $fieldSet['jform_alley'];
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+
+    <?php
 	// Bedrooms
 	$field = $fieldSet['jform_bedrooms'];
 	$field->jdomOptions = array(
@@ -222,76 +289,6 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
-
-
-	<?php
-	// Description
-	$field = $fieldSet['jform_description'];
-	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Address
-	$field = $fieldSet['jform_address'];
-	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Acreage
-	$field = $fieldSet['jform_acreage'];
-	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Behind
-	$field = $fieldSet['jform_behind'];
-	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
 	<?php
 	// Direction
 	$field = $fieldSet['jform_direction'];
@@ -299,7 +296,7 @@ $fieldSets = $this->form->getFieldsets();
 		'list' => BdsHelperEnum::_('products_direction')
 			);
 	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>
@@ -319,7 +316,7 @@ $fieldSets = $this->form->getFieldsets();
 		'list' => BdsHelperEnum::_('products_legal_documents')
 			);
 	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>
@@ -339,7 +336,7 @@ $fieldSets = $this->form->getFieldsets();
 		'list' => BdsHelperEnum::_('products_characteristics')
 			);
 	?>
-	<div class="col-md-4 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>

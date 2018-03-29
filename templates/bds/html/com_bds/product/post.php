@@ -55,6 +55,11 @@ jQuery(document).ready(function ($) {
 		$(this).parent().find('input').click();
 		return false;
 	});
+    
+    $('#jform_price').number( true, 0);
+    $('#jform_acreage').number( true, 0);
+    $('#jform_behind').number( true, 0);
+    $('#jform_alley').number( true, 0);
 });
        
 var arrImageUpload = {};

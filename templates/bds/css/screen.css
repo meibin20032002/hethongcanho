@@ -451,7 +451,7 @@ b, strong, .bold{
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 15px;
-    height: 49px;
+    height: 40px;
     color: #FC7D07;
 }
 .form-search .input-append{
@@ -461,7 +461,7 @@ b, strong, .bold{
     content: "\f002";
     font-family: FontAwesome;
     position: absolute;
-    top: 14px;
+    top: 9px;
     left: 15px;
 }
 /*----chosen----*/
@@ -471,7 +471,7 @@ b, strong, .bold{
     width: 100% !important;
 }
 .chzn-container-single .chzn-single {
-    height: 49px;
+    height: 40px;
     padding: 0;
     border-radius: 5px;
     background: white;
@@ -485,15 +485,15 @@ b, strong, .bold{
 }
 .chzn-container-single .chzn-single span {
     width: 100%;
-    margin: 12px 15px;
+    margin: 7px 15px;
 	font-weight: normal;
     font-size: 15px;
     color:#211f1e;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .chzn-container-single .chzn-single div{
-    top: 5px;
-    right: 10px;
+    top: 1px;
+    right: 5px;
 }
 .chzn-container-single .chzn-single div b {
     background: none;
@@ -587,7 +587,7 @@ b, strong, .bold{
     content: "\f041";
     font-family: FontAwesome;
     position: absolute;
-    top: 12px;
+    top: 7px;
     left: 15px;
 }
 #filter_main_location_chzn .chzn-single:before{
@@ -604,7 +604,7 @@ b, strong, .bold{
     content: "\f19c";
     font-family: FontAwesome;
     position: absolute;
-    top: 12px;
+    top: 7px;
     left: 15px;
     color: #333;
 }
@@ -632,7 +632,7 @@ b, strong, .bold{
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 14px;
-    height: 49px;
+    height: 40px;
     color: #FC7D07;
     font-weight: 400;
 }

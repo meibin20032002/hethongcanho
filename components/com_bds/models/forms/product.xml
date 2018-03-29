@@ -94,7 +94,8 @@
 				alias="price"
 				label="Giá"
 				filter="INT"
-				type="cktext"
+				type="text"
+                hint="Nhỏ nhất 500.000đ - Lớn nhất: 500.000.000.000đ"
 				validate="numeric"
 				ruleInstance="numeric_6385"
 				required="true"
@@ -128,7 +129,8 @@
 				alias="acreage"
 				label="Diện tích"
 				filter="INT"
-				type="cktext"
+				type="text"
+                hint="Diện tích không quá 10000 m2"
 				validate="numeric"
 				ruleInstance="numeric_2524"
 				required="true"
@@ -137,8 +139,9 @@
 		<field name="behind"
 				alias="behind"
 				label="Nở hậu"
+                hint="Nở hậu không quá 100 m"
 				filter="INT"
-				type="cktext"
+				type="text"
 				validate="numeric"
 				ruleInstance="numeric_1765"
 				class="validate[custom[numeric_1765]]"/>
@@ -146,8 +149,9 @@
         <field name="alley"
 				alias="alley"
 				label="Hẻm"
+                hint="Hẻm không quá 100 m"
 				filter="INT"
-				type="cktext"
+				type="text"
 				validate="numeric"
 				ruleInstance="numeric_1765"
 				class="validate[custom[numeric_1765]]"/>
@@ -192,11 +196,12 @@
 				alias="contact_number"
 				label="Số điện thoại"
 				filter="STRING"
-				type="cktext"/>
+                readonly="true"
+				type="text"/>
 
 		<field name="contact_name"
 				alias="contact_name"
-				label="Họ tên liên hệ"
+				label="Họ tên"
 				filter="STRING"
 				type="cktext"
 				required="true"
@@ -204,7 +209,7 @@
 
 		<field name="contact_email"
 				alias="contact_email"
-				label="Email liên hệ"
+				label="Email"
 				filter="STRING"
 				type="cktext"
 				validate="ckemail"
@@ -213,7 +218,7 @@
 
 		<field name="contact_address"
 				alias="contact_address"
-				label="Địa chỉ liên hệ"
+				label="Địa chỉ"
 				filter="STRING"
 				type="cktext"/>
 
