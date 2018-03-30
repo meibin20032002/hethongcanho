@@ -426,7 +426,19 @@ class BdsModelProduct extends BdsClassModelItem
 	*/
 	public function save($data)
 	{
-		//Convert from a non-SQL formated date (creation_date)
+		//upload file
+        $list = self::listTemp();            
+        if ($list) {
+            foreach($list as $row){
+                $upload[$e] = $row->upload;
+                self::deleTemp($row->key);                                        
+                $e++;                      
+            }
+            $data['gallery'] = json_encode($upload);
+        }
+        $data['who'] = 'p';    
+        $data['contact_number'] = JFactory::getUser()->get('username');
+        //Convert from a non-SQL formated date (creation_date)
 		$data['creation_date'] = BdsHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');
 
 		//Convert from a non-SQL formated date (modification_date)
@@ -439,8 +451,9 @@ class BdsModelProduct extends BdsClassModelItem
 			unset($data['created_by']);
 
 		//Secure the published tag if not allowed to change
-		if (isset($data['published']) && !$acl->get('core.edit.state'))
-			unset($data['published']);
+		//if (isset($data['published']) && !$acl->get('core.edit.state'))
+		//	unset($data['published']);
+        $data['published'] = 0; 
 
 		if (parent::save($data)) {
 			return true;

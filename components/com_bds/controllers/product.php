@@ -195,39 +195,12 @@ class BdsControllerProduct extends BdsClassControllerItem
 		//Define the redirections
 		switch($this->getLayout() .'.'. $this->getTask())
 		{
-			case 'product.save':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_bds.products.default'
-				), array(
-					'cid[]' => null
-				));
-				break;
-
-			case 'product.apply':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_bds.product.post'
-				), array(
-					'cid[]' => $model->getState('product.id')
-				));
-				break;
-
 			case 'post.save':
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_bds.products.default'
 				), array(
 					'cid[]' => null
-				));
-				break;
-
-			case 'post.apply':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_bds.product.post'
-				), array(
-					'cid[]' => $model->getState('product.id')
 				));
 				break;
 

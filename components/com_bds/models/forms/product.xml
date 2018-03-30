@@ -9,7 +9,8 @@
 				alias="title"
 				label="Tiêu đề"
 				filter="STRING"
-				type="cktext"
+				type="text"
+                hint="Tóm tắt ngắn gọn nội dung, dùng Tiếng Việt có dấu"
 				required="true"
 				class="validate[required]"/>
 
@@ -56,9 +57,7 @@
 				labelKey="text"
 				type="enum"
 				nullLabel="BDS_JSEARCH_SELECT_WHO"
-				enum="products_who"
-				required="true"
-				class="validate[required]"/>
+				enum="products_who"/>
 
 		<field name="main_location"
 				alias="_main_location_title"
@@ -86,16 +85,15 @@
 				alias="gallery"
 				label="Đăng hình ảnh"
 				filter="STRING"
-				type="cktextarea"
-				required="true"
-				class="validate[required]"/>
+				type="textarea"/>
 
 		<field name="price"
 				alias="price"
-				label="Giá"
+				label="Giá (đồng)"
 				filter="INT"
 				type="text"
-                hint="Nhỏ nhất 500.000đ - Lớn nhất: 500.000.000.000đ"
+                maxlength="12"
+                hint="Giá không quá 1.000.000.000.000đ"
 				validate="numeric"
 				ruleInstance="numeric_6385"
 				required="true"
@@ -116,21 +114,24 @@
 		<field name="description"
 				alias="description"
 				label="Mô tả chi tiết"
+                hint='Bổ sung đầy đủ thông tin bất động sản (địa chỉ, diện tích, giá cả). Vui lòng nhập Tiếng Việt có dấu.'
 				filter="RAW"
-				type="ckeditor"/>
+				type="textarea"/>
 
 		<field name="address"
 				alias="address"
 				label="Địa chỉ"
+                hint="Số nhà, Đường, Phường, Quận/Huyện, Tỉnh/Thành"
 				filter="STRING"
-				type="cktext"/>
+				type="text"/>
 
 		<field name="acreage"
 				alias="acreage"
-				label="Diện tích"
+				label="Diện tích (m2)"
 				filter="INT"
 				type="text"
-                hint="Diện tích không quá 10000 m2"
+                maxlength="4"
+                hint="Diện tích không quá 10.000 m2"
 				validate="numeric"
 				ruleInstance="numeric_2524"
 				required="true"
@@ -138,19 +139,21 @@
 
 		<field name="behind"
 				alias="behind"
-				label="Nở hậu"
+				label="Nở hậu (m)"
                 hint="Nở hậu không quá 100 m"
 				filter="INT"
 				type="text"
+                maxlength="2"
 				validate="numeric"
 				ruleInstance="numeric_1765"
 				class="validate[custom[numeric_1765]]"/>
                 
         <field name="alley"
 				alias="alley"
-				label="Hẻm"
+				label="Hẻm (m)"
                 hint="Hẻm không quá 100 m"
 				filter="INT"
+                maxlength="2"
 				type="text"
 				validate="numeric"
 				ruleInstance="numeric_1765"
@@ -195,6 +198,7 @@
 		<field name="contact_number"
 				alias="contact_number"
 				label="Số điện thoại"
+                hint="Số di động"
 				filter="STRING"
                 readonly="true"
 				type="text"/>
@@ -202,8 +206,9 @@
 		<field name="contact_name"
 				alias="contact_name"
 				label="Họ tên"
+                hint="Người liên hệ "
 				filter="STRING"
-				type="cktext"
+				type="text"
 				required="true"
 				class="validate[required]"/>
 
@@ -211,7 +216,8 @@
 				alias="contact_email"
 				label="Email"
 				filter="STRING"
-				type="cktext"
+				type="text"
+                hint="Email liên hệ "
 				validate="ckemail"
 				required="true"
 				class="validate[required,custom[ckemail]]"/>
@@ -219,8 +225,9 @@
 		<field name="contact_address"
 				alias="contact_address"
 				label="Địa chỉ"
+                hint="Số nhà, Đường, Phường, Quận/Huyện, Tỉnh/Thành"
 				filter="STRING"
-				type="cktext"/>
+				type="text"/>
 
 		<field name="published"
 				alias="published"

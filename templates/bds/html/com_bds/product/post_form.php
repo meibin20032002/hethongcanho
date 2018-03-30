@@ -369,6 +369,7 @@ $fieldSets = $this->form->getFieldsets();
 	<?php
 	// Contact Number
 	$field = $fieldSet['jform_contact_number'];
+    $user = JFactory::getUser();
 	?>
 	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
@@ -376,7 +377,7 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 
 	    <div class="controls">
-			<?php echo $field->input; ?>
+			<input type="text" name="jform[contact_number]" id="jform_contact_number" value="<?php echo $user->get('username')?>" readonly="" placeholder="Số di động"/>
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
@@ -393,7 +394,7 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 
 	    <div class="controls">
-			<?php echo $field->input; ?>
+			<input type="text" name="jform[contact_name]" id="jform_contact_name" value="<?php echo $user->get('name')?>" class="validate[required] required" placeholder="Người liên hệ " required="" aria-required="true"/>
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
@@ -410,7 +411,7 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 
 	    <div class="controls">
-			<?php echo $field->input; ?>
+			<input type="text" name="jform[contact_email]" id="jform_contact_email" value="<?php echo $user->get('email')?>" class="validate[required,custom[ckemail]] required" placeholder="Email liên hệ " required="" aria-required="true"/>
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
