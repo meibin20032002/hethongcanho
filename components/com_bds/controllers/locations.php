@@ -83,7 +83,27 @@ class BdsControllerLocations extends BdsClassControllerList
 		return $jinput->get('layout', 'default', 'CMD');
 	}
 
+    public function subLocations()
+	{
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        $main_location = JRequest::getInt('id');
+        
+        $model = CkJModel::getInstance('locations', 'BdsModel');
+        if($main_location)
+            $model->addWhere('a.sub_location = '.$main_location);
+		$model->set('context', $model->get('context'));
+		$list = $model->getItems();
+        
+        $html = '<option value="" selected="selected">Chọn Quận/Huyện</option>';
+        if($list){
+            foreach($list as $row){
+                $html .= '<option value="'.$row->id.'">'.$row->title.'</option>';
+            }
+        }
 
+		echo $html;
+		exit();
+	}
 }
 
 

@@ -170,6 +170,7 @@ if (is_object($menu))
     <script>
         new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'));
     </script>
+    <div class="overlayUpload"><span class="loading"></span></div>
     <?php echo $params->get('before_body') ?>
 </body>
 </html>

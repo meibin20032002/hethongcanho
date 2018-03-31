@@ -1166,25 +1166,17 @@ sup{
 /*---post ----*/
 .uploadPhotoButton,
 .takePhotoButton{
-  display: block;
-  background: url(../images/icon-upload.png) no-repeat 15px 10px #2a77f4;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-  float: left;
-  text-transform: uppercase;
-  color: #fff;
-  padding: 0 19px 0 43px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    text-align: center;
+    color: #fff;
+    padding: 2px 15px;
 }
 .takePhotoButton{
   background: url(../images/icon-camera.png) no-repeat 15px 10px #2a77f4;
   margin-right: 15px;
 }
-.uploadPhotoButton:hover,
-.takePhotoButton:hover{
-  color: #fff;
-}
-
 #popupCamera{
   position: fixed;
   top: 0;
@@ -1233,23 +1225,25 @@ sup{
   opacity: 1;
   z-index: 1001;
 }
+/*---imgListPolicy ----*/
 .uploadButton input{
   display: none;
 }
-.downLoad{
-    display: inline-block;
-    color: #fff;
+#listImg{
+    padding: 0;
+}
+.imgListPolicy{
+    float: left;
 }
 .imgListPolicy li{
   width: 108px;
-  height: 75px;
+  height: 76px;
   border: 1px solid #acacac;
   background-size: cover;
   position: relative;
   display: inline-block;
   background-color: #fff;
-  margin-right: 17px;
-  margin-top: 30px;
+  margin-right: 15px;
 }
 .imgListPolicy li a.imgUploadView{
   display: block;
@@ -1266,6 +1260,39 @@ sup{
   right: -8px;
   top: -8px;
   cursor: pointer;
+}
+.camera-add-image {
+    color: #ebebeb;
+    font-size: 70px;
+}
+.plus-add-image {
+    position: absolute;
+    top: -22px;
+    left: 27px;
+    font-size: 25px;
+    color: #5bc3e9;
+}
+.overlayUpload{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 10000;
+  background: url('../images/fancybox_overlay.png');
+  display: none;
+}
+.loading{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+	height: 44px;
+  margin: -22px 0 0 -22px;
+  border-radius: 5px;
+  display: block;
+	background: #000 url('../images/fancybox_loading.gif') center center no-repeat;
 }
 /*---projects ----*/
 .show-phone{

@@ -60,6 +60,23 @@ jQuery(document).ready(function ($) {
     $('#jform_acreage').number( true, 0);
     $('#jform_behind').number( true, 0);
     $('#jform_alley').number( true, 0);
+    
+    $('#jform_main_location').on('change', function() {
+        jQuery('.overlayUpload').show();
+        var id = jQuery(this).val();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=locations.subLocations&<?php echo JSession::getFormToken()?>=1',
+            data : {id : id},
+            type: "POST",
+            dataType: 'html',
+            success: function(data){
+                $('#jform_sub_location').html(data);
+                $('#jform_sub_location').trigger('liszt:updated');
+                jQuery('.overlayUpload').hide();
+            }
+        });
+    });
+
 });
        
 var arrImageUpload = {};
@@ -69,8 +86,9 @@ function handleFileSelect(evt) {
 
 	// Loop through the FileList and render image files as thumbnails.
 	for (var i = 0, f; f = files[i]; i++) {
-		if(i >= 6){
-			createPopup('You’ve exceeded the maximum files for each policy. <br />Do reach us if you require further assistance. ');
+		if(i > 5){
+			alert('Hình ảnh không quá 6 tấm');
+            jQuery('.overlayUpload').hide();
 			break;
 		}
 
@@ -83,8 +101,9 @@ function handleFileSelect(evt) {
 
 				jQuery('.overlayUpload').show();
 				var count = jQuery('#listImg li').length;
-				if(count >= 6){
-					createPopup('You’ve exceeded the maximum files for each policy. <br />Do reach us if you require further assistance. ');
+				if(count > 5){
+					alert('Hình ảnh không quá 6 tấm');
+                    jQuery('.overlayUpload').hide();
 					return false;
 				}
 

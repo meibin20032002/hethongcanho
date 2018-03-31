@@ -146,37 +146,41 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 
 	    <div class="controls">
-			<div class="uploadButton">
-				<a href="#" class="uploadPhotoButton">Upload Images</a>
+    		<div class="imgListPolicy">
+    			<ul id="listImg">
+                    <?php 
+                    $gallery = $this->model->listTemp();
+                    if($gallery):
+                    $patfile = '';
+                    foreach($gallery as $row):
+                    if (file_exists(JPATH_ROOT.DS.$row->upload)) {
+                        $patfile = JUri::root().$row->upload;
+                        ?>
+        				<li>
+                            <span class="deleteImg" data-value="1" data-name="<?php echo $row->key?>"></span>
+        					<a class="imgUploadView" href="<?php echo JUri::root().$row->upload?>">
+                                <img src="<?php echo $patfile?>" width="100%" height="100%" alt="<?php echo $row->upload?>"/>                    
+                            </a>
+                            <input type="hidden" name="jform[edit][]" value="<?php echo $row->upload?>"/>
+        				</li>
+    			         <?php
+                        }
+                    endforeach;
+                    endif; 
+                    ?>
+                </ul>
+    		</div>
+            
+            <div class="uploadButton">
+				<a href="#" class="uploadPhotoButton">
+                    <span style="position:relative; cursor:pointer"> 
+                        <i class="fa fa-camera camera-add-image"></i>
+                        <i class="fa fa-plus-circle plus-add-image"></i>
+                    </span>
+                </a>
 				<input type="file" id="files" name="file[]" multiple="" accept=".doc, .docx, .xls, .xlsx, image/*, application/msword, application/msexcel, application/pdf"/>
 			</div>
-		</div>
-        
-        <div class="clearfix"></div>
-		<div class="control-group imgListPolicy">
-			<ul id="listImg">
-                <?php 
-                $gallery = $this->model->listTemp();
-                if($gallery):
-                $patfile = '';
-                foreach($gallery as $row):
-                if (file_exists(JPATH_ROOT.DS.$row->upload)) {
-                    $patfile = JUri::root().$row->upload;
-                    ?>
-    				<li>
-                        <span class="deleteImg" data-value="1" data-name="<?php echo $row->key?>"></span>
-    					<a class="imgUploadView" href="<?php echo JUri::root().$row->upload?>">
-                            <img src="<?php echo $patfile?>" width="100%" height="100%" alt="<?php echo $row->upload?>"/>                    
-                        </a>
-                        <input type="hidden" name="jform[edit][]" value="<?php echo $row->upload?>"/>
-    				</li>
-			         <?php
-                    }
-                endforeach;
-                endif; 
-                ?>
-            </ul>
-		</div>
+        </div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 

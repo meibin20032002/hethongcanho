@@ -68,6 +68,7 @@
 				type="ckcombo"
 				nullLabel="Chọn Tỉnh/Thành"
 				required="true"
+                default="79"
 				class="validate[required]"/>
                 
         <field name="sub_location"
