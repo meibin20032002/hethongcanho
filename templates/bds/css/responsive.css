@@ -9,15 +9,17 @@
     }
     .navbar-toggle {
         display: block;
+        margin-right: 5px;
+        padding: 5px 10px;
     }
     .navbar-toggle span {
-        background: #fc7d07;
+        background: #fff;
     }
     .mp-menu h2 i{
         padding-right: 10px;
     }
 
-    .navbar-header{
+    .navbar-menu{
 		position: absolute;
 		top: 0;
         right: 0;
@@ -33,6 +35,20 @@
     }
     .box-heading h2{
         font-size: 24px;
+    }
+    #mainmenu{
+        display: none;
+    }
+    /*select*/
+    .toolSearch select{
+        height: 40px;
+        padding: 0 10px;
+        border-radius: 5px;
+        background: white;
+        width: 100%;
+        color: #333;
+        box-shadow: none;
+        border: 1px solid #ddd;
     }
 }
 @media screen and (max-width: 768px) {
@@ -84,6 +100,7 @@
     }
     .infoBox .title{
         font-size: 13px;
+        line-height: 14px;
     }
     .infoBox .fa{
         display: none;

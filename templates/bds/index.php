@@ -109,7 +109,7 @@ if (is_object($menu))
                                         <jdoc:include type="modules" name="mainmenu" style="none" />
                                     </div>                              
                                     
-                                    <div class="navbar-header">
+                                    <div class="navbar-menu">
                                         <button type="button" class="navbar-toggle" id="trigger">
                                             <span class="sr-only">Toggle navigation</span>
                                             <span class="icon-bar"></span>
@@ -149,7 +149,7 @@ if (is_object($menu))
     				<!-- Footer -->
     				<div class="footer" role="contentinfo">
                         <div class="container main-container">
-                            <div class="row infor">
+                            <div class="infor">
                                 <jdoc:include type="modules" name="footer" style="footer" />
                             </div>
                             <div class="copyright">

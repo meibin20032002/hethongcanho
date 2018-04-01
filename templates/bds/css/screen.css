@@ -221,16 +221,13 @@ b, strong, .bold{
 }
 /**------Mega Menu--------**/                       
 #mainmenu{
-    -moz-border-radius-topleft: 10px;
-    -webkit-border-top-left-radius: 10px;
-    background: #fff;
     float: right;
-        height: 49px;
-    -moz-border-radius-bottomright: 10px;
-    -webkit-border-bottom-right-radius: 10px;
 }
 #mainmenu li{
     float: left;
+}
+#mainmenu li a:hover, #mainmenu li.active a{
+    background: #e4b801;
 }
 #js-mainnav.megamenu.blackwhite{
     border: none;
@@ -299,13 +296,12 @@ b, strong, .bold{
     top: 0;
     width: 100%;
     z-index: 201;
-    background:#11a716c7;
-    padding: 10px 0;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
+    background:#ffba00;
+    padding: 0;
 }
 .desktop{
-    padding: 10px 0;
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
+    background:#ffba00;
+    padding: 0;
 }
 .logo{
     float: left;
@@ -1507,7 +1503,7 @@ sup{
 /*------footer----------*/
 .footer {
     position: relative;
-    background: #019B43;
+    background: #045F96;
     padding: 0;
     color: #fff;
     padding: 20px 0 10px 0;
@@ -1535,7 +1531,7 @@ sup{
 /*-----menu-copyright--*/
 .copyright{
     padding-top: 20px;
-    border-top: 1px solid #2BAD63;
+    border-top: 1px solid #ccc;
 }
 .copyright .custom{
     text-align: right;

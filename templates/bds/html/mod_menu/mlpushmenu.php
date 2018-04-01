@@ -50,11 +50,11 @@ defined('_JEXEC') or die;
 							case 'heading':
 							case 'url':
 							case 'component':
-								require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+								require JModuleHelper::getLayoutPath('mod_menu', 'headermenu_heading');
 								break;
 
 							default:
-								require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+								require JModuleHelper::getLayoutPath('mod_menu', 'headermenu_heading');
 								break;
 						endswitch;
 					}else {
