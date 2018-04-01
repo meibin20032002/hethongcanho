@@ -53,8 +53,15 @@ class BdsViewProduct extends BdsClassView
 		$user = JFactory::getUser();
         $app  = JFactory::getApplication();
         if ($user->get('guest') == 1) {
-            $app->redirect(JRoute::_('index.php?option=com_users&view=login&Itemid=122&return=' . base64_encode(JUri::current()), false));
-            return;
+            $msg = 'Bạn phải đăng nhập để được đăng tin';
+            $link = JRoute::_('index.php?option=com_users&view=login&Itemid=122&return=' . base64_encode(JUri::current()), false);
+            $app->redirect($link, $msg);
+        }
+        
+        if(BdsHelper::checkPhone($user->username) == false){
+            $msg = 'Bạn phải nhập số điện thoại';
+            $link = JRoute::_('index.php?option=com_users&view=profile&layout=edit&Itemid=134', false);
+            $app->redirect($link, $msg);
         }
         // Initialiase variables.
 		$this->model	= $model	= $this->getModel();

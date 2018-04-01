@@ -656,6 +656,13 @@ class BdsHelper
         }
         
     }
+    
+    public static function checkPhone($contact_number){
+        if (preg_match("/^(84|0)(1\d{9}|9\d{8})$/", $contact_number)) { 
+            return true;
+        }  
+        return false;
+    }
 }
 
 
