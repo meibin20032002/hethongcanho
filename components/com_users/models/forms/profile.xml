@@ -10,8 +10,8 @@
 		<field
 			name="name"
 			type="text"
+            label="COM_USERS_PROFILE_NAME_LABEL"
 			hint="COM_USERS_PROFILE_NAME_LABEL"
-			description="COM_USERS_PROFILE_NAME_DESC"
 			filter="string"
 			required="true"
 			size="30"
@@ -20,8 +20,8 @@
 		<field
 			name="username"
 			type="text"
+            label="COM_USERS_PROFILE_USERNAME_LABEL"
 			hint="COM_USERS_PROFILE_USERNAME_LABEL"
-			description="COM_USERS_DESIRED_USERNAME"
 			class="validate-username"
 			filter="username"
 			message="COM_USERS_PROFILE_USERNAME_MESSAGE"
@@ -33,8 +33,8 @@
 		<field
 			name="password1"
 			type="password"
+            label="COM_USERS_PROFILE_PASSWORD1_LABEL"
 			hint="COM_USERS_PROFILE_PASSWORD1_LABEL"
-			description="COM_USERS_DESIRED_PASSWORD"
 			autocomplete="off"
 			class="validate-password"
 			filter="raw"
@@ -45,8 +45,8 @@
 		<field
 			name="password2"
 			type="password"
+            label="COM_USERS_PROFILE_PASSWORD2_LABEL"
 			hint="COM_USERS_PROFILE_PASSWORD2_LABEL"
-			description="COM_USERS_PROFILE_PASSWORD2_DESC"
 			autocomplete="off"
 			class="validate-password"
 			field="password1"
@@ -59,8 +59,8 @@
 		<field
 			name="email1"
 			type="email"
-			hint="COM_USERS_PROFILE_EMAIL1_LABEL"
-			description="COM_USERS_PROFILE_EMAIL1_DESC"
+			label="COM_USERS_PROFILE_EMAIL1_LABEL"
+            hint="COM_USERS_PROFILE_EMAIL1_LABEL"
 			filter="string"
 			message="COM_USERS_PROFILE_EMAIL1_MESSAGE"
 			required="true"
@@ -73,8 +73,8 @@
 		<field
 			name="email2"
 			type="email"
+            label="COM_USERS_PROFILE_EMAIL2_LABEL"
 			hint="COM_USERS_PROFILE_EMAIL2_LABEL"
-			description="COM_USERS_PROFILE_EMAIL2_DESC"
 			field="email1"
 			filter="string"
 			message="COM_USERS_PROFILE_EMAIL2_MESSAGE"

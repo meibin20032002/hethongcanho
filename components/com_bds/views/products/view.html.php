@@ -72,7 +72,7 @@ class BdsViewProducts extends BdsClassView
 		$this->lists = &$lists;
 
 		// Define the title
-		$this->_prepareDocument(JText::_('BDS_LAYOUT_PRODUCTS'));
+		//$this->_prepareDocument(JText::_('BDS_LAYOUT_PRODUCTS'));
 
 		
 

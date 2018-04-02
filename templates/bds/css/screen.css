@@ -226,6 +226,9 @@ b, strong, .bold{
 #mainmenu li{
     float: left;
 }
+#mainmenu li a{
+    padding: 13px 15px;
+}
 #mainmenu li a:hover, #mainmenu li.active a{
     background: #e4b801;
 }
@@ -360,6 +363,18 @@ b, strong, .bold{
 	height: 40px;
 	margin: 0 0 15px 0;
 	padding: 10px 10px 10px 40px;
+	width: 100%;	
+	color: #272c59;
+	font-family: 'robotoregular';
+    font-size: 15px;
+    border: 1px solid #cacaca;
+}
+.login select{
+	border: none;
+	border-radius: 0px;
+	height: 40px;
+	margin: 0 0 15px 0;
+	padding: 10px;
 	width: 100%;	
 	color: #272c59;
 	font-family: 'robotoregular';
@@ -623,13 +638,13 @@ b, strong, .bold{
 .form-subscribe textarea, .form-subscribe select, .form-subscribe input {
     width: 100%;
     border: 1px solid #ddd;
-    padding: 15px;
+    padding: 0 15px;
     box-shadow: none;
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 14px;
     height: 40px;
-    color: #FC7D07;
+    color: #333;
     font-weight: 400;
 }
 textarea:focus,select:focus, input:focus,
@@ -1250,10 +1265,10 @@ sup{
 .imgListPolicy li span{
   display: block;
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 30px;
+  height: 30px;
   background: url(../images/icon-remove.png) no-repeat 0 0;
-  right: -8px;
+  right: -15px;
   top: -8px;
   cursor: pointer;
 }
@@ -1519,7 +1534,11 @@ sup{
     text-transform: uppercase;
 }
 .footer ul{
-    margin-bottom: 25px;
+    margin-bottom: 0;
+}
+.footer .infor{
+    display: inline-block;
+    width: 100%;
 }
 .social-icon p{
     margin: 0 0 5px;

@@ -329,46 +329,46 @@ class BdsHelperEnum
                 return array(
                     '5' => array(
         				'value' => '5',
-        				'text' => '0 - 5triệu'
+        				'text' => '0 - 5 triệu'
         			),
         			'10' => array(
         				'value' => '10',
-        				'text' => '5triệu - 10triệu'
+        				'text' => '5 triệu - 10 triệu'
         			),
         			'20' => array(
         				'value' => '20',
-        				'text' => '10triệu - 20triệu'
+        				'text' => '10 triệu - 20 triệu'
         			),
                     '50' => array(
         				'value' => '50',
-        				'text' => '20triệu - 50triệu'
+        				'text' => '20 triệu - 50 triệu'
         			),
         			'30000' => array(
         				'value' => '30000',
-        				'text' => '> 50triệu'
+        				'text' => '> 50 triệu'
         			)
         		);
             }
-        }else{
-            return array(
-    			'3000' => array(
-    				'value' => '3000',
-    				'text' => '0 - 3tỷ'
-    			),
-    			'7000' => array(
-    				'value' => '7000',
-    				'text' => '3tỷ - 7tỷ'
-    			),
-    			'12000' => array(
-    				'value' => '12000',
-    				'text' => '7tỷ - 12tỷ'
-    			),
-                '30000' => array(
-    				'value' => '30000',
-    				'text' => '> 12tỷ'
-    			)
-    		);
         }
+        
+        return array(
+			'3000' => array(
+				'value' => '3000',
+				'text' => '0 - 3 tỷ'
+			),
+			'7000' => array(
+				'value' => '7000',
+				'text' => '3 tỷ - 7 tỷ'
+			),
+			'12000' => array(
+				'value' => '12000',
+				'text' => '7 tỷ - 12 tỷ'
+			),
+            '30000' => array(
+				'value' => '30000',
+				'text' => '> 12 tỷ'
+			)
+		);
         
 	}
 

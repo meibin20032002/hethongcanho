@@ -63,7 +63,7 @@ class BdsViewProjects extends BdsClassView
 		$this->lists = &$lists;
 
 		// Define the title
-		$this->_prepareDocument(JText::_('BDS_LAYOUT_PROJECTS'));
+		//$this->_prepareDocument(JText::_('BDS_LAYOUT_PROJECTS'));
 
 		
 

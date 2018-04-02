@@ -41,6 +41,10 @@ JHtml::_('behavior.formvalidator');
                         <?php if ($field->type != 'Spacer') : ?>
                         <div class="col-md-6">                    
     						<div class="control-group">
+                                <div class="control-label">
+									<?php echo $field->label; ?>
+								</div>
+                                
     							<div class="controls">
     								<?php echo $field->input;?>
     							</div>

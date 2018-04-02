@@ -8,14 +8,22 @@
 			<field
 				name="address1"
 				type="text"
-                label="PLG_USER_PROFILE_FIELD_ADDRESS1_LABEL"
-				hint="PLG_USER_PROFILE_FIELD_ADDRESS1_LABEL"
-				description="PLG_USER_PROFILE_FIELD_ADDRESS1_DESC"
+                label="Địa chỉ:"
+				hint="Địa chỉ:"
 				id="address1"
 				filter="string"
 				size="30"
 			/>
-
+            
+            <field
+				name="who"
+				type="list"
+				label="Bạn là ai:">
+                <option value="p">Cá nhân</option>
+				<option value="c">Công ty</option>
+				<option value="e">Môi giới</option>
+            </field>
+            
 			<field
 				name="address2"
 				type="text"
