@@ -68,7 +68,8 @@ JDom::_('framework.sortablelist', array(
                 </div>
                 
                 <div class="iconAvatar">
-                    <?php echo BdsHelper::iconAvatarWho($item)?>
+                    <span class="nameAvatar"><?php echo $item->_created_by_name ?></span>
+                    <img class="imgAvatar" src="<?php echo BdsHelper::iconAvatar($item->created_by)?>" alt="private"/>
                 </div>
             </div> 
         </a>

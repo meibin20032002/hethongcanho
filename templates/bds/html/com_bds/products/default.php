@@ -48,6 +48,13 @@ $inputCookie->set($name = 'myCookie', $value = '123', $expire = 0);
 // Remove cookie
 $inputCookie->set('myCookie', null, time() - 1);
 ?>
+<?php 
+	$document	= JFactory::getDocument();
+	$renderer	= $document->loadRenderer('modules');
+	$options	= array('style' => 'xhtml');
+	$position	= 'products';
+	echo $renderer->render($position, $options, null);
+?>
 <br />
 <div class="grid-products">
     <form action="<?php echo(JRoute::_("index.php")); ?>" method="post" name="adminForm" id="adminForm">

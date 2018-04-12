@@ -59,8 +59,8 @@ JDom::_('framework.sortablelist', array(
             
             <div class="infoBox">
                 <h4 class="title"><?php echo $item->title?></h4>        
-                <div class="price"><i class="fa fa-tag"></i><span class="lab">Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
-                <div class="acreage"> Diện tích: </span><?php echo BdsHelper::acreageFormat($item->acreage)?></div>
+                <div class="price"><span class="lab"><i class="fa fa-tag"></i>Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
+                <div class="acreage"><span class="lab"><i class="fa fa-home"></i>Diện tích: </span><?php echo BdsHelper::acreageFormat($item->acreage)?></div>
             </div>
         </a>
         
@@ -76,7 +76,8 @@ JDom::_('framework.sortablelist', array(
             </div>
             
             <div class="iconAvatar">
-                <?php echo BdsHelper::iconAvatarWho($item)?>
+                <span class="nameAvatar"><?php echo $item->_created_by_name ?></span>
+                <img class="imgAvatar" src="<?php echo BdsHelper::iconAvatar($item->created_by)?>" alt="private"/>
             </div>
         </div> 
     </li>  

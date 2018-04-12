@@ -19,7 +19,7 @@ class plgSlogin_authFacebook extends JPlugin
     {
         $redirect = JURI::base().'?option=com_slogin&task=check&plugin=facebook';
 
-        $scope = 'email,user_photos,user_about_me,user_hometown,public_profile,user_birthday';
+        $scope = 'email,user_photos,user_hometown,public_profile,user_birthday';
 
         if($this->params->get('repost_comments', 0))
         {

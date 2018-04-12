@@ -67,7 +67,7 @@ $user = JFactory::getUser($this->item->created_by);
                         <span class="create-date">Tin 
                             <?php 
                             $who = BdsHelperEnum::_('products_who');
-                            echo $who[$this->item->who]['text']?> đăng <?php echo JHtml::date($this->item->creation_date, 'd-m-Y H:i')?>,
+                            if(isset($who[$this->item->who]['text'])) echo $who[$this->item->who]['text']?> đăng <?php echo JHtml::date($this->item->creation_date, 'd-m-Y H:i')?>,
                             <a target="_blank" href="#" class="">được duyệt bởi <?php echo $this->item->_modified_by_name ?></a>
                         </span>
                         <div class="img-thumbnail img-circle no-border">
@@ -124,7 +124,7 @@ $user = JFactory::getUser($this->item->created_by);
                 <div class="note">
                     <i>Chúng tôi kiểm duyệt toàn bộ tin trước khi đăng để việc mua bán an toàn & hiệu quả hơn. Tuy nhiên, quá trình duyệt tin chỉ có thể hạn chế tối đa các trường hợp không trung thực. Hãy báo cho chúng tôi những tin xấu để chúng tôi có thể xác minh & xây dựng trang web mua bán an toàn nhất cho người Việt.</i>
                 </div>
-                
+                <?php echo $this->loadTemplate('fly'); ?>
     		</div>
             
             
@@ -162,6 +162,8 @@ $user = JFactory::getUser($this->item->created_by);
                 <h6 class="text-left"><strong>MUA HÀNG AN TOÀN</strong></h6>
                 <ul class="text-justify"><li><em>KHÔNG trả tiền trước khi nhận hàng.</em></li><li><em>Kiểm tra hàng cẩn thận, đặc biệt với hàng đắt tiền.</em></li><li><em>Hẹn gặp ở nơi công cộng.</em></li><li><em>Nếu bạn mua hàng hiệu, hãy gặp mặt tại cửa hàng để nhờ xác minh, tránh mua phải hàng giả.</em></li></ul>
                 <p class="text-left"><em>Tìm hiểu thêm về <a href="#">an toàn mua bán</a>.</em></p>
+                
+                
             </div>
     	</div>
     

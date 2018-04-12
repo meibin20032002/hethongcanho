@@ -208,7 +208,13 @@ class BdsViewProduct extends BdsClassView
 		if (!$isNew && $model->canEditState($item) && ($item->published != 2))
 			JToolBarHelper::custom('products.archive', 'archive', 'archive',  "BDS_JTOOLBAR_ARCHIVE", false);
 
-
+        //
+        $modelProducts = CkJModel::getInstance('Products', 'BdsModel');
+		$modelProducts->addWhere('a.main_location = '.$item->main_location);
+        $modelProducts->addWhere('a.sub_location = '.$item->sub_location);
+        $modelProducts->setState('context', 'layout.default');
+        $modelProducts->setState('list.limit', 5);
+		$this->related = $modelProducts->getItems();
 
 		$this->toolbar = JToolbar::getInstance();
 

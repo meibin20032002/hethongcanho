@@ -69,7 +69,10 @@ JDom::_('framework.sortablelist', array(
         
         <div class="col-xs-6">
             <h4 class="title"><?php echo $item->title?></h4>
-            <div class="handing_over">Năm bàn giao: <?php echo JHtml::date($item->handing_over, 'Y') ?></div> 
+            <div class="handing_over">
+                Năm bàn giao: <?php echo JHtml::date($item->handing_over, 'Y') ?><br />
+                Chủ đầu tư: <?php echo $item->investor ?>
+            </div> 
             <?php if($item->_main_location_title):?>
             <div class="areaName"> 
                 <?php if($item->_sub_location_title) echo $item->_sub_location_title.', ' ?>

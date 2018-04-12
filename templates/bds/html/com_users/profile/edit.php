@@ -46,6 +46,9 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
 				<?php else : ?>
                     <div class="col-md-6">   
     					<div class="control-group">
+                            <div class="control-label">
+								<?php echo $field->label; ?>
+							</div>
     						<div class="controls">
     							<?php if ($field->fieldname == 'password1') : ?>
     								<?php // Disables autocomplete ?> <input type="password" style="display:none">

@@ -191,6 +191,7 @@ class BdsModelProjects extends BdsClassModelList
 					'created_by.name',
 					'creation_date',
 					'gallery',
+                    'investor',
 					'handing_over',
 					'main_location',
 					'main_location.title',

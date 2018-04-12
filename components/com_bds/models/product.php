@@ -436,7 +436,10 @@ class BdsModelProduct extends BdsClassModelItem
             }
             $data['gallery'] = json_encode($upload);
         }
-        $data['who'] = 'p';    
+        //
+        $user = JFactory::getUser();
+        $userProfile = JUserHelper::getProfile( $user->id );
+        $data['who'] = $userProfile->profile['who'];    
         $data['contact_number'] = JFactory::getUser()->get('username');
         //Convert from a non-SQL formated date (creation_date)
 		$data['creation_date'] = BdsHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');

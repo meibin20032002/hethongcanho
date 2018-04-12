@@ -632,16 +632,6 @@ class BdsHelper
 
 		return false;
 	}
-
-    public static function iconAvatarWho($item){
-        if($item->who == 'p'){
-            $html = '<span class="nameAvatar">'.$item->_created_by_name.'</span><img class="imgAvatar" src="'.self::iconAvatar($item->created_by).'" alt="private">';
-        }else{
-            $who = BdsHelperEnum::_('products_who');
-            $html = '<span class="nameAvatar">'.$who[$item->who]['text'].'</span><img class="imgAvatar" src="images/icon/moi-gioi.png" alt="private">';
-        }
-        return $html;
-    }
     
     public static function acreageFormat($value){
         return $value .'m<sup>2</sup>';

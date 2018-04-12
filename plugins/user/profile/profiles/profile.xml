@@ -21,7 +21,6 @@
 				label="Bạn là ai:">
                 <option value="p">Cá nhân</option>
 				<option value="c">Công ty</option>
-				<option value="e">Môi giới</option>
             </field>
             
 			<field

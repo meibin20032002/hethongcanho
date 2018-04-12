@@ -19,346 +19,47 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access');
-$gallery =  json_decode($this->item->gallery);
 ?>
-<h1><?php echo $this->item->title ?></h1>
-<p class="title"><?php echo $this->item->address?></p>
-
-
-
-<fieldset class="fieldsfly fly-horizontal">
-
-	<div class="control-group field-title">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_TITLE" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'title',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-_category_id_title">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CATEGORY" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => '_category_id_title',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-types">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_TYPES" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.enum', array(
-				'dataKey' => 'types',
-				'dataObject' => $this->item,
-				'labelKey' => 'text',
-				'list' => BdsHelperEnum::_('products_types'),
-				'listKey' => 'value'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-who">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_WHO" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.enum', array(
-				'dataKey' => 'who',
-				'dataObject' => $this->item,
-				'labelKey' => 'text',
-				'list' => BdsHelperEnum::_('products_who'),
-				'listKey' => 'value'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-_main_location_title">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_MAIN_LOCATION" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => '_main_location_title',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-    <div class="control-group field-_sub_location_title">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_SUB_LOCATION" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => '_sub_location_title',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-
-	<div class="control-group field-price">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_PRICE" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.int', array(
-				'dataKey' => 'price',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-bedrooms">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_BEDROOMS" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.enum', array(
-				'dataKey' => 'bedrooms',
-				'dataObject' => $this->item,
-				'labelKey' => 'text',
-				'list' => BdsHelperEnum::_('products_bedrooms'),
-				'listKey' => 'value'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-description">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_DESCRIPTION" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'description',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-address">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_ADDRESS" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'address',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-acreage">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_ACREAGE" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.int', array(
-				'dataKey' => 'acreage',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-behind">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_BEHIND" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.int', array(
-				'dataKey' => 'behind',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-direction">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_DIRECTION" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.enum', array(
-				'dataKey' => 'direction',
-				'dataObject' => $this->item,
-				'labelKey' => 'text',
-				'list' => BdsHelperEnum::_('products_direction'),
-				'listKey' => 'value'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-legal_documents">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_LEGAL_DOCUMENTS" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.enum', array(
-				'dataKey' => 'legal_documents',
-				'dataObject' => $this->item,
-				'labelKey' => 'text',
-				'list' => BdsHelperEnum::_('products_legal_documents'),
-				'listKey' => 'value'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-characteristics">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CHARACTERISTICS" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.enum', array(
-				'dataKey' => 'characteristics',
-				'dataObject' => $this->item,
-				'labelKey' => 'text',
-				'list' => BdsHelperEnum::_('products_characteristics'),
-				'listKey' => 'value'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-shipping_payment">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_SHIPPING_PAYMENT" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'shipping_payment',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-contact_number">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CONTACT_NUMBER" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'contact_number',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-contact_name">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CONTACT_NAME" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'contact_name',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-contact_email">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CONTACT_EMAIL" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'contact_email',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-contact_address">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CONTACT_ADDRESS" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => 'contact_address',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-ordering">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_ORDERING" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.int', array(
-				'dataKey' => 'ordering',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-published">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_PUBLISHED" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.publish', array(
-				'dataKey' => 'published',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-_created_by_name">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CREATED_BY" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => '_created_by_name',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-_modified_by_name">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_MODIFIED_BY" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly', array(
-				'dataKey' => '_modified_by_name',
-				'dataObject' => $this->item
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-creation_date">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_CREATION_DATE" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.datetime', array(
-				'dataKey' => 'creation_date',
-				'dataObject' => $this->item,
-				'dateFormat' => 'Y-m-d H:i'
-			));?>
-		</div>
-    </div>
-	<div class="control-group field-modification_date">
-    	<div class="control-label">
-			<label><?php echo JText::_( "BDS_FIELD_MODIFICATION_DATE" ); ?></label>
-		</div>
-		
-        <div class="controls">
-			<?php echo JDom::_('html.fly.datetime', array(
-				'dataKey' => 'modification_date',
-				'dataObject' => $this->item,
-				'dateFormat' => 'Y-m-d H:i'
-			));?>
-		</div>
-    </div>
-</fieldset>
+<div class="clearfix"></div>
+<h4>SẢN PHẨM CÙNG LOẠI</h4>
+<ul class="boxList">
+    <?php foreach($this->related as $item):
+        $gallery =  json_decode($item->gallery, true);
+    ?>
+    <li class="listView">
+        <a href="<?php echo JRoute::_('index.php?option=com_bds&view=product&layout=product&id='.$item->id)?>">
+            <?php if($item->hot):?>
+            <div class="ctRibbonAd">HOT</div>   
+            <?php endif?>             
+            
+            <div class="imageBox">
+                <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
+                <div class="count-image"><?php echo count($gallery)?></div>
+            </div>
+            
+            <div class="infoBox">
+                <h4 class="title"><?php echo $item->title?></h4>        
+                <div class="price"><span class="lab"><i class="fa fa-tag"></i>Giá: </span> <?php echo BdsHelper::currencyFormat($item->price) ?></div>
+                <div class="acreage"><span class="lab"><i class="fa fa-home"></i>Diện tích: </span><?php echo BdsHelper::acreageFormat($item->acreage)?></div>
+            </div>
+        </a>
+        
+        <div class="infoFoot">
+            <div class="creation_date">
+                <?php echo JHtml::date($item->creation_date, 'd/m/Y H:i')?> 
+                <?php if($item->_main_location_title):?>
+                <span class="areaName"> | 
+                    <?php if($item->_sub_location_title) echo $item->_sub_location_title.', ' ?>
+                    <?php echo $item->_main_location_title ?>
+                </span>
+                <?php endif;?>
+            </div>
+            
+            <div class="iconAvatar">
+                <span class="nameAvatar"><?php echo $item->_created_by_name ?></span>
+                <img class="imgAvatar" src="<?php echo BdsHelper::iconAvatar($item->created_by)?>" alt="private"/>
+            </div>
+        </div> 
+    </li>  
+    <?php endforeach;?>
+</ul>

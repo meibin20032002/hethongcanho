@@ -273,10 +273,6 @@ class BdsHelperEnum
 			'c' => array(
 				'value' => 'c',
 				'text' => 'BDS_ENUM_PRODUCTS_WHO_CONG_TY'
-			),
-			'e' => array(
-				'value' => 'e',
-				'text' => 'BDS_ENUM_PRODUCTS_WHO_MOI_GII'
 			)
 		);
 	}
@@ -325,7 +321,7 @@ class BdsHelperEnum
 	{
 		$model = CkJModel::getInstance('products', 'BdsModel');
         if($types = $model->getState('filter.types')){
-            if ($types == 'cho-thue'){
+            if ($types == 'cho-thue' || $types == 'can-thue'){
                 return array(
                     '5' => array(
         				'value' => '5',
