@@ -213,11 +213,13 @@ class BdsModelLocations extends BdsClassModelList
 		{
 			if ($filter_sub_location > 0){
 				$this->addWhere("a.sub_location = " . (int)$filter_sub_location);
-			}
+			}else{
+    		    $this->addWhere("a.sub_location = 0");
+    		}
 		}
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'title');
+		$orderCol = $this->getState('list.ordering', 'ordering');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)
@@ -228,7 +230,21 @@ class BdsModelLocations extends BdsClassModelList
 		$this->applySqlStates($query);
 	}
 
-
+    public function mainLocation() {
+        $db = JFactory::getDBO();
+        $lang = JFactory::getLanguage();
+        
+		$query = "SELECT id, title FROM #__bds_locations WHERE sub_location = 0 ORDER BY ordering ASC";
+		$db->setQuery( $query );
+		$row = $db->loadObjectList();
+        
+        if ($db->getErrorNum()) {
+			JError::raiseError( 500, $db->getErrorMsg() );
+			return false;
+		}
+        
+        return $row;
+    }
 }
 
 

@@ -70,9 +70,8 @@ class BdsViewLocations extends BdsClassView
 		//Filters
 		// Sub Location
 		$modelSub_location = CkJModel::getInstance('locations', 'BdsModel');
-		$modelSub_location->set('context', $model->get('context'));
 		$filters['filter_sub_location']->jdomOptions = array(
-			'list' => $modelSub_location->getItems()
+			'list' => $modelSub_location->mainLocation()
 		);
 
 		// Sort by

@@ -25,7 +25,7 @@ BdsHelper::headerDeclarations();
 //Load the formvalidator scripts requirements.
 JDom::_('html.toolbar');
 ?>
-
+<script src="../templates/bds/js/jquery.number.min.js" type="text/javascript"></script> 
 <script language="javascript" type="text/javascript">
 	//Secure the user navigation on the page, in order preserve datas.
 	var holdForm = true;
@@ -52,3 +52,34 @@ JDom::_('html.toolbar');
 				)));
 	?>
 </form>
+
+<script>
+jQuery(document).ready(function ($) {
+    $('.uploadPhotoButton').bind('click',function(e){
+		$(this).parent().find('input').click();
+		return false;
+	});
+    
+    $('#jform_price').number( true, 0);
+    $('#jform_acreage').number( true, 0);
+    $('#jform_behind').number( true, 0);
+    $('#jform_alley').number( true, 0);
+    
+    $('#jform_main_location').on('change', function() {
+        jQuery('.overlayUpload').show();
+        var id = jQuery(this).val();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=locations.subLocations&<?php echo JSession::getFormToken()?>=1',
+            data : {id : id},
+            type: "POST",
+            dataType: 'html',
+            success: function(data){
+                $('#jform_sub_location').html(data);
+                $('#jform_sub_location').trigger('liszt:updated');
+                jQuery('.overlayUpload').hide();
+            }
+        });
+    });
+
+});
+</script>

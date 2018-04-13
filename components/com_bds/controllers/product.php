@@ -195,16 +195,8 @@ class BdsControllerProduct extends BdsClassControllerItem
 		//Define the redirections
 		switch($this->getLayout() .'.'. $this->getTask())
 		{
-			case 'post.save':
-				$this->applyRedirection($result, array(
-					'stay',
-					'com_bds.products.default'
-				), array(
-					'cid[]' => null
-				));
-				break;
-
 			default:
+                JFactory::getApplication()->enqueueMessage('Xin cảm ơn, Tin sẽ được duyệt 30 sẽ lên');
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_bds.products.default'
@@ -254,7 +246,7 @@ class BdsControllerProduct extends BdsClassControllerItem
                         $result = $model->insertTemp($profile);
                     }
                 }else{
-                    $message = JText::_('You�ve exceeded the allocated space for each policy. 
+                    $message = JText::_('You’ve exceeded the allocated space for each policy. 
                     Simply reduce the content or try saving to a different format. 
                     Do reach us if you require further assistance.');
                 }

@@ -188,7 +188,7 @@ $fieldSets = $this->form->getFieldsets();
 	// Title
 	$field = $fieldSet['jform_title'];
 	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">
 			<?php echo $field->label; ?>
 		</div>
@@ -198,23 +198,8 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-	<?php
-	// Description
-	$field = $fieldSet['jform_description'];
-	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-<?php
+    
+     <?php
 	// Price
 	$field = $fieldSet['jform_price'];
 	?>
@@ -231,6 +216,22 @@ $fieldSets = $this->form->getFieldsets();
 
 
 	<?php
+	// Description
+	$field = $fieldSet['jform_description'];
+	?>
+	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+			<?php echo $field->input; ?>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
+
+	<?php
 	// Acreage
 	$field = $fieldSet['jform_acreage'];
 	?>
@@ -245,21 +246,7 @@ $fieldSets = $this->form->getFieldsets();
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
 
-	<?php
-	// Behind
-	$field = $fieldSet['jform_behind'];
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
 
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    
    	<?php
 	// alley
 	$field = $fieldSet['jform_alley'];
@@ -350,24 +337,6 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Shipping Payment
-	$field = $fieldSet['jform_shipping_payment'];
-	?>
-	<div class="col-md-12 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
 
 
 	<?php

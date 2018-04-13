@@ -137,17 +137,6 @@
 				ruleInstance="numeric_2524"
 				required="true"
 				class="validate[required,custom[numeric_2524]]"/>
-
-		<field name="behind"
-				alias="behind"
-				label="Nở hậu (m)"
-                hint="Nở hậu không quá 100 m"
-				filter="INT"
-				type="text"
-                maxlength="2"
-				validate="numeric"
-				ruleInstance="numeric_1765"
-				class="validate[custom[numeric_1765]]"/>
                 
         <field name="alley"
 				alias="alley"

@@ -68,7 +68,6 @@
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_MAIN_LOCATION"
 				required="true"
 				class="validate[required]"/>
         
