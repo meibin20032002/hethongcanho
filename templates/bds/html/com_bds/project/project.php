@@ -89,8 +89,10 @@ $gallery =  json_decode($this->item->gallery);
                             <?php endif?>             
                             
                             <div class="imageBox">
+                                <?php if($gallery['gallery0']['image']):?>
                                 <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $row->title?>"/> 
                                 <div class="count-image"><?php echo count($gallery)?></div>
+                                <?php endif;?>
                             </div>
                             
                             <div class="infoBox">
@@ -111,7 +113,8 @@ $gallery =  json_decode($this->item->gallery);
                                 <?php endif;?>
                             </div>
                             <div class="iconAvatar">
-                                <?php echo BdsHelper::iconAvatarWho($row)?>
+                                <span class="nameAvatar"><?php echo $row->_created_by_name ?></span>
+                                <img class="imgAvatar" src="<?php echo BdsHelper::iconAvatar($row->created_by)?>" alt="private"/>
                             </div>
                         </div> 
                     </li>  

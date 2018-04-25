@@ -61,12 +61,13 @@ $inputCookie->set('myCookie', null, time() - 1);
     	
         <div class="toolSearch">
             <div class="sc-types">
-                <?php $types = BdsHelperEnum::_('products_types');?>
-                <?php foreach($types as $item):?>
-                <a class="<?php if($filter_types == $item['value']) echo 'active'?>" href="<?php echo(JRoute::_("index.php?option=com_bds&view=products&Itemid=101&filter_types=".$item['value'])); ?>">
-                    <div class="tab-title"><?php echo $item['text']?></div>
-                </a>
-                <?php endforeach;?>
+                <?php 
+            	$document	= JFactory::getDocument();
+            	$renderer	= $document->loadRenderer('modules');
+            	$options	= array('style' => 'none');
+            	$position	= 'menu_category';
+            	echo $renderer->render($position, $options, null);
+                ?>
             </div>
             
             <div class="xsfilter">
@@ -87,16 +88,16 @@ $inputCookie->set('myCookie', null, time() - 1);
     				<?php echo $this->filters['filter_category_id']->input;?>
     			</div>
                 
-                <div class="col-md-3 bitem">
+                <div class="col-md-3 col-xs-6 bitem">
     				<?php echo $this->filters['filter_price']->input;?>
     			</div>
-                <div class="col-md-3 bitem">
+                <div class="col-md-3 col-xs-6 bitem">
     				<?php echo $this->filters['filter_acreage']->input;?>
     			</div>
-                <div class="col-md-3 bitem">
+                <div class="col-md-3 col-xs-6 bitem">
     				<?php echo $this->filters['filter_direction']->input;?>
     			</div>
-                <div class="col-md-3 bitem">
+                <div class="col-md-3 col-xs-6 bitem">
     				<?php echo $this->filters['filter_alley']->input;?>
     			</div>
                 <!--div class="col-md-3 bitem">

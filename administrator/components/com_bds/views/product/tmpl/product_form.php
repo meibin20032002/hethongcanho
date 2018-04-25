@@ -139,6 +139,25 @@ $fieldSets = $this->form->getFieldsets();
         		<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
         		<?php endif; ?>
                 
+                
+                <?php
+            	// Types
+            	$field = $fieldSet['jform_types'];
+                $field->jdomOptions = array(
+            		'list' => $this->lists['fk']['types']
+            			);
+            	?>
+            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
+            		<div class="control-label">
+            			<?php echo $field->label; ?>
+            		</div>
+            
+            	    <div class="controls">
+            			<?php echo $field->input; ?>
+            		</div>
+            	</div>
+            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+                
     
             	<?php
             	// Category
@@ -164,25 +183,6 @@ $fieldSets = $this->form->getFieldsets();
             	$field = $fieldSet['jform_project_id'];
             	$field->jdomOptions = array(
             		'list' => $this->lists['fk']['project_id']
-            			);
-            	?>
-            	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-            		<div class="control-label">
-            			<?php echo $field->label; ?>
-            		</div>
-            
-            	    <div class="controls">
-            			<?php echo $field->input; ?>
-            		</div>
-            	</div>
-            	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    
-            
-            	<?php
-            	// Types
-            	$field = $fieldSet['jform_types'];
-            	$field->jdomOptions = array(
-            		'list' => BdsHelperEnum::_('products_types')
             			);
             	?>
             	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
@@ -330,23 +330,6 @@ $fieldSets = $this->form->getFieldsets();
     	</div>
     	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
     
-    
-    
-    	<?php
-    	// Behind
-    	$field = $fieldSet['jform_behind'];
-    	?>
-    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-    		<div class="control-label">
-    			<?php echo $field->label; ?>
-    		</div>
-    
-    	    <div class="controls">
-    			<?php echo $field->input; ?>
-    		</div>
-    	</div>
-    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    
         
         <?php
     	// Alley
@@ -423,23 +406,6 @@ $fieldSets = $this->form->getFieldsets();
     	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
     
     
-    
-    	<?php
-    	// Shipping Payment
-    	$field = $fieldSet['jform_shipping_payment'];
-    	?>
-    	<div class="control-group <?php echo 'field-' . $field->id . $field->responsive; ?>">
-    		<div class="control-label">
-    			<?php echo $field->label; ?>
-    		</div>
-    
-    	    <div class="controls">
-    			<?php echo $field->input; ?>
-    		</div>
-    	</div>
-    	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
     	<?php
     	// Modification date
     	$field = $fieldSet['jform_modification_date'];

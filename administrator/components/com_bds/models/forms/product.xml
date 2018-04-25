@@ -18,7 +18,17 @@
 				label="BDS_FIELD_ALIAS"
 				filter="STRING"
 				type="cktext"/>
-
+                
+        <field name="types"
+				alias="_types_title"
+				label="BDS_FIELD_TYPES"
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				required="true"
+				class="validate[required]"/>
+                
 		<field name="category_id"
 				alias="_category_id_title"
 				label="BDS_FIELD_CATEGORY"
@@ -26,9 +36,7 @@
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="BDS_JSEARCH_SELECT_CATEGORY"
-				required="true"
-				class="validate[required]"/>
+				nullLabel="BDS_JSEARCH_SELECT_CATEGORY"/>
         
         <field name="project_id"
 				alias="_project_id_title"
@@ -38,16 +46,6 @@
 				labelKey="title"
 				type="ckcombo"
 				nullLabel="BDS_JSEARCH_SELECT_PROJECT"/>
-                
-		<field name="types"
-				alias="types"
-				label="BDS_FIELD_TYPES"
-				filter="STRING"
-				listKey="value"
-				labelKey="text"
-				type="enum"
-				nullLabel="BDS_JSEARCH_SELECT_TYPES"
-				enum="products_types"/>
 
 		<field name="who"
 				alias="who"
@@ -56,7 +54,6 @@
 				listKey="value"
 				labelKey="text"
 				type="enum"
-				nullLabel="BDS_JSEARCH_SELECT_WHO"
 				enum="products_who"
 				required="true"
 				class="validate[required]"/>
@@ -108,9 +105,7 @@
 				labelKey="text"
 				type="enum"
 				nullLabel="BDS_JSEARCH_SELECT_BEDROOMS"
-				enum="products_bedrooms"
-				required="true"
-				class="validate[required]"/>
+				enum="products_bedrooms"/>
 
 		<field name="description"
 				alias="description"
@@ -134,15 +129,6 @@
 				ruleInstance="numeric_2524"
 				required="true"
 				class="validate[required,custom[numeric_2524]]"/>
-
-		<field name="behind"
-				alias="behind"
-				label="BDS_FIELD_BEHIND"
-				filter="INT"
-				type="cktext"
-				validate="numeric"
-				ruleInstance="numeric_1765"
-				class="validate[custom[numeric_1765]]"/>
                 
         <field name="alley"
 				alias="alley"
@@ -182,12 +168,6 @@
 				type="enum"
 				nullLabel="BDS_JSEARCH_SELECT_CHARACTERISTICS"
 				enum="products_characteristics"/>
-
-		<field name="shipping_payment"
-				alias="shipping_payment"
-				label="BDS_FIELD_SHIPPING_PAYMENT"
-				filter="STRING"
-				type="cktextarea"/>
         
         <field name="contact_number"
 				alias="contact_number"
@@ -324,14 +304,13 @@
 				ui="chosen"/>
 
 		<field name="filter_types"
-				listKey="value"
-				labelKey="text"
-				type="enum"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
 				submit="true"
 				nullLabel="BDS_FILTER_NULL_TYPE"
-				enum="products_types"
 				label="BDS_JSEARCH_TYPE"
-				class="element-filter"
+				class="span-2 element-filter"
 				ui="chosen"/>
 
 		<field name="filter_main_location"
@@ -362,7 +341,7 @@
 				nullLabel="BDS_FILTER_NULL_WHO"
 				enum="products_who"
 				label="BDS_JSEARCH_WHO"
-				class="element-filter"
+				class="span-2 element-filter"
 				ui="chosen"/>
 
 		<field name="filter_bedrooms"
@@ -373,7 +352,7 @@
 				nullLabel="BDS_FILTER_NULL_BEDROOMS"
 				enum="products_bedrooms"
 				label="BDS_JSEARCH_BEDROOMS"
-				class="element-filter"
+				class="span-2 element-filter"
 				ui="chosen"/>
 
 		<field name="filter_direction"
@@ -384,7 +363,7 @@
 				nullLabel="BDS_FILTER_NULL_DIRECTION"
 				enum="products_direction"
 				label="BDS_JSEARCH_DIRECTION"
-				class="element-filter"
+				class="span-2 element-filter"
 				ui="chosen"/>
 
 		<field name="filter_legal_documents"
@@ -395,7 +374,7 @@
 				nullLabel="BDS_FILTER_NULL_LEGAL_DOCUMENTS"
 				enum="products_legal_documents"
 				label="BDS_JSEARCH_LEGAL_DOCUMENTS"
-				class="element-filter"
+				class="span-2 element-filter"
 				ui="chosen"/>
 
 		<field name="filter_characteristics"
@@ -406,7 +385,7 @@
 				nullLabel="BDS_FILTER_NULL_CHARACTERISTICS"
 				enum="products_characteristics"
 				label="BDS_JSEARCH_CHARACTERISTICS"
-				class="element-filter"
+				class="span-2 element-filter"
 				ui="chosen"/>
 
 		<field name="search_search"

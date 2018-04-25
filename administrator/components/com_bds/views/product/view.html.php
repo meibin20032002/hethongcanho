@@ -105,8 +105,14 @@ class BdsViewProduct extends BdsClassView
 		if (!$isNew && $model->canEditState($item) && ($item->published != 2))
 			JToolBarHelper::custom('products.archive', 'archive', 'archive',  "BDS_JTOOLBAR_ARCHIVE", false);
 
-
+        $model_types = CkJModel::getInstance('Categories', 'BdsModel');
+        $model_types->addWhere('a.sub_category = 0');
+		$model_types->addGroupOrder("a.title");
+		$lists['fk']['types'] = $model_types->getItems();
+        
+        $types = ($item->types)?$item->types:1;
 		$model_category_id = CkJModel::getInstance('Categories', 'BdsModel');
+        $model_category_id->addWhere('a.sub_category = '.$types);
 		$model_category_id->addGroupOrder("a.title");
 		$lists['fk']['category_id'] = $model_category_id->getItems();
         

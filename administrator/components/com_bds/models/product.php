@@ -391,7 +391,11 @@ class BdsModelProduct extends BdsClassModelItem
 	*/
 	public function save($data)
 	{
-		$data['gallery'] = json_encode($data['gallery']);
+		$data1 = JRequest::getVar('jform');
+        $data['gallery'] = json_encode($data['gallery']);
+        $data['price'] = str_replace(',', '', $data1['price']);
+        $data['acreage'] = str_replace(',', '', $data1['acreage']);
+        $data['alley'] = str_replace(',', '', $data1['alley']);
         
         //Convert from a non-SQL formated date (creation_date)
 		$data['creation_date'] = BdsHelperDates::getSqlDate($data['creation_date'], array('Y-m-d H:i'), true, 'USER_UTC');

@@ -180,7 +180,7 @@ class BdsModelProduct extends BdsClassModelItem
 				$data->address = null;
 				$data->acreage = null;
 				$data->behind = null;
-                $data->alley = null;
+                $data->alley = 0;
 				$data->direction = $jinput->get('filter_direction', $this->getState('filter.direction'), 'STRING');
 				$data->legal_documents = $jinput->get('filter_legal_documents', $this->getState('filter.legal_documents'), 'STRING');
 				$data->characteristics = $jinput->get('filter_characteristics', $this->getState('filter.characteristics'), 'STRING');
@@ -436,7 +436,12 @@ class BdsModelProduct extends BdsClassModelItem
             }
             $data['gallery'] = json_encode($upload);
         }
-        //
+        //str_replace
+        $data1 = JRequest::getVar('jform');
+        $data['price'] = str_replace(',', '', $data1['price']);
+        $data['acreage'] = str_replace(',', '', $data1['acreage']);
+        $data['alley'] = str_replace(',', '', $data1['alley']);
+        
         $user = JFactory::getUser();
         $userProfile = JUserHelper::getProfile( $user->id );
         $data['who'] = $userProfile->profile['who'];    

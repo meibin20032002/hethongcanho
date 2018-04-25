@@ -88,7 +88,13 @@ class BdsModelProducts extends BdsClassModelList
 
 
 		parent::__construct($config);
-
+        
+        $this->hasOne('types', // name
+			'categories', // foreignModelClass
+			'types', // localKey
+			'id' // foreignKey
+		);
+        
 		$this->hasOne('category_id', // name
 			'categories', // foreignModelClass
 			'category_id', // localKey
@@ -221,6 +227,7 @@ class BdsModelProducts extends BdsClassModelList
 					'project_id.title',
 					'title',
 					'types',
+                    'types.title',
 					'who'
 				));
 				break;

@@ -42,7 +42,7 @@ JDom::_('framework.sortablelist', array(
 ?>
 
 <div class="clearfix"></div>
-<?php foreach($this->items as $item):
+<?php foreach($this->items as $key=>$item):
     $gallery =  json_decode($item->gallery, true);
 ?>
 <div class="pbox">    
@@ -68,7 +68,7 @@ JDom::_('framework.sortablelist', array(
         </div>           
         
         <div class="col-xs-6">
-            <h4 class="title"><?php echo $item->title?></h4>
+            <h4 class="title"><?php echo $key+1 .'. '.$item->title; ?></h4>
             <div class="handing_over">
                 Năm bàn giao: <?php echo JHtml::date($item->handing_over, 'Y') ?><br />
                 Chủ đầu tư: <?php echo $item->investor ?>

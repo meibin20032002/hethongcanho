@@ -95,7 +95,12 @@ class BdsViewProducts extends BdsClassView
 		);
 
 		// Category
+        $main_category = $this->state->get('filter.types');
 		$modelCategory_id = CkJModel::getInstance('categories', 'BdsModel');
+        if($main_category)
+            $modelCategory_id->addWhere('a.sub_category='.$main_category);
+        else
+            $modelCategory_id->addWhere('a.sub_category = 1');
 		$modelCategory_id->set('context', $model->get('context'));
 		$filters['filter_category_id']->jdomOptions = array(
 			'list' => $modelCategory_id->getItems()

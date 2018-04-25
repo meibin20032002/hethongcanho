@@ -107,9 +107,7 @@
 				labelKey="text"
 				type="enum"
 				nullLabel="Chọn Số phòng"
-				enum="products_bedrooms"
-				required="true"
-				class="validate[required]"/>
+				enum="products_bedrooms"/>
 
 		<field name="description"
 				alias="description"
@@ -144,6 +142,7 @@
 				filter="INT"
                 maxlength="2"
 				type="text"
+                default="0"
 				validate="numeric"
 				ruleInstance="numeric_1765"
 				class="validate[custom[numeric_1765]]"/>
@@ -324,7 +323,7 @@
 				labelKey="text"
 				type="enum"
 				submit="true"
-				nullLabel="Chọn khoảng giá"
+				nullLabel="Chọn giá"
 				enum="products_price"
 				label="BDS_JSEARCH_BEDROOMS"
 				class="element-filter"

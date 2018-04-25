@@ -107,7 +107,16 @@ if (is_object($menu))
                                     </h1>
                                     <div id="mainmenu">
                                         <jdoc:include type="modules" name="mainmenu" style="none" />
-                                    </div>                              
+                                    </div>   
+                                    <div id="mainmenu" class="mobile">
+                                        <ul class="nav menu">
+                                            <li class="item-123"><a href="/hethongcanho/index.php?option=com_bds&view=product&layout=post&Itemid=123" class="menu-title">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                                    Đăng Tin
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>                           
                                     
                                     <div class="navbar-menu">
                                         <button type="button" class="navbar-toggle" id="trigger">

@@ -248,9 +248,9 @@ class BdsHelperEnum
 				'value' => 'cho-thue',
 				'text' => 'BDS_ENUM_PRODUCTS_TYPES_CHO_THUE'
 			),
-			'can-thue' => array(
-				'value' => 'can-thue',
-				'text' => 'BDS_ENUM_PRODUCTS_TYPES_CN_THUE'
+            'sang-nhuong' => array(
+				'value' => 'sang-nhuong',
+				'text' => 'Sang Nhượng'
 			)
 		);
 	}

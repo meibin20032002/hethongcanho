@@ -210,6 +210,7 @@ class BdsViewProduct extends BdsClassView
 
         //
         $modelProducts = CkJModel::getInstance('Products', 'BdsModel');
+        $modelProducts->addWhere('a.id <> '.$item->id);
 		$modelProducts->addWhere('a.main_location = '.$item->main_location);
         $modelProducts->addWhere('a.sub_location = '.$item->sub_location);
         $modelProducts->setState('context', 'layout.default');

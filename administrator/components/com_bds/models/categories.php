@@ -215,7 +215,9 @@ class BdsModelCategories extends BdsClassModelList
 		{
 			if ($filter_sub_category > 0){
 				$this->addWhere("a.sub_category = " . (int)$filter_sub_category);
-			}
+			}else{
+    		    $this->addWhere("a.sub_category = 0");
+    		}
 		}
 
 		// ORDERING
@@ -230,7 +232,21 @@ class BdsModelCategories extends BdsClassModelList
 		$this->applySqlStates($query);
 	}
 
-
+    public function mainCategories() {
+        $db = JFactory::getDBO();
+        $lang = JFactory::getLanguage();
+        
+		$query = "SELECT id, title FROM #__bds_categories WHERE sub_category = 0 ORDER BY ordering ASC";
+		$db->setQuery( $query );
+		$row = $db->loadObjectList();
+        
+        if ($db->getErrorNum()) {
+			JError::raiseError( 500, $db->getErrorMsg() );
+			return false;
+		}
+        
+        return $row;
+    }
 }
 
 

@@ -196,7 +196,8 @@ class BdsControllerProduct extends BdsClassControllerItem
 		switch($this->getLayout() .'.'. $this->getTask())
 		{
 			default:
-                JFactory::getApplication()->enqueueMessage('Xin cảm ơn, Tin sẽ được duyệt 30 sẽ lên');
+                if($result)
+                    JFactory::getApplication()->enqueueMessage('Xin cảm ơn, Tin sẽ được duyệt 30 ngày sẽ lên');
 				$this->applyRedirection($result, array(
 					'stay',
 					'com_bds.products.default'

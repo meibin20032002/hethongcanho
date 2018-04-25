@@ -70,9 +70,16 @@ class BdsViewCategories extends BdsClassView
 		//Filters
 		// Sub Category
 		$modelSub_category = CkJModel::getInstance('categories', 'BdsModel');
+        $object = new JObject;
+        $object->id = -1;
+        $object->title = 'Root'; 
+        
+        $mainCategories1[] = $object;
+        $mainCategories2 = $modelSub_category->mainCategories();
+        $mainCategories = array_merge($mainCategories1, $mainCategories2);
 		$modelSub_category->set('context', $model->get('context'));
 		$filters['filter_sub_category']->jdomOptions = array(
-			'list' => $modelSub_category->getItems()
+			'list' => $mainCategories
 		);
 
 		// Sort by
@@ -136,6 +143,7 @@ class BdsViewCategories extends BdsClassView
 	{
 		$this->model		= $model	= $this->getModel();
 		$this->state		= $state	= $this->get('State');
+        $model->addWhere('a.sub_category = 0');   
 		$this->params 		= JComponentHelper::getParams('com_bds', true);
 		$state->set('context', 'layout.modal');
 		$this->items		= $items	= $this->get('Items');

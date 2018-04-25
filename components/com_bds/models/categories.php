@@ -175,6 +175,14 @@ class BdsModelCategories extends BdsClassModelList
 			'publish' => 'published',
 			'author' => 'created_by'
 		));
+        
+        // FILTER : Sub Category
+		if($filter_sub_category = $this->getState('filter.sub_category'))
+		{
+			if ($filter_sub_category > 0){
+				$this->addWhere("a.sub_category = " . (int)$filter_sub_category);
+			}
+		}
 
 		// ORDERING
 		$orderCol = $this->getState('list.ordering', 'title');

@@ -147,6 +147,20 @@ class UsersControllerProfile extends UsersController
 
 			return false;
 		}
+        
+        if($this->checkPhone($data['username']) == false){
+            $app->enqueueMessage('Bạn phải nhập số điện thoại', 'warning');
+            // Unset the passwords.
+			unset($requestData['password1'], $requestData['password2']);
+
+			// Save the data in the session.
+			$app->setUserState('com_users.edit.profile.data', $requestData);
+
+			// Redirect back to the edit screen.
+			$userId = (int) $app->getUserState('com_users.edit.profile.id');
+			$this->setRedirect(JRoute::_('index.php?option=com_users&view=profile&layout=edit&user_id=' . $userId, false));
+            return false;
+        }
 
 		// Attempt to save the data.
 		$return = $model->save($data);
@@ -249,4 +263,12 @@ class UsersControllerProfile extends UsersController
 			$item->metadata['tags'] = $item->tags;
 		}
 	}
+    
+    protected function checkPhone($number){
+        $number = str_replace(array('-', '.', ' '), '', $number);
+        if (preg_match("/^(01[2689]|09)[0-9]{8}$/", $number)) { 
+            return true;
+        }  
+        return false;
+    }
 }

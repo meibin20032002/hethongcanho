@@ -39,6 +39,10 @@
     #mainmenu{
         display: none;
     }
+    #mainmenu.mobile{
+        display: block;
+        padding-right: 35px;
+    }
     /*select*/
     .toolSearch select{
         height: 40px;

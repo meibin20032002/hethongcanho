@@ -26,6 +26,7 @@ BdsHelper::headerDeclarations();
 JDom::_('html.toolbar');
 $gallery =  json_decode($this->item->gallery);
 $user = JFactory::getUser($this->item->created_by);
+$document = JFactory::getDocument();
 ?>
 <div class="product">
     <form action="<?php echo(JRoute::_("index.php")); ?>" method="post" name="adminForm" id="adminForm" enctype='multipart/form-data'>
@@ -45,9 +46,16 @@ $user = JFactory::getUser($this->item->created_by);
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <?php $active = 'active';?>
-                        <?php foreach ($gallery as $item) :?>
+                        <?php foreach ($gallery as $item) :
+                            if($item->image){
+                                $document->setMetaData( 'og:image', JUri::root().htmlspecialchars($item->image));
+                                $image = $item->image;
+                            }else{
+                                $image = 'images/no-image.jpg';
+                            }
+                        ?>
                             <div class="item <?php echo $active?>">    
-                                <img src="<?php echo $item->image; ?>" alt="image" style="width:100%; max-height: 400px;"/>
+                                <img src="<?php echo $image; ?>" alt="image" style="width:100%; max-height: 400px;"/>
                             </div>
                             <?php $active = '';?>
                         <?php endforeach; ?>
@@ -76,6 +84,15 @@ $user = JFactory::getUser($this->item->created_by);
                     </div>
                 </div>
                 <?php endif; ?>
+                <div class="shareNow">
+                    <div class="row">                
+                        <div class="col-xs-12">
+                            <a class="icon google" href="#">google</a>
+                            <a class="icon zalo" href="#">zalo</a>
+                            <a class="icon facebook" href="#">facebook</a>                    
+                        </div>
+                    </div>
+                </div>
                 
                 <h4><?php echo $this->item->title ?></h4>
                 <span class="price"><?php echo BdsHelper::currencyFormat($this->item->price) ?></span> - <?php echo BdsHelper::acreageFormat($this->item->acreage)?>
@@ -184,6 +201,28 @@ jQuery( document ).ready(function($) {
         $( ".show-phone" ).show();
         $(this).hide();
     });
+    
+    var current = '<?php echo JRoute::_('index.php?view=product&layout=product&option=com_bds&id='.$this->item->id, false, -1)?>';
+            
+    jQuery('.facebook').click(function() {        
+        var href = 'https://www.facebook.com/sharer.php?u=';              
+        return openWindow(href+current);
+    });
+    jQuery('.zalo').click(function() {        
+        var href = 'https://id.zalo.me/account?continue=';              
+        return openWindow(href+current);
+    });
+    jQuery('.google').click(function() {        
+        var href = 'https://plus.google.com/up/?continue=';              
+        return openWindow(href+current);
+    });
+    
+    function openWindow(url) {
+        var width = window.innerWidth * 0.66 ;
+        // define the height in
+        var height = width * window.innerHeight / window.innerWidth ;
+        // Ratio the hight to the width as the user screen ratio
+        window.open(url , 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
+    }
 });
-
 </script>

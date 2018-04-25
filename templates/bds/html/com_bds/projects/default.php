@@ -36,6 +36,16 @@ if($main_location){
 <div class="grid-products">
     <form action="<?php echo(JRoute::_("index.php")); ?>" method="post" name="adminForm" id="adminForm">
     	<div class="toolSearch">
+            <div class="sc-types">
+                <?php 
+            	$document	= JFactory::getDocument();
+            	$renderer	= $document->loadRenderer('modules');
+            	$options	= array('style' => 'none');
+            	$position	= 'menu_category';
+            	echo $renderer->render($position, $options, null);
+                ?>
+            </div>
+            
             <div class="xsfilter">
                 <div class="col-md-6">
         			<!-- BRICK : search -->

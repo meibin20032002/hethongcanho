@@ -33,8 +33,10 @@ defined('_JEXEC') or die('Restricted access');
             <?php endif?>             
             
             <div class="imageBox">
+                <?php if($gallery['gallery0']['image']):?>
                 <img src="<?php echo $gallery['gallery0']['image']?>" alt="<?php echo $item->title?>"/> 
                 <div class="count-image"><?php echo count($gallery)?></div>
+                <?php endif;?>
             </div>
             
             <div class="infoBox">

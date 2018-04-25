@@ -475,6 +475,10 @@ b, strong, .bold{
     top: 9px;
     left: 15px;
 }
+.toolSearch .backAll{
+    padding: 5px;
+    background: #ccc;
+}
 /*----chosen----*/
 .chzn-container {
     line-height: 22px;
@@ -1391,7 +1395,7 @@ sup{
     width: 180px;
     text-align: center;
     line-height: 14px;
-    margin-top: 25px;
+    margin-top: 10px;
     padding: 5px 2px;
 }
 .plistView .countSale{
@@ -1558,4 +1562,30 @@ sup{
 }
 .copyright .custom{
     text-align: right;
+}
+/*----share Now-------*/
+.shareNow{
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+    margin-top: 5px;
+    padding: 5px 0;
+}
+.shareNow span{
+    padding: 4px 0;
+    display: block;
+    font-size: 14px;
+}
+.shareNow .icon{
+    float: right;
+    background: url(../images/share.png) no-repeat;
+    height: 30px;
+    width: 30px;
+    text-indent: -99999px;
+    margin-left: 2px;
+}
+.shareNow .zalo{
+    background-position: -31px 0px;
+}
+.shareNow .google{
+    background-position: -62px 0px;
 }

@@ -647,8 +647,9 @@ class BdsHelper
         
     }
     
-    public static function checkPhone($contact_number){
-        if (preg_match("/^(84|0)(1\d{9}|9\d{8})$/", $contact_number)) { 
+    public static function checkPhone($number){
+        $number = str_replace(array('-', '.', ' '), '', $number);
+        if (preg_match("/^(01[2689]|09)[0-9]{8}$/", $number)) { 
             return true;
         }  
         return false;
