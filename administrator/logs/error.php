@@ -18,3 +18,10 @@
 2018-04-12T10:25:04+00:00	INFO 127.0.0.1	joomlafailure	Thành viên không tồn tại
 2018-04-13T06:15:48+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
 2018-04-25T06:34:55+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-04-26T01:01:04+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-04-26T01:01:14+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-04-26T01:01:35+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-04-26T01:01:35+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-05-06T00:40:28+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-05-06T00:40:52+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.
+2018-05-08T16:40:13+00:00	INFO 127.0.0.1	joomlafailure	Username and password do not match or you do not have an account yet.

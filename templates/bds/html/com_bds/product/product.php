@@ -141,7 +141,6 @@ $document = JFactory::getDocument();
                 <div class="note">
                     <i>Chúng tôi kiểm duyệt toàn bộ tin trước khi đăng để việc mua bán an toàn & hiệu quả hơn. Tuy nhiên, quá trình duyệt tin chỉ có thể hạn chế tối đa các trường hợp không trung thực. Hãy báo cho chúng tôi những tin xấu để chúng tôi có thể xác minh & xây dựng trang web mua bán an toàn nhất cho người Việt.</i>
                 </div>
-                <?php echo $this->loadTemplate('fly'); ?>
     		</div>
             
             
@@ -182,8 +181,9 @@ $document = JFactory::getDocument();
                 
                 
             </div>
+            
     	</div>
-    
+        <?php echo $this->loadTemplate('fly'); ?>
     
     	<?php 
     		$jinput = JFactory::getApplication()->input;

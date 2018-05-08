@@ -52,3 +52,23 @@ JDom::_('html.toolbar');
 				)));
 	?>
 </form>
+<script>
+jQuery(document).ready(function ($) {
+    $('#jform_main_location').on('change', function() {
+        jQuery('.overlayUpload').show();
+        var id = jQuery(this).val();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=locations.subLocations&<?php echo JSession::getFormToken()?>=1',
+            data : {id : id},
+            type: "POST",
+            dataType: 'html',
+            success: function(data){
+                $('#jform_sub_location').html(data);
+                $('#jform_sub_location').trigger('liszt:updated');
+                jQuery('.overlayUpload').hide();
+            }
+        });
+    });
+
+});
+</script>

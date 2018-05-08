@@ -321,7 +321,7 @@ class BdsHelperEnum
 	{
 		$model = CkJModel::getInstance('products', 'BdsModel');
         if($types = $model->getState('filter.types')){
-            if ($types == 'cho-thue' || $types == 'can-thue'){
+            if ($types == '11' || $types == '13'){
                 return array(
                     '5' => array(
         				'value' => '5',

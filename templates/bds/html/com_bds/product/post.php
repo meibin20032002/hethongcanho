@@ -61,6 +61,32 @@ jQuery(document).ready(function ($) {
     $('#jform_behind').number( true, 0);
     $('#jform_alley').number( true, 0);
     
+    $('#jform_types').on('change', function() {
+        jQuery('.overlayUpload').show();
+        var id = jQuery(this).val();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=categories.subCategory&<?php echo JSession::getFormToken()?>=1',
+            data : {id : id},
+            type: "POST",
+            dataType: 'json',
+            success: function(data){
+                var sub = '<option value="" selected="selected">Chọn Loại bất động sản</option>';
+                $.each(data, function(key, val){
+		    		sub+= '<option value="'+ val.id +'">'+ val.title +'</option>';
+		    	});
+                $('#jform_category_id').html(data);
+                
+                var sub = '<li class="active-result result-selected highlighted" data-option-array-index="0">Chọn Loại bất động sản</li>';
+                $.each(data, function(key, val){
+		    		sub+= '<li class="active-result" data-option-array-index="'+ val.id +'">'+ val.title +'</li>';
+		    	});
+                $('#jform_category_id_chzn .chzn-results').html(sub);
+                $('#jform_category_id_chzn').addClass('chzn-container-active chzn-with-drop');
+                jQuery('.overlayUpload').hide();
+            }
+        });
+    });
+    
     $('#jform_main_location').on('change', function() {
         jQuery('.overlayUpload').show();
         var id = jQuery(this).val();
@@ -68,10 +94,21 @@ jQuery(document).ready(function ($) {
             url : 'index.php?option=com_bds&task=locations.subLocations&<?php echo JSession::getFormToken()?>=1',
             data : {id : id},
             type: "POST",
-            dataType: 'html',
+            dataType: 'json',
             success: function(data){
-                $('#jform_sub_location').html(data);
-                $('#jform_sub_location').trigger('liszt:updated');
+                var sub = '<option value="" selected="selected">Chọn Quận/Huyện</option>';
+                $.each(data, function(key, val){
+		    		sub+= '<option value="'+ val.id +'">'+ val.title +'</option>';
+		    	});
+                $('#jform_sub_location').html(sub);
+                
+                var sub = '<li class="active-result result-selected highlighted" data-option-array-index="0">Chọn Quận/Huyện</li>';
+                $.each(data, function(key, val){
+		    		sub+= '<li class="active-result" data-option-array-index="'+ val.id +'">'+ val.title +'</li>';
+		    	});
+                $('#jform_sub_location_chzn .chzn-results').html(sub);
+                //$('#jform_sub_location').trigger('liszt:updated');
+                $('#jform_sub_location_chzn').addClass('chzn-container-active chzn-with-drop');
                 jQuery('.overlayUpload').hide();
             }
         });

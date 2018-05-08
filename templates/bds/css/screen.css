@@ -587,6 +587,7 @@ b, strong, .bold{
     color: #9b9b9b;
     font-size: 12px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 .sc-types a.active .tab-title, .sc-types a:hover .tab-title{
     color: #000000;

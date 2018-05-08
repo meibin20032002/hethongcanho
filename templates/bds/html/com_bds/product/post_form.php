@@ -32,8 +32,8 @@ $fieldSets = $this->form->getFieldsets();
 	<?php
 	// Types
 	$field = $fieldSet['jform_types'];
-	$field->jdomOptions = array(
-		'list' => BdsHelperEnum::_('products_types')
+    $field->jdomOptions = array(
+		'list' => $this->lists['fk']['types']
 			);
 	?>
 	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">

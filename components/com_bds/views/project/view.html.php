@@ -99,13 +99,33 @@ class BdsViewProject extends BdsClassView
 		if (!$isNew && $model->canEditState($item) && ($item->published != 2))
 			JToolBarHelper::custom('projects.archive', 'archive', 'archive',  "BDS_JTOOLBAR_ARCHIVE", false);
 
-
-
 		$this->toolbar = JToolbar::getInstance();
-
+        
+        $model_types = CkJModel::getInstance('Categories', 'BdsModel');
+        $model_types->addWhere('a.sub_category = 0');
+		$model_types->addGroupOrder("a.title");
+        $types = $model_types->getItems();
+        
+        $products = array(); 
+        foreach($types as $row){
+            $product = array();
+            $model = CkJModel::getInstance('products', 'BdsModel');
+            $model->addWhere('a.project_id ='. $item->id);
+            $model->addWhere('a.types ='. $row->id);
+    		$model->setState('context', 'layout.default');
+            $product = $model->getItems();
+            
+            if($product){
+                $products[] = array(
+                    'title' => $row->title,
+                    'alias' => $row->alias,                    
+                    'count' => count($product),
+                    'product' => $product
+                );
+            }
+        }        
+        $this->products = $products;
 	}
-
-
 }
 
 

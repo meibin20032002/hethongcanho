@@ -9,7 +9,6 @@
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				submit="true"
 				nullLabel="Toàn quốc"
 				class="span-2 element-filter"
 				label="BDS_JSEARCH_LOCATION"
@@ -20,9 +19,9 @@
 				labelKey="title"
 				type="ckcombo"
 				submit="true"
-				nullLabel="Sub Location"
+				nullLabel="Chọn Quận/Huyện"
 				class="span-2 element-filter"
-				label="BDS_JSEARCH_LOCATION"
+				label="Quận/Huyện"
 				ui="chosen"/>
 
 		<field name="filter_type_id"

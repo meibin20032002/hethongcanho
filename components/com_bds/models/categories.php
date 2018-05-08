@@ -185,7 +185,7 @@ class BdsModelCategories extends BdsClassModelList
 		}
 
 		// ORDERING
-		$orderCol = $this->getState('list.ordering', 'title');
+		$orderCol = $this->getState('list.ordering', 'ordering');
 		$orderDir = $this->getState('list.direction', 'ASC');
 
 		if ($orderCol)

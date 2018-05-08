@@ -18,7 +18,7 @@
 					nullLabel="BDS_JSEARCH_SELECT_TITLE"
 					type="modalpicker"
 					model="categories"
-					labelKey="title"/>
+					labelKey="id"/>
 		</fieldset>
 	</fields>
 </metadata>

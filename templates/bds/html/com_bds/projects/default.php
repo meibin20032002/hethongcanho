@@ -31,6 +31,12 @@ if($main_location){
     $item = $model_location->getItem($main_location);
     $main_location_name = $item->title;
 }
+
+	$document	= JFactory::getDocument();
+	$renderer	= $document->loadRenderer('modules');
+	$options	= array('style' => 'xhtml');
+	$position	= 'products';
+	echo $renderer->render($position, $options, null);
 ?>
 <br />
 <div class="grid-products">
@@ -47,16 +53,16 @@ if($main_location){
             </div>
             
             <div class="xsfilter">
-                <div class="col-md-6">
+                <div class="col-md-5">
         			<!-- BRICK : search -->
         			<?php echo $this->filters['search_search']->input;?>
                 </div>
     
     			<!-- BRICK : filters -->
-    			<div id="main_location" class="col-md-3 bitem" <?php if($main_location) echo 'style="display: none;"'?>>
+    			<div id="main_location" class="col-md-4 bitem" <?php if($main_location) echo 'style="display: none;"'?>>
     				<?php echo $this->filters['filter_main_location']->input;?>
     			</div>             
-                <div id="sub_location" class="col-md-3 bitem" <?php if(!$main_location) echo 'style="display: none;"'?>>
+                <div id="sub_location" class="col-md-4 bitem" <?php if(!$main_location) echo 'style="display: none;"'?>>
     				<?php echo $this->filters['filter_sub_location']->input;?>
     			</div>
     			<div class="col-md-3 bitem">
@@ -107,20 +113,72 @@ jQuery( document ).ready(function($) {
 	})	
     
     if(location_name){   
-        $("#filter_sub_location_chzn .chzn-single").html('<span>'+location_name+'<span><div><b></b></div>');
-        $("#filter_sub_location_chzn .chzn-results").before('<div class="backAll"><i class="fa fa-arrow-left"></i> '+location_name+'</div>');
+        $("#filter_sub_location_chzn .chzn-results").before('<div class="backAll"><i class="fa fa-arrow-left"></i> Back All</div>');
     }
     
     $('.backAll').on('click', function(){
-        $('#sub_location').hide();
-        $('#main_location').show();
+        jQuery('.overlayUpload').show();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=locations.mainLocations&<?php echo JSession::getFormToken()?>=1',
+            type: "POST",
+            dataType: 'json',
+            success: function(data){
+                var sub = '<option value="" selected="selected">Chọn Toàn quốc</option>';
+                $.each(data, function(key, val){
+		    		sub+= '<option value="'+ val.id +'">'+ val.title +'</option>';
+		    	});
+                $('#filter_main_location').html(sub);
+                
+                var sub = '<li class="active-result" data-option-array-index="0">Chọn Toàn quốc</li>';
+                var i = 1;
+                $.each(data, function(key, val){
+		    		sub+= '<li class="active-result" data-option-array-index="'+ i +'">'+ val.title +'</li>';
+                    i++;
+		    	});
+                $('#filter_main_location_chzn .chzn-results').html(sub);
+                
+                $('#filter_main_location_chzn').addClass('chzn-container-active chzn-with-drop');                
+                $('#sub_location').hide();
+                $('#main_location').show();
+                jQuery('.overlayUpload').hide();
+            }
+        });
     });
-    $("#filter_main_location_chzn .result-selected").live('click', function(){
-        var selectName = $(this).text();
-        if(selectName == location_name){
-            $('#sub_location').show();
-            $('#main_location').hide();
-        }
+
+    
+    $('#filter_main_location').on('change', function() {
+        jQuery('.overlayUpload').show();
+        var id = jQuery(this).val();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=locations.subLocations&<?php echo JSession::getFormToken()?>=1',
+            data : {id : id},
+            type: "POST",
+            dataType: 'json',
+            success: function(data){
+                $(".backAll").remove();
+                $("#filter_sub_location_chzn .chzn-results").before('<div class="backAll"><i class="fa fa-arrow-left"></i> Back All</div>');
+                
+                var sub = '<option value="" selected="selected">Chọn Quận/Huyện</option>';
+                $.each(data, function(key, val){
+		    		sub+= '<option value="'+ val.id +'">'+ val.title +'</option>';
+		    	});
+                $('#filter_sub_location').html(sub);
+                $('#filter_sub_location').trigger("chosen:updated");                
+                
+                var sub = '<li class="active-result" data-option-array-index="0">Chọn Quận/Huyện</li>';
+                var i = 1;
+                $.each(data, function(key, val){
+		    		sub+= '<li class="active-result" data-option-array-index="'+ i +'">'+ val.title +'</li>';
+                    i++;
+		    	});
+                $('#filter_sub_location_chzn .chzn-results').html(sub);
+                
+                $('#filter_sub_location_chzn').addClass('chzn-container-active chzn-with-drop');                
+                $('#sub_location').show();
+                $('#main_location').hide();
+                jQuery('.overlayUpload').hide();
+            }
+        });
     });
 })
 </script>	

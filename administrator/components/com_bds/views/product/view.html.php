@@ -128,7 +128,7 @@ class BdsViewProduct extends BdsClassView
         $location_id = ($item->main_location)?$item->main_location:79;
         $model_sub_location = CkJModel::getInstance('Locations', 'BdsModel');
         $model_sub_location->addWhere('a.sub_location = '.$location_id);
-		$model_sub_location->addGroupOrder("a.title");
+		$model_sub_location->addGroupOrder("a.ordering");
 		$lists['fk']['sub_location'] = $model_sub_location->getItems();
 
 		$model_created_by = CkJModel::getInstance('ThirdUsers', 'BdsModel');

@@ -65,6 +65,22 @@ jQuery(document).ready(function ($) {
     $('#jform_behind').number( true, 0);
     $('#jform_alley').number( true, 0);
     
+    $('#jform_types').on('change', function() {
+        jQuery('.overlayUpload').show();
+        var id = jQuery(this).val();
+        jQuery.ajax({
+            url : 'index.php?option=com_bds&task=categories.subCategory&<?php echo JSession::getFormToken()?>=1',
+            data : {id : id},
+            type: "POST",
+            dataType: 'html',
+            success: function(data){
+                $('#jform_category_id').html(data);
+                $('#jform_category_id').trigger('liszt:updated');
+                jQuery('.overlayUpload').hide();
+            }
+        });
+    });
+    
     $('#jform_main_location').on('change', function() {
         jQuery('.overlayUpload').show();
         var id = jQuery(this).val();

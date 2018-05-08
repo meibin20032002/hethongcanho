@@ -53,14 +53,6 @@ class BdsViewProducts extends BdsClassView
 		$this->model		= $model	= $this->getModel();
 		$this->state		= $state	= $this->get('State');
 		$this->params 		= JComponentHelper::getParams('com_bds', true);
-        //$types = $state->get('filter.types');
-//        if($types){
-//            if($types == 0){
-//                $state->set('filter.types', 'mua-ban');  
-//            }          
-//        }else{
-//            $state->set('filter.types', 'mua-ban');
-//        }
                                     
 		$state->set('context', 'layout.default');
 		$this->items		= $items	= $this->get('Items');
@@ -72,9 +64,7 @@ class BdsViewProducts extends BdsClassView
 		$this->lists = &$lists;
 
 		// Define the title
-		//$this->_prepareDocument(JText::_('BDS_LAYOUT_PRODUCTS'));
-
-		
+		//$this->_prepareDocument(JText::_('BDS_LAYOUT_PRODUCTS'));		
 
 		//Filters
 		// Location
@@ -117,9 +107,6 @@ class BdsViewProducts extends BdsClassView
 		);
 
 		// Toolbar
-
-
-
 		$this->toolbar = JToolbar::getInstance();
 	}
 

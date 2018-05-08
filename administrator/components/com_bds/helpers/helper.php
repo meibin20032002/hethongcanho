@@ -583,7 +583,8 @@ class BdsHelper
 		$query = $db->getQuery(true);
 		$query->select('COUNT(*)');
 		$query->from('#__bds_products');
-		$query->where('project_id = '. (int)$project_id);		
+		$query->where('project_id = '. (int)$project_id);
+        $query->where('types > 0');		
 		
 		$db->setQuery((string)$query);
 		return $db->loadResult();

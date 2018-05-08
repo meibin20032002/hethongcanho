@@ -82,6 +82,29 @@ class BdsControllerLocations extends BdsClassControllerList
 		$jinput = JFactory::getApplication()->input;
 		return $jinput->get('layout', 'default', 'CMD');
 	}
+    
+    public function mainLocations()
+	{
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        
+        $model = CkJModel::getInstance('locations', 'BdsModel');
+        $model->addWhere('a.sub_location = 0');
+		$model->set('context', $model->get('context'));
+		$list = $model->getItems();
+        
+        $array = array();
+        if($list){
+            foreach($list as $row){
+                $array[] = array(
+                    'id' => $row->id,
+                    'title' => $row->title,                                    
+                );
+            }
+        }
+
+		print_r(json_encode($array));
+		exit();
+	}
 
     public function subLocations()
 	{
@@ -94,14 +117,17 @@ class BdsControllerLocations extends BdsClassControllerList
 		$model->set('context', $model->get('context'));
 		$list = $model->getItems();
         
-        $html = '<option value="" selected="selected">Chọn Quận/Huyện</option>';
+        $array = array();
         if($list){
             foreach($list as $row){
-                $html .= '<option value="'.$row->id.'">'.$row->title.'</option>';
+                $array[] = array(
+                    'id' => $row->id,
+                    'title' => $row->title,                                    
+                );
             }
         }
 
-		echo $html;
+		print_r(json_encode($array));
 		exit();
 	}
 }

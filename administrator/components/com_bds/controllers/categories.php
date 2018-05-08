@@ -216,7 +216,27 @@ class BdsControllerCategories extends BdsClassControllerList
 		}
 	}
 
+    public function subCategory()
+	{
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        $id = JRequest::getInt('id');
+        
+        $model = CkJModel::getInstance('categories', 'BdsModel');
+        if($id)
+            $model->addWhere('a.sub_category = '.$id);
+		$model->set('context', $model->get('context'));
+		$list = $model->getItems();
+        
+        $html = '<option value="" selected="selected">Ch?n Lo?i b?t d?ng s?n</option>';
+        if($list){
+            foreach($list as $row){
+                $html .= '<option value="'.$row->id.'">'.$row->title.'</option>';
+            }
+        }
 
+		echo $html;
+		exit();
+	}
 }
 
 

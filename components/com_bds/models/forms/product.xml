@@ -41,13 +41,14 @@
 				nullLabel="Chọn dự án"/>
 
 		<field name="types"
-				alias="types"
+				alias="_types_title"
 				label="Bạn đăng tin"
-				filter="STRING"
-				listKey="value"
-				labelKey="text"
-				type="enum"
-				enum="products_types"/>
+				filter="INT"
+				listKey="id"
+				labelKey="title"
+				type="ckcombo"
+				required="true"
+				class="validate[required]"/>
 
 		<field name="who"
 				alias="who"
@@ -61,7 +62,7 @@
 
 		<field name="main_location"
 				alias="_main_location_title"
-				label="Tỉnh/Thành"
+				label="Toàn quốc"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
@@ -260,7 +261,6 @@
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				submit="true"
 				nullLabel="Toàn quốc"
 				class="span-2 element-filter"
 				label="BDS_JSEARCH_LOCATION"

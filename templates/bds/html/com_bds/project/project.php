@@ -65,21 +65,18 @@ $gallery =  json_decode($this->item->gallery);
         <?php endif; ?>
         
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#home">Tin đăng (<?php echo BdsHelper::countSale($this->item->id)?>)</a></li>
+            <?php foreach($this->products as $key=>$row):?>
+            <li <?php if($key==0) echo 'class="active"'?>><a data-toggle="tab" href="#<?php echo $row['alias'];?>"><?php echo $row['title'];?> (<?php echo $row['count'];?>)</a></li>
+            <?php endforeach;?>
             <li><a data-toggle="tab" href="#menu1">Thông tin</a></li>
         </ul>
         
         <div class="tab-content">
-          <div id="home" class="tab-pane fade in active">
+          <?php foreach($this->products as $key=>$items):?>
+          <div id="<?php echo $items['alias'];?>" class="tab-pane fade <?php if($key==0) echo 'in active'?>">
             <div class="grid-products">
-                <?php 
-                $model = CkJModel::getInstance('products', 'BdsModel');
-                $model->addWhere('a.project_id ='. $this->item->id);
-        		$model->setState('context', 'layout.default');
-       			$items = $model->getItems();
-                ?>
                 <ul class="boxList">
-                    <?php foreach($items as $row):
+                    <?php foreach($items['product'] as $row):
                         $gallery =  json_decode($row->gallery, true);
                     ?>
                     <li class="listView">
@@ -122,6 +119,8 @@ $gallery =  json_decode($this->item->gallery);
                 </ul>
             </div>
           </div>
+          <?php endforeach;?>
+          
           <div id="menu1" class="tab-pane fade">
             <div class="address"><i class="fa fa-map-marker"></i> <?php echo $this->item->address ?></div>
             <div class="iconInfor">

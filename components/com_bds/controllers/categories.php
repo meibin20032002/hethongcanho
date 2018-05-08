@@ -83,7 +83,30 @@ class BdsControllerCategories extends BdsClassControllerList
 		return $jinput->get('layout', 'default', 'CMD');
 	}
 
+    public function subCategory()
+	{
+        JSession::checkToken() or JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+        $id = JRequest::getInt('id');
+        
+        $model = CkJModel::getInstance('categories', 'BdsModel');
+        if($id)
+            $model->addWhere('a.sub_category = '.$id);
+		$model->set('context', $model->get('context'));
+		$list = $model->getItems();
+        
+        $array = array();
+        if($list){
+            foreach($list as $row){
+                $array[] = array(
+                    'id' => $row->id,
+                    'title' => $row->title,                                    
+                );
+            }
+        }
 
+		print_r(json_encode($array));
+		exit();
+	}
 }
 
 
