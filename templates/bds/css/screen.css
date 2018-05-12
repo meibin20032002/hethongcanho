@@ -1590,3 +1590,56 @@ sup{
 .shareNow .google{
     background-position: -62px 0px;
 }
+/*----share Now-------*/
+.dropdown{
+    position: relative;
+}
+.dropdown .input-select{
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 7px 15px;
+    box-shadow: none;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 14px;
+    height: 40px;
+    color: #333;
+    font-weight: 400;
+    background-color: #fff;
+}
+.dropdown .title{
+    padding-left: 5px;
+}
+.dropdown ul{
+    width: 100%;
+    background-color: #fcfcfc;
+    border: 1px solid #d6d6d6;
+    color: #000;
+    display: none;
+    left: 0px;
+    padding: 2px 15px 2px 5px;
+    position: absolute;
+    top: 40px;
+    list-style: none;
+    height: 400px;
+    overflow: auto;
+    z-index: 2;
+}
+.dropdown ul li{
+    border-bottom: 1px solid #cacaca;
+    padding: 8px 10px;
+    cursor: pointer;
+}
+.dropdown ul li.sub{
+    padding: 8px 15px;
+}
+.dropdown ul li:hover{
+    background: #f4f4f4;
+}
+.dropdown .fa{
+    color: #FC7D07
+}
+.dropdown .right{
+    float: right;
+    padding: 5px 0;
+}

@@ -27,9 +27,7 @@
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="Chọn Loại bất động sản"
-				required="true"
-				class="validate[required]"/>
+				nullLabel="Chọn bất động sản"/>
                 
         <field name="project_id"
 				alias="_project_id_title"
@@ -42,7 +40,7 @@
 
 		<field name="types"
 				alias="_types_title"
-				label="Bạn đăng tin"
+				label="Chọn bất động sản"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
@@ -62,7 +60,7 @@
 
 		<field name="main_location"
 				alias="_main_location_title"
-				label="Toàn quốc"
+				label="Chọn Khu vực"
 				filter="INT"
 				listKey="id"
 				labelKey="title"
@@ -78,9 +76,7 @@
 				listKey="id"
 				labelKey="title"
 				type="ckcombo"
-				nullLabel="Chọn Quận/Huyện"
-				required="true"
-				class="validate[required]"/>
+				nullLabel="Chọn Quận/Huyện"/>
 
 		<field name="gallery"
 				alias="gallery"

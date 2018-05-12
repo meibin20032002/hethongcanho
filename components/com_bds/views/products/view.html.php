@@ -74,6 +74,7 @@ class BdsViewProducts extends BdsClassView
 		$filters['filter_main_location']->jdomOptions = array(
 			'list' => $modelmain_location->getItems()
 		);
+        $this->filter_main_location = $modelmain_location->getItems();
         
         $main_location = $this->state->get('filter.main_location');
         $modelsub_location = CkJModel::getInstance('locations', 'BdsModel');
@@ -83,6 +84,7 @@ class BdsViewProducts extends BdsClassView
 		$filters['filter_sub_location']->jdomOptions = array(
 			'list' => $modelsub_location->getItems()
 		);
+        $this->filter_sub_location = $modelsub_location->getItems();
 
 		// Category
         $main_category = $this->state->get('filter.types');

@@ -29,6 +29,37 @@ $fieldSets = $this->form->getFieldsets();
 
 <?php $fieldSet = $this->form->getFieldset('post.form');?>
 <fieldset class="fieldsform form-horizontal">
+    <?php
+	// Location
+	$field = $fieldSet['jform_main_location'];
+	?>
+	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
+		<div class="control-label">
+			<?php echo $field->label; ?>
+		</div>
+
+	    <div class="controls">
+            <div class="dropdown location">     
+                <input class="main_id" type="hidden" name="jform[main_location]" value="" />
+                <input class="sub_id" type="hidden" name="jform[sub_location]" value="" />
+                           
+    			<div class="input-select main">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span class="title">Toàn Quốc</span>
+                    <i class="fa fa-angle-down right" aria-hidden="true"></i>
+                </div>
+                <ul class="main_list">
+                    <li class="allR" data-id="">Toàn Quốc</li>
+                    <?php foreach($this->lists['fk']['main_location'] as $row):?>
+                    <li class="ma" data-id="<?php echo $row->id?>"><?php echo $row->title?> <i class="fa fa-angle-right right" aria-hidden="true"></i></li>
+                    <?php endforeach;?>
+                </ul>
+                <ul class="sub_list"></ul>
+            </div>
+		</div>
+	</div>
+	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+    
 	<?php
 	// Types
 	$field = $fieldSet['jform_types'];
@@ -42,65 +73,26 @@ $fieldSets = $this->form->getFieldsets();
 		</div>
 
 	    <div class="controls">
-			<?php echo $field->input; ?>
+			<div class="dropdown types">     
+                <input class="main_id" type="hidden" name="jform[types]" value="1" />
+                <input class="sub_id" type="hidden" name="jform[category_id]" value="" />
+                           
+    			<div class="input-select main">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <span class="title">Mua Bán </span>
+                    <i class="fa fa-angle-down right" aria-hidden="true"></i>
+                </div>
+                <ul class="main_list">
+                    <?php foreach($this->lists['fk']['types'] as $row):?>
+                    <li class="ma" data-id="<?php echo $row->id?>"><?php echo $row->title?> <i class="fa fa-angle-right right" aria-hidden="true"></i></li>
+                    <?php endforeach;?>
+                </ul>
+                <ul class="sub_list"></ul>
+            </div>
 		</div>
 	</div>
 	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-    <?php
-	// Category
-	$field = $fieldSet['jform_category_id'];
-	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['category_id']
-			);
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-    
-	<?php
-	// Location
-	$field = $fieldSet['jform_main_location'];
-	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['main_location']
-			);
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-    <?php
-	// Location
-	$field = $fieldSet['jform_sub_location'];
-	$field->jdomOptions = array(
-		'list' => $this->lists['fk']['sub_location']
-			);
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
+	
     
     <?php
 	// Project
@@ -326,74 +318,6 @@ $fieldSets = $this->form->getFieldsets();
 	$field->jdomOptions = array(
 		'list' => BdsHelperEnum::_('products_characteristics')
 			);
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<?php echo $field->input; ?>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-	<?php
-	// Contact Number
-	$field = $fieldSet['jform_contact_number'];
-    $user = JFactory::getUser();
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<input type="text" name="jform[contact_number]" id="jform_contact_number" value="<?php echo $user->get('username')?>" readonly="" placeholder="Số di động"/>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Contact Name
-	$field = $fieldSet['jform_contact_name'];
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<input type="text" name="jform[contact_name]" id="jform_contact_name" value="<?php echo $user->get('name')?>" class="validate[required] required" placeholder="Người liên hệ " required="" aria-required="true"/>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Contact Email
-	$field = $fieldSet['jform_contact_email'];
-	?>
-	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
-		<div class="control-label">
-			<?php echo $field->label; ?>
-		</div>
-
-	    <div class="controls">
-			<input type="text" name="jform[contact_email]" id="jform_contact_email" value="<?php echo $user->get('email')?>" class="validate[required,custom[ckemail]] required" placeholder="Email liên hệ " required="" aria-required="true"/>
-		</div>
-	</div>
-	<?php echo(BdsHelperHtmlValidator::loadValidator($field)); ?>
-
-
-
-	<?php
-	// Contact Address
-	$field = $fieldSet['jform_contact_address'];
 	?>
 	<div class="col-md-6 <?php echo 'field-' . $field->id . $field->responsive; ?>">
 		<div class="control-label">

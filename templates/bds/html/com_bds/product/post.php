@@ -24,6 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 BdsHelper::headerDeclarations();
 //Load the formvalidator scripts requirements.
 JDom::_('html.toolbar');
+$user = JFactory::getUser();
 ?>
 <div class="page-header">
 	<h1>Đăng tin miễn phí</h1>
@@ -37,6 +38,10 @@ JDom::_('html.toolbar');
                 <button type="submit" onclick="return Joomla.submitform('product.apply');">ĐĂNG NGAY</button>
             </div>
         
+            <input type="hidden" name="jform[contact_number]" value="<?php echo $user->get('username')?>"/>
+            <input type="hidden" name="jform[contact_name]" value="<?php echo $user->get('name')?>"/>
+            <input type="hidden" name="jform[contact_email]" value="<?php echo $user->get('email')?>"/>
+            <input type="hidden" name="jform[contact_address]" value="<?php echo $user->get('address1')?>"/>
         	<?php 
         		$jinput = JFactory::getApplication()->input;
         		echo JDom::_('html.form.footer', array(
@@ -61,59 +66,159 @@ jQuery(document).ready(function ($) {
     $('#jform_behind').number( true, 0);
     $('#jform_alley').number( true, 0);
     
-    $('#jform_types').on('change', function() {
-        jQuery('.overlayUpload').show();
-        var id = jQuery(this).val();
-        jQuery.ajax({
-            url : 'index.php?option=com_bds&task=categories.subCategory&<?php echo JSession::getFormToken()?>=1',
+    
+    $(".types .main").live('click', function() {
+    	$(".types .main_list").slideToggle('fast');
+    });
+    
+    $(".types .sub").live('click', function() {
+    	$(".types .sub_list").slideToggle('fast');
+    });
+    
+    $('.types ul li.ma').on('click', function() {
+        $('.overlayUpload').show();
+        var id = $(this).data('id');
+        var text = $(this).text();
+        $('.types .main_id').val(id);
+        $('.types .sub_id').val('');
+        
+        $.ajax({
+            url : 'index.php?option=com_bds&&task=categories.subCategory&<?php echo JSession::getFormToken()?>=1',
             data : {id : id},
             type: "POST",
             dataType: 'json',
             success: function(data){
-                var sub = '<option value="" selected="selected">Chọn Loại bất động sản</option>';
+                var sub = '<li class="back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;<strong>'+text+'</strong></li>';
+                sub += '<li class="all">Tất cả <i class="fa fa-angle-down right" aria-hidden="true"></i></li>';
                 $.each(data, function(key, val){
-		    		sub+= '<option value="'+ val.id +'">'+ val.title +'</option>';
+		    		sub+= '<li class="su" data-id="'+ val.id +'">'+ val.title +'</li>';
 		    	});
-                $('#jform_category_id').html(data);
+                $('.types .sub_list').html(sub);
+                $('.types .input-select .title').text(text);
                 
-                var sub = '<li class="active-result result-selected highlighted" data-option-array-index="0">Chọn Loại bất động sản</li>';
-                $.each(data, function(key, val){
-		    		sub+= '<li class="active-result" data-option-array-index="'+ val.id +'">'+ val.title +'</li>';
-		    	});
-                $('#jform_category_id_chzn .chzn-results').html(sub);
-                $('#jform_category_id_chzn').addClass('chzn-container-active chzn-with-drop');
-                jQuery('.overlayUpload').hide();
+                $('.types .input-select').removeClass('main');
+                $('.types .input-select').addClass('sub');
+                
+                $('.types .main_list').hide();
+                $('.types .sub_list').show();                
+                $('.overlayUpload').hide();
             }
         });
     });
     
-    $('#jform_main_location').on('change', function() {
-        jQuery('.overlayUpload').show();
-        var id = jQuery(this).val();
-        jQuery.ajax({
+    $('.types .back').live('click', function() {
+        $('.types .main_list').show();
+        $('.types .sub_list').hide();
+    });
+    
+    $('.types .all').live('click', function() {
+        $('.types .sub_id').val('');
+        $('.types .sub_list').hide();
+    });
+    
+    $('.types .allR').live('click', function() {
+        var text = $(this).text();
+        $('.types .main_id').val('');
+        $('.types .sub_id').val('');
+        $('.types .input-select').removeClass('sub');
+        $('.types .input-select').addClass('main');
+        
+        $('.types .input-select .title').text(text);
+        $('.types .main_list').hide();
+    });
+    
+    $('.types .su').live('click', function() {
+        var id = $(this).data('id');
+        var text = $(this).text();
+        
+        $('.types .sub_id').val(id);        
+        $('.types .input-select .title').text(text);
+        $('.types .sub_list').hide();
+    });
+    
+    $(document).click(function(event) { 
+        if(!$(event.target).closest('.types').length) {
+            $('.types .main_list').hide();
+            $('.types .sub_list').hide();
+        }        
+    });
+    
+    //
+    $(".location .main").live('click', function() {
+    	$(".location .main_list").slideToggle('fast');
+    });
+    
+    $(".location .sub").live('click', function() {
+    	$(".location .sub_list").slideToggle('fast');
+    });
+    
+    $('.location ul li.ma').on('click', function() {
+        $('.overlayUpload').show();
+        var id = $(this).data('id');
+        var text = $(this).text();
+        $('.location .main_id').val(id);
+        $('.location .sub_id').val('');
+        
+        $.ajax({
             url : 'index.php?option=com_bds&task=locations.subLocations&<?php echo JSession::getFormToken()?>=1',
             data : {id : id},
             type: "POST",
             dataType: 'json',
             success: function(data){
-                var sub = '<option value="" selected="selected">Chọn Quận/Huyện</option>';
+                var sub = '<li class="back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;<strong>'+text+'</strong></li>';
+                sub += '<li class="all">Tất cả <i class="fa fa-angle-down right" aria-hidden="true"></i></li>';
                 $.each(data, function(key, val){
-		    		sub+= '<option value="'+ val.id +'">'+ val.title +'</option>';
+		    		sub+= '<li class="su" data-id="'+ val.id +'">'+ val.title +'</li>';
 		    	});
-                $('#jform_sub_location').html(sub);
+                $('.location .sub_list').html(sub);
+                $('.location .input-select .title').text(text);
                 
-                var sub = '<li class="active-result result-selected highlighted" data-option-array-index="0">Chọn Quận/Huyện</li>';
-                $.each(data, function(key, val){
-		    		sub+= '<li class="active-result" data-option-array-index="'+ val.id +'">'+ val.title +'</li>';
-		    	});
-                $('#jform_sub_location_chzn .chzn-results').html(sub);
-                //$('#jform_sub_location').trigger('liszt:updated');
-                $('#jform_sub_location_chzn').addClass('chzn-container-active chzn-with-drop');
-                jQuery('.overlayUpload').hide();
+                $('.location .input-select').removeClass('main');
+                $('.location .input-select').addClass('sub');
+                
+                $('.location .main_list').hide();
+                $('.location .sub_list').show();                
+                $('.overlayUpload').hide();
             }
         });
     });
-
+    
+    $('.location .back').live('click', function() {
+        $('.location .main_list').show();
+        $('.location .sub_list').hide();
+    });
+    
+    $('.location .all').live('click', function() {
+        $('.location .sub_id').val('');
+        $('.location .sub_list').hide();
+    });
+    
+    $('.location .allR').live('click', function() {
+        var text = $(this).text();
+        $('.location .main_id').val('');
+        $('.location .sub_id').val('');
+        $('.location .input-select').removeClass('sub');
+        $('.location .input-select').addClass('main');
+        
+        $('.location .input-select .title').text(text);
+        $('.location .main_list').hide();
+    });
+    
+    $('.location .su').live('click', function() {
+        var id = $(this).data('id');
+        var text = $(this).text();
+        
+        $('.location .sub_id').val(id);        
+        $('.location .input-select .title').text(text);
+        $('.location .sub_list').hide();
+    });
+    
+    $(document).click(function(event) { 
+        if(!$(event.target).closest('.location').length) {
+            $('.location .main_list').hide();
+            $('.location .sub_list').hide();
+        }        
+    });
 });
        
 var arrImageUpload = {};
