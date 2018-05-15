@@ -1606,6 +1606,8 @@ sup{
     color: #333;
     font-weight: 400;
     background-color: #fff;
+    overflow: hidden;
+    line-height: 25px;
 }
 .dropdown .title{
     padding-left: 5px;
@@ -1621,7 +1623,7 @@ sup{
     position: absolute;
     top: 40px;
     list-style: none;
-    height: 400px;
+    max-height: 400px;
     overflow: auto;
     z-index: 2;
 }

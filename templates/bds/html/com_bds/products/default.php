@@ -48,8 +48,31 @@ if($id){
 
 $classDown = 'main';
 if($id) $classDown = 'sub';
+$active = '<i class="fa fa-check right" aria-hidden="true"></i>';
 
-$filter_types = $this->state->get('filter.types');
+//
+$type_id = $this->state->get('filter.types');
+$category_id = $this->state->get('filter.category_id');
+
+$type_name = $category_name = 'Chọn Loại Mua Bán';
+$id = '';
+if($category_id)
+    $id = $category_id;
+elseif($type_id){
+    $id = $type_id;
+}
+
+if($id){
+    $model_category = CkJModel::getInstance('category', 'BdsModel');
+    $item_main = $model_category->getItem($type_id);
+    $type_name = 'Chọn Loại '.$item_main->title;
+    
+    $model_category = CkJModel::getInstance('category', 'BdsModel');
+    $item = $model_category->getItem($id);
+    $category_name = $item->title;
+}
+
+    
 // Get input cookie object
 $inputCookie  = JFactory::getApplication()->input->cookie;
 
@@ -95,7 +118,7 @@ $inputCookie->set('myCookie', null, time() - 1);
                 </div>    
     
     			<!-- BRICK : filters -->
-    			<div class="col-md-4 bitem">
+    			<div class="col-md-3 bitem">
                     <div class="dropdown location">     
                         <input class="main_id" type="hidden" name="filter_main_location" value="<?php echo $main_location?>" />
                         <input class="sub_id" type="hidden" name="filter_sub_location" value="<?php echo $sub_location?>" />
@@ -113,16 +136,30 @@ $inputCookie->set('myCookie', null, time() - 1);
                         </ul>
                         <ul class="sub_list">
                             <li class="back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;<strong><?php echo $main_location_name?></strong></li></li>
-                            <li class="all">Tất cả <i class="fa fa-angle-down right" aria-hidden="true"></i></li>                            
+                            <li class="all">Tất cả <?php if(!$sub_location) echo $active?></li>                            
                             <?php foreach($this->filter_sub_location as $row):?>
-                            <li class="su" data-id="<?php echo $row->id?>"><?php echo $row->title?></li>
+                            <li class="su" data-id="<?php echo $row->id?>"><?php echo $row->title?> <?php if($sub_location == $row->id) echo $active?></li>
                             <?php endforeach;?>
                         </ul>
                     </div>
     			</div>                
                 
-    			<div class="col-md-3 bitem">
-    				<?php echo $this->filters['filter_category_id']->input;?>
+    			<div class="col-md-4 bitem">
+                    <div class="dropdown category">     
+                        <input class="main_id" type="hidden" name="filter_category_id" value="<?php echo $category_id?>" />
+                                   
+            			<div class="input-select main">
+                            <i class="fa fa-university" aria-hidden="true"></i>
+                            <span class="title"><?php echo $category_name?></span>
+                            <i class="fa fa-angle-down right" aria-hidden="true"></i>
+                        </div>
+                        <ul class="main_list" <?php if(JRequest::getVar('filter_types')) echo 'style="display: block;"'?>>
+                            <li class="all" data-id=""><?php echo $type_name?> <?php if(!$category_id) echo $active?></li>
+                            <?php foreach($this->filter_category_id as $row):?>
+                            <li class="ma" data-id="<?php echo $row->id?>"><?php echo $row->title?> <?php if($category_id == $row->id) echo $active?></li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div>
     			</div>
                 
                 <div class="col-md-3 col-xs-6 bitem">
@@ -242,7 +279,7 @@ jQuery( document ).ready(function($) {
             dataType: 'json',
             success: function(data){
                 var sub = '<li class="back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;<strong>'+text+'</strong></li>';
-                sub += '<li class="all">Tất cả <i class="fa fa-angle-down right" aria-hidden="true"></i></li>';
+                sub += '<li class="all">Tất cả <i class="fa fa-check right" aria-hidden="true"></i></li>';
                 $.each(data, function(key, val){
 		    		sub+= '<li class="su" data-id="'+ val.id +'">'+ val.title +'</li>';
 		    	});
@@ -296,6 +333,31 @@ jQuery( document ).ready(function($) {
         if(!$(event.target).closest('.location').length) {
             $('.location .main_list').hide();
             $('.location .sub_list').hide();
+        }        
+    });
+    
+    //
+    $(".category .main").live('click', function() {
+    	$(".category .main_list").slideToggle('fast');
+    });
+    $('.category .all').live('click', function() {
+        $('.category .main_list').hide();
+        $('.category .main_id').val('');
+        $('#adminForm').submit();   
+    });
+    $('.category .ma').live('click', function() {
+        var id = $(this).data('id');
+        var text = $(this).text();
+        
+        $('.category .main_id').val(id);        
+        $('.category .input-select .title').text(text);
+        $('.category .main_list').hide();
+        $('#adminForm').submit();        
+    });
+    
+    $(document).click(function(event) { 
+        if(!$(event.target).closest('.category').length) {
+            $('.category .main_list').hide();
         }        
     });
 })

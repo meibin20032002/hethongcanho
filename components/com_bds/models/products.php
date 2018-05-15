@@ -290,6 +290,10 @@ class BdsModelProducts extends BdsClassModelList
 		}
 
 		// FILTER : Category
+        if(JRequest::getVar('filter_types')){
+            $this->setState('filter.category_id', '');
+        }
+        
 		if($filter_category_id = $this->getState('filter.category_id'))
 		{
 			if ($filter_category_id > 0){

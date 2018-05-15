@@ -19,7 +19,7 @@ class plgSlogin_authFacebook extends JPlugin
     {
         $redirect = JURI::base().'?option=com_slogin&task=check&plugin=facebook';
 
-        $scope = 'email,user_photos,user_hometown,public_profile,user_birthday';
+        $scope = 'email,public_profile';
 
         if($this->params->get('repost_comments', 0))
         {
@@ -35,7 +35,7 @@ class plgSlogin_authFacebook extends JPlugin
 
         $params = implode('&', $params);
 
-        $url = 'https://www.facebook.com/v2.11/dialog/oauth?' . $params;
+        $url = 'https://www.facebook.com/v3.0/dialog/oauth?' . $params;
         return $url;
     }
 
@@ -61,7 +61,7 @@ class plgSlogin_authFacebook extends JPlugin
 // 			id, name, first_name, last_name, link, gender, timezone, locale, verified, updated_time
 // 			email смотреть параметр scope в методе auth()!
 
-            $ResponseUrl = 'https://graph.facebook.com/v2.2/me?access_token='.$token['access_token'].'&fields=id,name,first_name,last_name,link,gender,email,birthday';
+            $ResponseUrl = 'https://graph.facebook.com/v3.0/me?access_token='.$token['access_token'].'&fields=id,name,first_name,last_name,link,gender,email,birthday';
             $request = json_decode($controller->open_http($ResponseUrl));
 
             if(empty($request)){
@@ -119,7 +119,7 @@ class plgSlogin_authFacebook extends JPlugin
 
         $params = implode('&', $params);
 
-        $url = 'https://graph.facebook.com/v2.11/oauth/access_token?' . $params;
+        $url = 'https://graph.facebook.com/v3.0/oauth/access_token?' . $params;
         $data = $controller->open_http($url);
         
         $data_array = json_decode($data , true);

@@ -5,4 +5,16 @@
 	<message>
 		<![CDATA[BDS_LAYOUT_SHOW_PROJECTS_LAYOUT]]>
 	</message></layout>
+    
+    <fields name="request">
+
+		<fieldset name="request" addfieldpath="/administrator/components/com_bds/models/fields">
+			<field name="show"
+					label="Auto Show"
+					required="false"
+					default="1"
+                    value="1"
+					type="text"/>
+		</fieldset>
+	</fields>
 </metadata>

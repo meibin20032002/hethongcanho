@@ -89,7 +89,7 @@ jQuery(document).ready(function ($) {
             dataType: 'json',
             success: function(data){
                 var sub = '<li class="back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;<strong>'+text+'</strong></li>';
-                sub += '<li class="all">Tất cả <i class="fa fa-angle-down right" aria-hidden="true"></i></li>';
+                sub += '<li class="all">Tất cả <i class="fa fa-check right" aria-hidden="true"></i></li>';
                 $.each(data, function(key, val){
 		    		sub+= '<li class="su" data-id="'+ val.id +'">'+ val.title +'</li>';
 		    	});
@@ -113,6 +113,12 @@ jQuery(document).ready(function ($) {
     
     $('.types .all').live('click', function() {
         $('.types .sub_id').val('');
+        $( ".types .all i" ).remove();
+        $( ".types .su i" ).remove();
+        $(this).append('<i class="fa fa-check right" aria-hidden="true"></i>');
+        
+        var text = $('.types .back strong').text();
+        $('.types .input-select .title').text(text);
         $('.types .sub_list').hide();
     });
     
@@ -130,6 +136,9 @@ jQuery(document).ready(function ($) {
     $('.types .su').live('click', function() {
         var id = $(this).data('id');
         var text = $(this).text();
+        $( ".types .all i" ).remove();
+        $( ".types .su i" ).remove();
+        $(this).append('<i class="fa fa-check right" aria-hidden="true"></i>');
         
         $('.types .sub_id').val(id);        
         $('.types .input-select .title').text(text);
@@ -166,7 +175,7 @@ jQuery(document).ready(function ($) {
             dataType: 'json',
             success: function(data){
                 var sub = '<li class="back"><i class="fa fa-arrow-left"></i>&nbsp;&nbsp;<strong>'+text+'</strong></li>';
-                sub += '<li class="all">Tất cả <i class="fa fa-angle-down right" aria-hidden="true"></i></li>';
+                sub += '<li class="all">Tất cả <i class="fa fa-check right" aria-hidden="true"></i></li>';
                 $.each(data, function(key, val){
 		    		sub+= '<li class="su" data-id="'+ val.id +'">'+ val.title +'</li>';
 		    	});
@@ -190,6 +199,12 @@ jQuery(document).ready(function ($) {
     
     $('.location .all').live('click', function() {
         $('.location .sub_id').val('');
+        $( ".location .all i" ).remove();
+        $( ".location .su i" ).remove();
+        $(this).append('<i class="fa fa-check right" aria-hidden="true"></i>');
+        
+        var text = $('.location .back strong').text();
+        $('.location .input-select .title').text(text);
         $('.location .sub_list').hide();
     });
     
@@ -207,6 +222,9 @@ jQuery(document).ready(function ($) {
     $('.location .su').live('click', function() {
         var id = $(this).data('id');
         var text = $(this).text();
+        $( ".location .all i" ).remove();
+        $( ".location .su i" ).remove();
+        $(this).append('<i class="fa fa-check right" aria-hidden="true"></i>');
         
         $('.location .sub_id').val(id);        
         $('.location .input-select .title').text(text);

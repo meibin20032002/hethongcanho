@@ -97,6 +97,7 @@ class BdsViewProducts extends BdsClassView
 		$filters['filter_category_id']->jdomOptions = array(
 			'list' => $modelCategory_id->getItems()
 		);
+        $this->filter_category_id = $modelCategory_id->getItems();
 
 		// Sort by
 		$filters['sortTable']->jdomOptions = array(
